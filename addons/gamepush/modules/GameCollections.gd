@@ -64,7 +64,7 @@ func _fetch(args): fetched.emit(GP._js_to_dict(args[0]))
 func _error_fetch(args): error_fetch.emit(args[0])
 
 
-class Collection:
+class GPCollection:
 	extends GP.GPObject
 	
 	var id:int
@@ -75,7 +75,7 @@ class Collection:
 	
 	
 	
-	func _to_js():
+	func _to_js() -> JavaScriptObject:
 		var js_object := JavaScriptBridge.create_object("Object")
 		js_object["id"] = id
 		js_object["tag"] = tag
@@ -87,7 +87,7 @@ class Collection:
 		js_object["games"] = _games
 		return js_object
 		
-	func _from_js(js_object) -> Collection:
+	func _from_js(js_object) -> GPCollection:
 		var callback_f_e := JavaScriptBridge.create_callback(_f_e)
 		id = js_object["id"]
 		tag =js_object["tag"]
@@ -98,10 +98,10 @@ class Collection:
 		return self
 		
 	func _f_e(args):
-		games.append(Game.new()._from_js(args[0]))
+		games.append(GPGame.new()._from_js(args[0]))
 		
 
-class Game:
+class GPGame:
 	extends GP.GPObject
 	
 	var id:int
@@ -110,7 +110,7 @@ class Game:
 	var icon:String
 	var url:String
 	
-	func _to_js():
+	func _to_js() -> JavaScriptObject:
 		var js_object := JavaScriptBridge.create_object("Object")
 		js_object["id"] = id
 		js_object["name"] = name
@@ -119,9 +119,10 @@ class Game:
 		js_object["url"] = url
 		return js_object
 		
-	func _from_js(js_object):
+	func _from_js(js_object) -> GPGame:
 		id = js_object["id"]
 		name = js_object["name"]
 		description = js_object["description"]
 		icon = js_object["icon"]
 		url = js_object["url"]
+		return self

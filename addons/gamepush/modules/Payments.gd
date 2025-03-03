@@ -113,7 +113,7 @@ func get_purchases():
 	var result:Array
 	if OS.get_name() == "Web":
 		var _result = payments.purchases
-		var callback = func(arg): result.append(PlayerPurchase.new()._from_js(arg[0]))
+		var callback = func(arg): result.append(GPPlayerPurchase.new()._from_js(arg[0]))
 		_result.forEach(JavaScriptBridge.create_callback(callback))
 		return result
 	push_warning("Not Web")
@@ -162,29 +162,29 @@ func unsubscribe(id=null, tag=null) -> void:
 		push_warning("Not Web")
 	
 	
-func _purchase(args): purchased.emit([Purchase.new()._from_js(args[0].product), PlayerPurchase.new()._from_js(args[0].purchase)])
+func _purchase(args): purchased.emit([GPPurchase.new()._from_js(args[0].product), GPPlayerPurchase.new()._from_js(args[0].purchase)])
 func _error_purchase(args): error_purchase.emit(args[0])
-func _consume(args): consumed.emit([Purchase.new()._from_js(args[0].product), PlayerPurchase.new()._from_js(args[0].purchase)])
+func _consume(args): consumed.emit([GPPurchase.new()._from_js(args[0].product), GPPlayerPurchase.new()._from_js(args[0].purchase)])
 func _error_consume(args): error_consume.emit(args[0])
 func _fetch(args):
 	var result:Array
 	var products:Array
-	var callback0 = func(arg): products.append(Purchase.new()._from_js(arg[0]))
+	var callback0 = func(arg): products.append(GPPurchase.new()._from_js(arg[0]))
 	args[0].products.forEach(JavaScriptBridge.create_callback(callback0))
 	result.append(products)
 	var player_purchases:Array
-	var callback1 = func(arg): player_purchases.append(PlayerPurchase.new()._from_js(arg[0]))
+	var callback1 = func(arg): player_purchases.append(GPPlayerPurchase.new()._from_js(arg[0]))
 	args[0].playerPurchases.forEach(JavaScriptBridge.create_callback(callback1))
 	result.append(player_purchases)
 	fetched_products.emit(result)
 func _error_fetch(args): error_fetch_products.emit(args[0])
-func _subscribe(args): subscribed.emit([Purchase.new()._from_js(args[0].product), PlayerPurchase.new()._from_js(args[0].purchase)])
+func _subscribe(args): subscribed.emit([GPPurchase.new()._from_js(args[0].product), GPPlayerPurchase.new()._from_js(args[0].purchase)])
 func _error_subscribe(args): error_subscribe.emit(args[0])
-func _unsubscribe(args): unsubscribed.emit([Purchase.new()._from_js(args[0].product), PlayerPurchase.new()._from_js(args[0].purchase)])
+func _unsubscribe(args): unsubscribed.emit([GPPurchase.new()._from_js(args[0].product), GPPlayerPurchase.new()._from_js(args[0].purchase)])
 func _error_unsubscribe(args): error_unsubscribe.emit(args[0])
 
 
-class Purchase:
+class GPPurchase:
 	extends GP.GPObject
 	
 	var id:int
@@ -216,7 +216,7 @@ class Purchase:
 		js_object["trialPeriod"] = trial_period
 		return js_object
 
-	func _from_js(js_object) -> Purchase:
+	func _from_js(js_object) -> GPPurchase:
 		id = js_object["id"]
 		tag = js_object["tag"]
 		name = js_object["name"]
@@ -231,7 +231,7 @@ class Purchase:
 		trial_period = js_object["trialPeriod"]
 		return self
 
-class PlayerPurchase:
+class GPPlayerPurchase:
 	extends GP.GPObject
 	
 	var product_id: int
@@ -252,7 +252,7 @@ class PlayerPurchase:
 		js_object["expiredAt"] = expired_at
 		return js_object
 
-	func _from_js(js_object) -> PlayerPurchase:
+	func _from_js(js_object) -> GPPlayerPurchase:
 		product_id = js_object["productId"]
 		payload = GP._js_to_dict(js_object["payload"])
 		created_at = js_object["createdAt"]
