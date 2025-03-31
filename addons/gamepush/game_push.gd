@@ -86,8 +86,28 @@ func _on_timer_timeout():
 	
 func _js_to_dict(js_object:JavaScriptObject) -> Variant:
 	var window := JavaScriptBridge.get_interface("window")
-	var strn = window.JSON.stringify(js_object).to_snake_case()
-	return JSON.parse_string(strn)
+	var strn = window.JSON.stringify(js_object)
+	var dict = JSON.parse_string(strn)
+	return _re_snake(dict)
+
+
+func _re_snake(data:Variant) -> Variant:
+	var new_data = data
+	if data is Dictionary:
+		new_data = {}
+		for k in data:
+			if k is String:
+				var k_snake = k.to_snake_case()
+				new_data[k_snake] = _re_snake(data[k])
+	elif data is Array:
+		new_data = []
+		for e in data:
+			new_data.append(_re_snake(e))
+	elif data is float:
+		if data == int(data):
+			new_data = int(data)
+	return new_data
+	
 	
 	
 class GPObject:
