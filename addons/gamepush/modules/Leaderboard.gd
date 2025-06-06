@@ -64,7 +64,7 @@ func open(order_by:Array = [], order:String = "", limit:int = 0,
 var _callback_fetch =JavaScriptBridge.create_callback(_fetch)
 
 func fetch(order_by:Array=[], order:String="", limit:int=0,
- include_fields:Array=[], display_fields:Array=[],
+ include_fields:Array=[],
  with_me:String="", show_nearest:int=0):
 	if OS.get_name() == "Web":
 		var conf := JavaScriptBridge.create_object("Object")
@@ -82,11 +82,6 @@ func fetch(order_by:Array=[], order:String="", limit:int=0,
 			for t in include_fields:
 				_include_fields.push(t)
 			conf["includeFields"] = _include_fields
-		if display_fields:
-			var _display_fields := JavaScriptBridge.create_object("Array")
-			for t in display_fields:
-				_display_fields.push(t)
-			conf["displayFields"] = _display_fields
 		if with_me:
 			conf['withMe'] = with_me
 		if show_nearest:
