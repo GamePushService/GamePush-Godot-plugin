@@ -66,7 +66,7 @@ func _on_fetch_pressed():
 		display.append(dislplay_fields2_node.text)
 	if dislplay_fields3_node.text:
 		display.append(dislplay_fields3_node.text)
-	GP.Leaderboard.fetch(order_by, order_node.text, int(limit_node.text), includes, display, with_me_node.text, int(show_nearest.text))
+	GP.Leaderboard.fetch(order_by, order_node.text, int(limit_node.text), includes, with_me_node.text, int(show_nearest.text))
 
 
 func _on_open_pressed():
