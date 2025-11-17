@@ -65,7 +65,7 @@ var _callback_fetch =JavaScriptBridge.create_callback(_fetch)
 
 func fetch(order_by:Array=[], order:String="", limit:int=0,
  include_fields:Array=[],
- with_me:String="", show_nearest:int=0):
+ with_me:String="", show_nearest:int=0) -> void:
 	if OS.get_name() == "Web":
 		var conf := JavaScriptBridge.create_object("Object")
 		if order_by:
@@ -233,20 +233,16 @@ func fetch_player_rating_scoped(variant:String, id:int =0, tag:String ="", order
 		push_warning("Not Web")
 
 signal yandex_lb_score_setted
-signal _lb_inited
 
-var lb 
-var _lb_callback := JavaScriptBridge.create_callback(func(args):
-	lb = args[0]
-	_lb_inited.emit()
-	)
+var _callback_leaderboard_score_setted := JavaScriptBridge.create_callback(func(args):
+					yandex_lb_score_setted.emit())
 
 func set_yandex_lb_score(leaderboard_name:String, score:int, extra_data:String="") -> void:
-	if OS.get_name() == "Web" and GP.Platform.type() == "YANDEX":
-		var ysdk = GP.Platform.get_native_SDK()
-		ysdk.getLeaderboards().then(_lb_callback)
-		await _lb_inited
-		lb.setLeaderboardScore(leaderboard_name, score, extra_data)
+	if OS.get_name() == "Web" and GP.platform.type() == "YANDEX":
+		var ysdk = GP.platform.get_native_SDK()
+		var lb = ysdk.leaderboards
+		lb.setScore(leaderboard_name, score, extra_data).then(_callback_leaderboard_score_setted)
+		await yandex_lb_score_setted
 	else:
 		push_warning("Not Web or not yandex")
 
