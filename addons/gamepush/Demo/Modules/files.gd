@@ -14,30 +14,30 @@ extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	GP.Files.uploaded.connect(func(arg): GP.Logger.info("uploaded", arg.to_dict()))
-	GP.Files.error_upload.connect(func(arg): GP.Logger.info("error_upload", arg))
-	GP.Files.loaded_content.connect(func(arg): GP.Logger.info("loaded_content", arg))
-	GP.Files.error_load_content.connect(func(arg): GP.Logger.info("error_load_content", arg))
-	GP.Files.choosed.connect(func(file, temp_url): GP.Logger.info("choosed", file.to_dict(), temp_url))
-	GP.Files.error_choose.connect(func(arg): GP.Logger.info("error_choose", arg))
-	GP.Files.fetched.connect(func(arg):
-		GP.Logger.info("fetched")
+	GP.files.uploaded.connect(func(arg): GP.logger.info("uploaded", arg.to_dict()))
+	GP.files.error_upload.connect(func(arg): GP.logger.info("error_upload", arg))
+	GP.files.loaded_content.connect(func(arg): GP.logger.info("loaded_content", arg))
+	GP.files.error_load_content.connect(func(arg): GP.logger.info("error_load_content", arg))
+	GP.files.choosed.connect(func(file, temp_url): GP.logger.info("choosed", file.to_dict(), temp_url))
+	GP.files.error_choose.connect(func(arg): GP.logger.info("error_choose", arg))
+	GP.files.fetched.connect(func(arg):
+		GP.logger.info("fetched")
 		var list := []
 		for f in arg[0]:
 			list.append(f.to_dict())
-		GP.Logger.info_array(list)
-		GP.Logger.info("canLoadMore:", arg[1])
+		GP.logger.info_array(list)
+		GP.logger.info("canLoadMore:", arg[1])
 		)
-	GP.Files.error_fetch.connect(func(arg): GP.Logger.info("error_fetch", arg))
-	GP.Files.fetched_more.connect(func(arg):
-		GP.Logger.info("fetched_more")
+	GP.files.error_fetch.connect(func(arg): GP.logger.info("error_fetch", arg))
+	GP.files.fetched_more.connect(func(arg):
+		GP.logger.info("fetched_more")
 		var list := []
 		for f in arg[0]:
 			list.append(f.to_dict())
-		GP.Logger.info_array(list)
-		GP.Logger.info("canLoadMore:", arg[1])
+		GP.logger.info_array(list)
+		GP.logger.info("canLoadMore:", arg[1])
 		)
-	GP.Files.error_fetch_more.connect(func(arg): GP.Logger.info("error_fetch_more", arg))
+	GP.files.error_fetch_more.connect(func(arg): GP.logger.info("error_fetch_more", arg))
 
 
 func _on_main_menu_button_pressed():
@@ -45,23 +45,23 @@ func _on_main_menu_button_pressed():
 
 
 func _on_upload_pressed():
-	GP.Files.upload([tag_node.text, tag2_node.text, tag3_node.text])
+	GP.files.upload([tag_node.text, tag2_node.text, tag3_node.text])
 
 
 func _on_upload_url_pressed():
-	GP.Files.upload_url(file_name_node.text, url_node.text, [tag_node.text, tag2_node.text, tag3_node.text])
+	GP.files.upload_url(file_name_node.text, url_node.text, [tag_node.text, tag2_node.text, tag3_node.text])
 
 
 func _on_upload_content_pressed():
-	GP.Files.upload_content(file_name_node.text, content_node.text, [tag_node.text, tag2_node.text, tag3_node.text])
+	GP.files.upload_content(file_name_node.text, content_node.text, [tag_node.text, tag2_node.text, tag3_node.text])
 
 
 func _on_load_сontent_pressed():
-	GP.Files.load_сontent(url_node.text)
+	GP.files.load_сontent(url_node.text)
 
 
 func _on_choose_file_pressed():
-	GP.Files.choose_file(type_file_node.text)
+	GP.files.choose_file(type_file_node.text)
 
 
 func _on_fetch_pressed():
@@ -81,7 +81,7 @@ func _on_fetch_pressed():
 		tags.append(tag2_node.text)
 	if tag3_node.text:
 		tags.append(tag3_node.text)
-	GP.Files.fetch(player_id, tags, limit, offset)
+	GP.files.fetch(player_id, tags, limit, offset)
 
 
 func _on_fetch_more_pressed():
@@ -101,4 +101,4 @@ func _on_fetch_more_pressed():
 		tags.append(tag2_node.text)
 	if tag3_node.text:
 		tags.append(tag3_node.text)
-	GP.Files.fetch_more(player_id, tags, limit, offset)
+	GP.files.fetch_more(player_id, tags, limit, offset)

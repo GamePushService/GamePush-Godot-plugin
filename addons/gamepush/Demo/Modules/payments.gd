@@ -5,68 +5,68 @@ extends Control
 
 
 func _ready():
-	GP.Payments.fetched_products.connect(func(res):
+	GP.payments.fetched_products.connect(func(res):
 		var id := []
 		for p in res[0]:
 			id.append(p.to_dict())
-		GP.Logger.info(id)
+		GP.logger.info(id)
 		id = []
 		for p in res[1]:
 			id.append(p.to_dict())
-		GP.Logger.info(id)
-		GP.Logger.info("fetched_products")
+		GP.logger.info(id)
+		GP.logger.info("fetched_products")
 		)
-	GP.Payments.purchased.connect(func(res): GP.Logger.info("purchased", res[0].to_dict(), res[1].to_dict()))
-	GP.Payments.consumed.connect(func(res): GP.Logger.info("consumed", res[0].to_dict(), res[1].to_dict()))
-	GP.Payments.error_purchase.connect(func(res): GP.Logger.info("error_purchase", res))
-	GP.Payments.error_consume.connect(func(res): GP.Logger.info("error_purchase", res))
-	GP.Payments.error_fetch_products.connect(func(res): GP.Logger.info("error_purchase", res))
-	GP.Payments.subscribed.connect(func(res): GP.Logger.info("subscribed", res[0].to_dict(), res[1].to_dict()))
-	GP.Payments.unsubscribed.connect(func(res): GP.Logger.info("unsubscribed", res[0].to_dict(), res[1].to_dict()))
-	GP.Payments.error_subscribe.connect(func(res): GP.Logger.info("error_subscribe", res))
-	GP.Payments.error_unsubscribe.connect(func(res): GP.Logger.info("error_unsubscribe", res))
+	GP.payments.purchased.connect(func(res): GP.logger.info("purchased", res[0].to_dict(), res[1].to_dict()))
+	GP.payments.consumed.connect(func(res): GP.logger.info("consumed", res[0].to_dict(), res[1].to_dict()))
+	GP.payments.error_purchase.connect(func(res): GP.logger.info("error_purchase", res))
+	GP.payments.error_consume.connect(func(res): GP.logger.info("error_purchase", res))
+	GP.payments.error_fetch_products.connect(func(res): GP.logger.info("error_purchase", res))
+	GP.payments.subscribed.connect(func(res): GP.logger.info("subscribed", res[0].to_dict(), res[1].to_dict()))
+	GP.payments.unsubscribed.connect(func(res): GP.logger.info("unsubscribed", res[0].to_dict(), res[1].to_dict()))
+	GP.payments.error_subscribe.connect(func(res): GP.logger.info("error_subscribe", res))
+	GP.payments.error_unsubscribe.connect(func(res): GP.logger.info("error_unsubscribe", res))
 
 func _on_main_menu_button_pressed():
 	get_tree().change_scene_to_file("res://addons/gamepush/Demo/Demo.tscn")
 
 
 func _on_is_available_pressed():
-	GP.Logger.info(GP.Payments.is_available())
+	GP.logger.info(GP.payments.is_available())
 
 
 func _on_consume_pressed():
-	GP.Payments.consume(id_node.text, tag_node.text)
+	GP.payments.consume(id_node.text, tag_node.text)
 
 
 func _on_purchase_pressed():
-	GP.Payments.purchase(id_node.text, tag_node.text)
+	GP.payments.purchase(id_node.text, tag_node.text)
 
 
 func _on_fetch_products_pressed():
-	GP.Payments.fetch_products()
+	GP.payments.fetch_products()
 
 
 func _on_is_subscriptions_available_pressed():
-	GP.Logger.info(GP.Payments.is_subscriptions_available())
+	GP.logger.info(GP.payments.is_subscriptions_available())
 
 
 func _on_subscribe_pressed():
-	GP.Payments.subscribe(id_node.text, tag_node.text)
+	GP.payments.subscribe(id_node.text, tag_node.text)
 
 
 func _on_unsubscribe_pressed():
-	GP.Payments.unsubscribe(id_node.text, tag_node.text)
+	GP.payments.unsubscribe(id_node.text, tag_node.text)
 
 
 func _on_get_products_pressed():
 	var result := []
-	for p in GP.Payments.get_products():
+	for p in GP.payments.get_products():
 		result.append(p.to_dict())
-	GP.Logger.info(result)
+	GP.logger.info(result)
 
 
 func _on_get_purchases_pressed():
 	var result := []
-	for p in GP.Payments.get_purchases():
+	for p in GP.payments.get_purchases():
 		result.append(p.to_dict())
-	GP.Logger.info(result)
+	GP.logger.info(result)

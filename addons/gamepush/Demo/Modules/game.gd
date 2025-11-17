@@ -3,8 +3,8 @@ extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	GP.Game.paused.connect(func(): GP.Logger.info("pause"))
-	GP.Game.resumed.connect(func(): GP.Logger.info("resume"))
+	GP.game.paused.connect(func(): GP.logger.info("pause"))
+	GP.game.resumed.connect(func(): GP.logger.info("resume"))
 
 
 func _on_main_menu_button_pressed():
@@ -12,24 +12,24 @@ func _on_main_menu_button_pressed():
 
 
 func _on_is_paused_pressed():
-	GP.Logger.info(GP.Game.is_paused())
+	GP.logger.info(GP.game.is_paused())
 
 
 func _on_pause_pressed():
-	GP.Game.pause()
+	GP.game.pause()
 
 
 func _on_resume_pressed():
-	GP.Game.resume()
+	GP.game.resume()
 
 
 func _on_game_start_pressed():
-	GP.Game.game_start()
+	GP.game.game_start()
 
 
 func _on_gameplay_start_pressed():
-	GP.Game.gameplay_start()
+	GP.game.gameplay_start()
 
 
 func _on_gameplay_stop_pressed():
-	GP.Game.gameplay_stop()
+	GP.game.gameplay_stop()

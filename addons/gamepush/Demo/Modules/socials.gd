@@ -9,10 +9,10 @@ extends Control
 
 
 func _ready():
-	GP.Socials.invited.connect(func(s): GP.Logger.info("invite", s))
-	GP.Socials.shared.connect(func(s): GP.Logger.info("share", s))
-	GP.Socials.posted.connect(func(s): GP.Logger.info("poste", s))
-	GP.Socials.joined_community.connect(func(s): GP.Logger.info("join_community", s))
+	GP.socials.invited.connect(func(s): GP.logger.info("invite", s))
+	GP.socials.shared.connect(func(s): GP.logger.info("share", s))
+	GP.socials.posted.connect(func(s): GP.logger.info("poste", s))
+	GP.socials.joined_community.connect(func(s): GP.logger.info("join_community", s))
 
 
 func _on_main_menu_button_pressed():
@@ -20,55 +20,55 @@ func _on_main_menu_button_pressed():
 
 
 func _on_is_supports_share_pressed():
-	GP.Logger.info(GP.Socials.is_supports_share())
+	GP.logger.info(GP.socials.is_supports_share())
 
 
 func _on_is_supports_native_share_pressed():
-	GP.Logger.info(GP.Socials.is_supports_native_share())
+	GP.logger.info(GP.socials.is_supports_native_share())
 
 
 func _on_share_pressed():
-	GP.Socials.share(text_node.text, url_node.text, image_node.text)
+	GP.socials.share(text_node.text, url_node.text, image_node.text)
 
 
 
 func _on_is_supports_native_posts_pressed():
-	GP.Logger.info(GP.Socials.is_supports_native_posts())
+	GP.logger.info(GP.socials.is_supports_native_posts())
 
 
 func _on_post_pressed():
-	GP.Socials.post(text_node.text, url_node.text, image_node.text)
+	GP.socials.post(text_node.text, url_node.text, image_node.text)
 
 
 func _on_is_supports_native_invite_pressed():
-	GP.Logger.info(GP.Socials.is_supports_native_invite())
+	GP.logger.info(GP.socials.is_supports_native_invite())
 
 
 func _on_invite_pressed():
-	GP.Socials.invite(text_node.text)
+	GP.socials.invite(text_node.text)
 
 
 func _on_can_join_community_pressed():
-	GP.Logger.info(GP.Socials.can_join_community())
+	GP.logger.info(GP.socials.can_join_community())
 
 
 func _on_is_supports_native_community_join_pressed():
-	GP.Logger.info(GP.Socials.is_supports_native_community_join())
+	GP.logger.info(GP.socials.is_supports_native_community_join())
 
 
 
 func _on_join_community_pressed():
-	GP.Socials.join_community()
+	GP.socials.join_community()
 
 
 func _on_make_share_url_pressed():
 	var dict = {"fromId": from_id_node.text, "gift": gift_node.text}
-	GP.Logger.info(GP.Socials.make_share_url(dict))
+	GP.logger.info(GP.socials.make_share_url(dict))
 
 
 func _on_get_share_param_pressed():
-	GP.Logger.info(GP.Socials.get_share_param(param_node.text))
+	GP.logger.info(GP.socials.get_share_param(param_node.text))
 
 
 func _on_is_supports_share_params_pressed() -> void:
-	GP.Logger.info(GP.Socials.is_supports_share_params())
+	GP.logger.info(GP.socials.is_supports_share_params())

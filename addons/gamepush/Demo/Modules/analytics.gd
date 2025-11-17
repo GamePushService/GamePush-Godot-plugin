@@ -9,10 +9,9 @@ func _on_main_menu_button_pressed():
 	get_tree().change_scene_to_file("res://addons/gamepush/Demo/Demo.tscn")
 
 
-
 func _on_hit_pressed():
-	GP.Analytics.hit(url_node.text)
+	GP.analytics.hit(url_node.text)
 
 
 func _on_goal_pressed():
-	GP.Analytics.goal(name_node.text, value_node.text)
+	GP.analytics.goal(name_node.text, value_node.text)

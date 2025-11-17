@@ -5,19 +5,19 @@ extends Control
 
 
 func _ready():
-	GP.Triggers.activated.connect(_activated)
-	GP.Triggers.claimed.connect(_claimed)
-	GP.Triggers.error_claim.connect(_error_claim)
+	GP.triggers.activated.connect(_activated)
+	GP.triggers.claimed.connect(_claimed)
+	GP.triggers.error_claim.connect(_error_claim)
 	
 
 func _activated(trigger):
-	GP.Logger.info("activated", trigger.to_dict())
+	GP.logger.info("activated", trigger.to_dict())
 
 func _claimed(trigger):
-	GP.Logger.info("claimed", trigger.to_dict())
+	GP.logger.info("claimed", trigger.to_dict())
 
 func _error_claim(err):
-	GP.Logger.info("error_claim", err)
+	GP.logger.info("error_claim", err)
 
 
 func _on_main_menu_button_pressed():
@@ -25,29 +25,29 @@ func _on_main_menu_button_pressed():
 
 
 func _on_claim_pressed():
-	GP.Logger.info(await GP.Triggers.claim(id_or_tag_node.text))
+	GP.logger.info(await GP.triggers.claim(id_or_tag_node.text))
 
 
 func _on_list_pressed():
 	var result := []
-	for t in GP.Triggers.list():
+	for t in GP.triggers.list():
 		result.append(t.to_dict())
-	GP.Logger.info(result)
+	GP.logger.info(result)
 
 
 func _on_activated_list_pressed():
-	GP.Logger.info(GP.Triggers.activated_list())
+	GP.logger.info(GP.triggers.activated_list())
 
 
 func _on_get_trigger_pressed():
-	var result = GP.Triggers.get_trigger(id_trigger.text)
+	var result = GP.triggers.get_trigger(id_trigger.text)
 	result["trigger"] = result["trigger"].to_dict()
-	GP.Logger.info(result)
+	GP.logger.info(result)
 
 
 func _on_is_trigger_activated_pressed():
-	GP.Logger.info(GP.Triggers.is_trigger_activated(id_or_tag_node.text))
+	GP.logger.info(GP.triggers.is_trigger_activated(id_or_tag_node.text))
 	
 
 func _on_is_claimed_pressed():
-	GP.Logger.info(GP.Triggers.is_claimed(id_or_tag_node.text))
+	GP.logger.info(GP.triggers.is_claimed(id_or_tag_node.text))
