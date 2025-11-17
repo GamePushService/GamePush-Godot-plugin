@@ -63,7 +63,12 @@ func gameplay_stop() -> void:
 	else:
 		push_warning("Not Web")
 
-#TODO happytime
-
+func happytime() -> void:
+	if OS.get_name() == "Web" and GP.platform.type() == "CRAZY_GAMES":
+		var crazy_sdk := GP.platform.get_native_SDK()
+		crazy_sdk.game.happytime()
+	else:
+		push_warning("Not Web or not crazy")
+		
 func _pause(args): paused.emit() 
 func _resume(args): resumed.emit()

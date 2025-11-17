@@ -33,3 +33,7 @@ func _on_gameplay_start_pressed():
 
 func _on_gameplay_stop_pressed():
 	GP.game.gameplay_stop()
+
+
+func _on_happytime_pressed() -> void:
+	GP.game.happytime()
