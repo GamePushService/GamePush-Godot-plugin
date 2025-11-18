@@ -7,12 +7,12 @@ var schedulers:JavaScriptObject
 signal after_ready
 
 signal error_register(error_message: String)
-signal signal_claim_day(scheduler_day_info: SchedulerDayInfo)
+signal signal_claim_day(scheduler_day_info: GPSchedulerDayInfo)
 signal error_claim_day(error_message: String)
 signal signal_register(scheduler_info: SchedulerInfo)
-signal signal_claim_day_additional(scheduler_day_info: SchedulerDayInfo)
+signal signal_claim_day_additional(scheduler_day_info: GPSchedulerDayInfo)
 signal error_claim_day_additional(error_message: String)
-signal signal_claim_all_day(scheduler_day_info: SchedulerDayInfo)
+signal signal_claim_all_day(scheduler_day_info: GPSchedulerDayInfo)
 signal error_claim_all_day(error_message: String)
 signal signal_claim_all_days(scheduler_info: SchedulerInfo)
 signal error_claim_all_days(error_message: String)
@@ -76,42 +76,42 @@ func register(id_or_tag: Variant) -> SchedulerInfo:
 
 signal _claim_day(a:JavaScriptObject)
 
-func claim_day(id_or_tag: Variant, day: int) -> SchedulerDayInfo:
+func claim_day(id_or_tag: Variant, day: int) -> GPSchedulerDayInfo:
 	if OS.get_name() == "Web":
 		var callback := JavaScriptBridge.create_callback(func(args): _claim_day.emit(args[0]))
 		schedulers.claimDay(id_or_tag, day).then(callback)
 		var _result = await _claim_day
-		var result = SchedulerDayInfo.new()
+		var result = GPSchedulerDayInfo.new()
 		result._from_js(_result)
 		return result
 	push_warning("Not running on Web")
-	return SchedulerDayInfo.new()
+	return GPSchedulerDayInfo.new()
 
 signal _claim_day_additional(a:JavaScriptObject)
 
-func claim_day_additional(id_or_tag: Variant, day: int, trigger_id_or_tag: Variant) -> SchedulerDayInfo:
+func claim_day_additional(id_or_tag: Variant, day: int, trigger_id_or_tag: Variant) -> GPSchedulerDayInfo:
 	if OS.get_name() == "Web":
 		var callback := JavaScriptBridge.create_callback(func(args): _claim_day_additional.emit(args[0]))
 		schedulers.claimDayAdditional(id_or_tag, day, trigger_id_or_tag).then(callback)
 		var _result = await _claim_day_additional
-		var result = SchedulerDayInfo.new()
+		var result = GPSchedulerDayInfo.new()
 		result._from_js(_result)
 		return result
 	push_warning("Not running on Web")
-	return SchedulerDayInfo.new()
+	return GPSchedulerDayInfo.new()
 
 signal _claim_all_day(a:JavaScriptObject)
 
-func claim_all_day(id_or_tag: Variant, day: int) -> SchedulerDayInfo:
+func claim_all_day(id_or_tag: Variant, day: int) -> GPSchedulerDayInfo:
 	if OS.get_name() == "Web":
 		var callback := JavaScriptBridge.create_callback(func(args): _claim_all_day.emit(args[0]))
 		schedulers.claimAllDay(id_or_tag, day).then(callback)
 		var _result = await _claim_all_day
-		var result = SchedulerDayInfo.new()
+		var result = GPSchedulerDayInfo.new()
 		result._from_js(_result)
 		return result
 	push_warning("Not running on Web")
-	return SchedulerDayInfo.new()
+	return GPSchedulerDayInfo.new()
 
 
 signal _claim_all_days(a:JavaScriptObject)
@@ -158,28 +158,28 @@ func get_scheduler(id_or_tag: Variant) -> SchedulerInfo:
 
 signal _get_scheduler_day(a:JavaScriptObject)
 
-func get_scheduler_day(id_or_tag: Variant, day: int) -> SchedulerDayInfo:
+func get_scheduler_day(id_or_tag: Variant, day: int) -> GPSchedulerDayInfo:
 	if OS.get_name() == "Web":
-		var scheduler_day_info:SchedulerDayInfo = SchedulerDayInfo.new()
+		var scheduler_day_info:GPSchedulerDayInfo = GPSchedulerDayInfo.new()
 		var result = gp.schedulers.getSchedulerDay(id_or_tag, day)
 		scheduler_day_info._from_js(result)
 		return scheduler_day_info
 		
 	push_warning("Not running on Web")
-	return SchedulerDayInfo.new()
+	return GPSchedulerDayInfo.new()
 
 signal _get_scheduler_current_day(a:JavaScriptObject)
 
-func get_scheduler_current_day(id_or_tag: Variant) -> SchedulerDayInfo:
+func get_scheduler_current_day(id_or_tag: Variant) -> GPSchedulerDayInfo:
 	if OS.get_name() == "Web":
-		var scheduler_day_info: SchedulerDayInfo = SchedulerDayInfo.new()
+		var scheduler_day_info: GPSchedulerDayInfo = GPSchedulerDayInfo.new()
 		var result = gp.schedulers.getSchedulerCurrentDay(id_or_tag)
 		
 		scheduler_day_info._from_js(result)
 		return scheduler_day_info
 
 	push_warning("Not running on Web")
-	return SchedulerDayInfo.new()
+	return GPSchedulerDayInfo.new()
 	
 
 func is_registered(id_or_tag: Variant) -> bool:
@@ -239,7 +239,7 @@ func _on_error_register(args) -> void:
 	error_register.emit(args[0])
 	
 func _on_claim_day(args) -> void:
-	var scheduler_day_info: SchedulerDayInfo = SchedulerDayInfo.new()
+	var scheduler_day_info: GPSchedulerDayInfo = GPSchedulerDayInfo.new()
 	scheduler_day_info._from_js(args[0])
 	signal_claim_day.emit(scheduler_day_info)
 
@@ -251,14 +251,14 @@ func _on_register(args) -> void:
 	signal_register.emit(scheduler_info)
 
 func _on_claim_day_additional(args) -> void:
-	var scheduler_day_info := SchedulerDayInfo.new()._from_js(args[0])
+	var scheduler_day_info := GPSchedulerDayInfo.new()._from_js(args[0])
 	signal_claim_day_additional.emit(scheduler_day_info)
 
 func _on_error_claim_day_additional(args) -> void:
 	error_claim_day_additional.emit(args[0])
 
 func _on_claim_all_day(args) -> void:
-	var scheduler_day_info := SchedulerDayInfo.new()._from_js(args[0])
+	var scheduler_day_info := GPSchedulerDayInfo.new()._from_js(args[0])
 	signal_claim_all_day.emit(scheduler_day_info)
 
 func _on_error_claim_all_day(args) -> void:
@@ -408,7 +408,7 @@ class SchedulerInfo:
 	func _parse_days_claimed(args):
 		days_claimed.append(args[0])
 
-class SchedulerDayInfo:
+class GPSchedulerDayInfo:
 	extends GP.GPObject
 	
 	var scheduler: Scheduler
@@ -442,7 +442,7 @@ class SchedulerDayInfo:
 		return js_object
 
 	# Method to initialize SchedulerDayInformation from a JavaScript object
-	func _from_js(js_object: JavaScriptObject) -> SchedulerDayInfo:
+	func _from_js(js_object: JavaScriptObject) -> GPSchedulerDayInfo:
 		scheduler = Scheduler.new()._from_js(js_object["scheduler"])
 		day = js_object["day"]
 		is_day_reached = js_object["isDayReached"]
