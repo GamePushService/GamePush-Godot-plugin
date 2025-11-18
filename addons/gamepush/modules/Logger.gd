@@ -13,8 +13,8 @@ func _ready():
 			gp = GP.gp
 			await get_tree().create_timer(0.01).timeout
 	after_ready.emit()
-		
-			
+
+
 func info(...args:Array) -> void:
 	info_array(args)
 
@@ -37,8 +37,8 @@ func log(...args:Array) -> void:
 		gp.logger.log(res)
 	else:
 		print(res)
-		
-		
+
+
 func info_array(args:Array) -> void:
 	var res:= ""
 	for a in args:
@@ -50,6 +50,7 @@ func info_array(args:Array) -> void:
 	else:
 		print("INFO:", res)
 
+
 func warn_array(args:Array) -> void:
 	var res:= ""
 	for a in args:
@@ -60,7 +61,8 @@ func warn_array(args:Array) -> void:
 		gp.logger.warn(res)
 	else:
 		push_warning(res)
-		
+
+
 func error_array(args:Array) -> void:
 	var res:= ""
 	for a in args:

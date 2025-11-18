@@ -7,7 +7,7 @@ func _ready():
 		AudioServer.set_bus_mute(0, true)
 	)
 	GP.sounds.unmuted.connect(func(): 
-		GP.logger.info("unmuted")
+		GP.logger.info("unmuted", AudioServer.get_bus_name(0))
 		AudioServer.set_bus_mute(0, false)
 	)
 	GP.sounds.muted_sfx.connect(func():
@@ -19,11 +19,11 @@ func _ready():
 		AudioServer.set_bus_mute(2, true)
 	)
 	GP.sounds.unmuted_sfx.connect(func():
-		GP.logger.info("unmuted_sfx")
+		GP.logger.info("unmuted_sfx", AudioServer.get_bus_name(1))
 		AudioServer.set_bus_mute(1, false)
 	)
 	GP.sounds.unmuted_music.connect(func():
-		GP.logger.info("unmuted_music")
+		GP.logger.info("unmuted_music", AudioServer.get_bus_name(2))
 		AudioServer.set_bus_mute(2, false)
 	)
 
