@@ -6,19 +6,19 @@ extends Control
 
 
 func _ready():
-	GP.Schedulers.signal_claim_day.connect(func(scheduler_day_info): GP.Logger.info("signal_claim_day"))
-	GP.Schedulers.signal_register.connect(func(scheduler_info): GP.Logger.info("signal_register"))
-	GP.Schedulers.signal_claim_day_additional.connect(func(scheduler_day_info): GP.Logger.info("signal_claim_day_additional"))
-	GP.Schedulers.signal_claim_all_day.connect(func(scheduler_day_info): GP.Logger.info("signal_claim_all_day"))
-	GP.Schedulers.signal_claim_all_days.connect(func(scheduler_info): GP.Logger.info("signal_claim_all_days"))
-	GP.Schedulers.signal_join.connect(func(scheduler_info): GP.Logger.info("signal_join"))
+	GP.schedulers.signal_claim_day.connect(func(scheduler_day_info): GP.logger.info("signal_claim_day"))
+	GP.schedulers.signal_register.connect(func(scheduler_info): GP.logger.info("signal_register"))
+	GP.schedulers.signal_claim_day_additional.connect(func(scheduler_day_info): GP.logger.info("signal_claim_day_additional"))
+	GP.schedulers.signal_claim_all_day.connect(func(scheduler_day_info): GP.logger.info("signal_claim_all_day"))
+	GP.schedulers.signal_claim_all_days.connect(func(scheduler_info): GP.logger.info("signal_claim_all_days"))
+	GP.schedulers.signal_join.connect(func(scheduler_info): GP.logger.info("signal_join"))
 
-	GP.Schedulers.error_claim_day.connect(func(err): GP.Logger.info("error_claim_day", err))
-	GP.Schedulers.error_register.connect(func(err): GP.Logger.info("error_register", err))
-	GP.Schedulers.error_claim_day_additional.connect(func(err): GP.Logger.info("error_claim_day_additional", err))
-	GP.Schedulers.error_claim_all_day.connect(func(err): GP.Logger.info("error_claim_all_day", err))
-	GP.Schedulers.error_claim_all_days.connect(func(err): GP.Logger.info("error_claim_all_days", err))
-	GP.Schedulers.error_join.connect(func(err): GP.Logger.info("error_join", err))
+	GP.schedulers.error_claim_day.connect(func(err): GP.logger.info("error_claim_day", err))
+	GP.schedulers.error_register.connect(func(err): GP.logger.info("error_register", err))
+	GP.schedulers.error_claim_day_additional.connect(func(err): GP.logger.info("error_claim_day_additional", err))
+	GP.schedulers.error_claim_all_day.connect(func(err): GP.logger.info("error_claim_all_day", err))
+	GP.schedulers.error_claim_all_days.connect(func(err): GP.logger.info("error_claim_all_days", err))
+	GP.schedulers.error_join.connect(func(err): GP.logger.info("error_join", err))
 
 
 func _on_main_menu_button_pressed():
@@ -26,71 +26,71 @@ func _on_main_menu_button_pressed():
 
 
 func _on_register_pressed():
-	var res = await GP.Schedulers.register(id_or_tag_node.text)
-	GP.Logger.info(res.to_dict())
+	var res = await GP.schedulers.register(id_or_tag_node.text)
+	GP.logger.info(res.to_dict())
 
 
 func _on_claim_day_pressed():
-	var res = await GP.Schedulers.claim_day(id_or_tag_node.text, int(day_node.text))
-	GP.Logger.info(res.to_dict())
+	var res = await GP.schedulers.claim_day(id_or_tag_node.text, int(day_node.text))
+	GP.logger.info(res.to_dict())
 	
 
 func _on_claim_day_additional_pressed():
-	var res = await GP.Schedulers.claim_day_additional(id_or_tag_node.text, int(day_node.text), trigger_id_or_tag_node.text)
-	GP.Logger.info(res.to_dict())
+	var res = await GP.schedulers.claim_day_additional(id_or_tag_node.text, int(day_node.text), trigger_id_or_tag_node.text)
+	GP.logger.info(res.to_dict())
 	
 
 func _on_claim_all_day_pressed():
-	var res = await GP.Schedulers.claim_all_day(id_or_tag_node.text, int(day_node.text))
-	GP.Logger.info(res.to_dict())
+	var res = await GP.schedulers.claim_all_day(id_or_tag_node.text, int(day_node.text))
+	GP.logger.info(res.to_dict())
 
 
 func _on_claim_all_days_pressed():
-	var res = await GP.Schedulers.claim_all_days(id_or_tag_node.text)
-	GP.Logger.info(res.to_dict())
+	var res = await GP.schedulers.claim_all_days(id_or_tag_node.text)
+	GP.logger.info(res.to_dict())
 	
 
 func _on_list_pressed():
 	var res := []
-	for i in GP.Schedulers.list():
+	for i in GP.schedulers.list():
 		res.append(i.to_dict())
-	GP.Logger.info(res)
+	GP.logger.info(res)
 
 
 func _on_active_list_pressed():
 	var res := []
-	for i in GP.Schedulers.active_list():
+	for i in GP.schedulers.active_list():
 		res.append(i.to_dict())
-	GP.Logger.info(res)
+	GP.logger.info(res)
 
 
 func _on_get_scheduler_pressed():
-	GP.Logger.info(GP.Schedulers.get_scheduler(id_or_tag_node.text).to_dict())
+	GP.logger.info(GP.schedulers.get_scheduler(id_or_tag_node.text).to_dict())
 
 
 func _on_get_scheduler_day_pressed():
-	GP.Logger.info(GP.Schedulers.get_scheduler_day(id_or_tag_node.text, int(day_node.text)).to_dict())
+	GP.logger.info(GP.schedulers.get_scheduler_day(id_or_tag_node.text, int(day_node.text)).to_dict())
 
 
 func _on_get_scheduler_current_day_pressed():
-	GP.Logger.info(GP.Schedulers.get_scheduler_current_day(id_or_tag_node.text).to_dict())
+	GP.logger.info(GP.schedulers.get_scheduler_current_day(id_or_tag_node.text).to_dict())
 
 
 func _on_is_registered_pressed():
-	GP.Logger.info(GP.Schedulers.is_registered(id_or_tag_node.text))
+	GP.logger.info(GP.schedulers.is_registered(id_or_tag_node.text))
 
 
 func _on_is_today_reward_claimed_pressed():
-	GP.Logger.info(GP.Schedulers.is_today_reward_claimed(id_or_tag_node.text))
+	GP.logger.info(GP.schedulers.is_today_reward_claimed(id_or_tag_node.text))
 
 
 func _on_can_claim_day_pressed():
-	GP.Logger.info(GP.Schedulers.can_claim_day(id_or_tag_node.text, int(day_node.text)))
+	GP.logger.info(GP.schedulers.can_claim_day(id_or_tag_node.text, int(day_node.text)))
 
 
 func _on_can_claim_day_additional_pressed():
-	GP.Logger.info(GP.Schedulers.can_claim_day_additional(id_or_tag_node.text, int(day_node.text), trigger_id_or_tag_node.text))
+	GP.logger.info(GP.schedulers.can_claim_day_additional(id_or_tag_node.text, int(day_node.text), trigger_id_or_tag_node.text))
 
 
 func _on_can_claim_all_day_pressed():
-	GP.Logger.info(GP.Schedulers.can_claim_all_day(id_or_tag_node.text, int(day_node.text)))
+	GP.logger.info(GP.schedulers.can_claim_all_day(id_or_tag_node.text, int(day_node.text)))

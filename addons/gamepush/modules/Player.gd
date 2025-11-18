@@ -185,17 +185,19 @@ func get_value(key: String) -> Variant:
 	push_warning("Not Web")
 	return
 
-# Set the value of the key field to value, the value is cast to the type
+
 func set_value(key: String, value: Variant) -> void:
 	if OS.get_name() == "Web":
 		if value is String and !value.is_valid_float():
-			value = '"' + value + '"'
+			value = "'" + value + "'"
 		window.gp = gp
-		var result = JavaScriptBridge.eval('window.gp.player.set("%s", %s)' % [key, value], true)
+		var js_text = "window.gp.player.set('%s', %s)" % [key, value]
+		var result = JavaScriptBridge.eval(js_text, true)
 		if !OS.is_debug_build():
 			window.gp = JavaScriptBridge.create_object("Object")
 		return
 	push_warning("Not Web")
+
 
 # Add the value to the key field
 func add_value(key: String, value: Variant) -> void:

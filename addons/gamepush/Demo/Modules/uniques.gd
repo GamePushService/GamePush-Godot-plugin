@@ -5,31 +5,31 @@ extends Control
 
 
 func _ready():
-	GP.Uniques.checked.connect(_checked)
-	GP.Uniques.registered.connect(_registered)
-	GP.Uniques.register_error.connect(_register_error)
-	GP.Uniques.check_error.connect(_check_error)
-	GP.Uniques.deleted.connect(_deleted)
-	GP.Uniques.delete_error.connect(_delete_error)
+	GP.uniques.checked.connect(_checked)
+	GP.uniques.registered.connect(_registered)
+	GP.uniques.register_error.connect(_register_error)
+	GP.uniques.check_error.connect(_check_error)
+	GP.uniques.deleted.connect(_deleted)
+	GP.uniques.delete_error.connect(_delete_error)
 
 
 func _checked(unique_value):
-	GP.Logger.info("check", unique_value)
+	GP.logger.info("check", unique_value)
 	
 func _registered(unique_value):
-	GP.Logger.info("registered", unique_value)
+	GP.logger.info("registered", unique_value)
 	
 func _register_error(err):
-	GP.Logger.info("register_error", err)
+	GP.logger.info("register_error", err)
 	
 func _check_error(err):
-	GP.Logger.info("check_error", err)
+	GP.logger.info("check_error", err)
 	
 func _deleted(unique_value):
-	GP.Logger.info("deleted", unique_value)
+	GP.logger.info("deleted", unique_value)
 	
 func _delete_error(err):
-	GP.Logger.info("delete_error", err)
+	GP.logger.info("delete_error", err)
 	
 
 func _on_main_menu_button_pressed():
@@ -37,20 +37,20 @@ func _on_main_menu_button_pressed():
 
 
 func _on_register_pressed():
-	GP.Uniques.register(tag_node.text, value_node.text)
+	GP.uniques.register(tag_node.text, value_node.text)
 
 
 func _on_get_value_pressed():
-	GP.Logger.info(GP.Uniques.get_value(tag_node.text))
+	GP.logger.info(GP.uniques.get_value(tag_node.text))
 
 
 func _on_list_pressed():
-	GP.Logger.info(GP.Uniques.list())
+	GP.logger.info(GP.uniques.list())
 
 
 func _on_check_pressed():
-	GP.Uniques.check(tag_node.text, value_node.text)
+	GP.uniques.check(tag_node.text, value_node.text)
 
 
 func _on_delete_unique_pressed():
-	GP.Uniques.delete_unique(tag_node.text)
+	GP.uniques.delete_unique(tag_node.text)

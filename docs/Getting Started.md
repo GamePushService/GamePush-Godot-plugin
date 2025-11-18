@@ -42,19 +42,19 @@ func go_to_main_scene(_is_success_init:bool=false):
 
 ```gdscript
 func _ready():
-    GP.Ads.rewarded_reward.connect(add_25_coins)
-    GP.Ads.rewarded_close.connect(func(success):
+    GP.ads.rewarded_reward.connect(add_25_coins)
+    GP.ads.rewarded_close.connect(func(success):
         if !success:
-            GP.Logger.log("Close ads without reward"))
+            GP.logger.log("Close ads without reward"))
 
 func add_25_coins():
     # On successful ad view, the player receives 25 coins
-    GP.Player.add_value("coins", 25)
+    GP.player.add_value("coins", 25)
 
 func show_reward_ad():
     # Display a rewarded video ad
     # The `true` parameter enables a countdown before the video is shown
-    GP.Ads.show_rewarded_video(true)
+    GP.ads.show_rewarded_video(true)
 
 ```
 

@@ -710,7 +710,7 @@ https://docs.gamepush.com/ru/docs/get-start/
 | **Method**                        | **Arguments**                                                                                                    | **Type Return**  |
 |------------------------------|--------------------------------------------------------------------------------------------------------------|-------------------|
 | `open`                        | `order_by: Array = []`, `order: String = ""`, `limit: int = 0`, `include_fields: Array = []`, `display_fields: Array = []`,` with_me: String = ''`, `show_nearest: int = 0` | `void`              |
-| `fetch`                       | `order_by: Array = []`, `order: String = ""`, `limit: int = 0`, `include_fields: Array = []`, `display_fields: Array = []`, `with_me: String = ""`, `show_nearest: int = 0` | `void`              |
+| `fetch`                       | `order_by: Array = []`, `order: String = ""`, `limit: int = 0`, `include_fields: Array = []`, `with_me: String = ""`, `show_nearest: int = 0` | `void`              |
 | `fetch_player_rating`        | `order_by: Array = []`, `order: String = ""`, `include_fields: Array = []`, `show_nearest: int = 0` | `void`              |
 | `open_scoped`                | `variant: String`, `id: int = 0`, `tag: String = ""`, `order: String = ""`, l`imit: int = 0`, `include_fields: Array = []`, `display_fields: Array = []`,` with_me: String = ''`, `show_nearest: int = 0` | `void`              |
 | `publish_record`             | `variant: String`, `record: Dictionary`, `id: int = 0`, `tag: String = ""`,` override = null `                       | `void`              |

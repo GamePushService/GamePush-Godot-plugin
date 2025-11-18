@@ -8,10 +8,10 @@ extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	GP.GamesCollections.opened.connect(func(): GP.Logger.info("open"))
-	GP.GamesCollections.closed.connect(func(): GP.Logger.info("close"))
-	GP.GamesCollections.fetched.connect(func(collection): GP.Logger.info("fetch", collection.name))
-	GP.GamesCollections.error_fetch.connect(func(): GP.Logger.info("error fetch"))
+	GP.games_collections.opened.connect(func(): GP.logger.info("open"))
+	GP.games_collections.closed.connect(func(): GP.logger.info("close"))
+	GP.games_collections.fetched.connect(func(collection): GP.logger.info("fetch", collection.name))
+	GP.games_collections.error_fetch.connect(func(): GP.logger.info("error fetch"))
 
 
 func _on_main_menu_button_pressed():
@@ -20,8 +20,8 @@ func _on_main_menu_button_pressed():
 
 func _on_open_pressed():
 	var d := { key_node.text: value_node.text }
-	GP.GamesCollections.open(tag_node.text, int(id_node.text), d)
+	GP.games_collections.open(tag_node.text, int(id_node.text), d)
 
 
 func _on_fetch_pressed():
-	GP.GamesCollections.fetch(tag_node.text, int(id_node.text))
+	GP.games_collections.fetch(tag_node.text, int(id_node.text))

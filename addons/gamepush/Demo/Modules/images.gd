@@ -16,28 +16,28 @@ extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	GP.Images.uploaded.connect(func(arg): GP.Logger.info("uploaded", arg.to_dict()))
-	GP.Images.error_upload.connect(func(arg): GP.Logger.info("error_upload", arg))
-	GP.Images.choosed.connect(func(file, tempUrl): GP.Logger.info("choosed", file.to_dict(), tempUrl))
-	GP.Images.error_choose.connect(func(arg): GP.Logger.info("error_choose", arg))
-	GP.Images.fetched.connect(func(arg):
-		GP.Logger.info("fetched")
+	GP.images.uploaded.connect(func(arg): GP.logger.info("uploaded", arg.to_dict()))
+	GP.images.error_upload.connect(func(arg): GP.logger.info("error_upload", arg))
+	GP.images.choosed.connect(func(file, tempUrl): GP.logger.info("choosed", file.to_dict(), tempUrl))
+	GP.images.error_choose.connect(func(arg): GP.logger.info("error_choose", arg))
+	GP.images.fetched.connect(func(arg):
+		GP.logger.info("fetched")
 		var res := []
 		for image in arg[0]:
 			res.append(image.to_dict())
-		GP.Logger.info(res)
-		GP.Logger.info("can load more:", arg[1])
+		GP.logger.info(res)
+		GP.logger.info("can load more:", arg[1])
 		)
-	GP.Images.error_fetch.connect(func(arg): GP.Logger.info("error_fetch", arg))
-	GP.Images.fetched_more.connect(func(arg):
-		GP.Logger.info("fetched_more")
+	GP.images.error_fetch.connect(func(arg): GP.logger.info("error_fetch", arg))
+	GP.images.fetched_more.connect(func(arg):
+		GP.logger.info("fetched_more")
 		var res := []
 		for image in arg[0]:
 			res.append(image.to_dict())
-		GP.Logger.info(res)
-		GP.Logger.info("can load more:", arg[1])
+		GP.logger.info(res)
+		GP.logger.info("can load more:", arg[1])
 		)
-	GP.Images.error_fetch_more.connect(func(arg): GP.Logger.info("error_fetch_more", arg))
+	GP.images.error_fetch_more.connect(func(arg): GP.logger.info("error_fetch_more", arg))
 
 
 func _on_main_menu_button_pressed():
@@ -45,25 +45,25 @@ func _on_main_menu_button_pressed():
 
 
 func _on_upload_pressed():
-	GP.Images.upload([tag_node.text, tag2_node.text, tag3_node.text])
+	GP.images.upload([tag_node.text, tag2_node.text, tag3_node.text])
 
 
 func _on_upload_url_pressed():
-	GP.Images.upload_url(url_node.text, [tag_node.text, tag2_node.text, tag3_node.text])
+	GP.images.upload_url(url_node.text, [tag_node.text, tag2_node.text, tag3_node.text])
 
 
 
 func _on_choose_file_pressed():
-	print(await GP.Images.choose_file())
+	print(await GP.images.choose_file())
 
 
 func _on_fetch_pressed():
-	GP.Images.fetch(int(player_id_node.text), [tag_node.text, tag2_node.text, tag3_node.text], int(limit_node.text), int(offset_node.text))
+	GP.images.fetch(int(player_id_node.text), [tag_node.text, tag2_node.text, tag3_node.text], int(limit_node.text), int(offset_node.text))
 
 
 func _on_fetch_more_pressed():
-	GP.Images.fetch_more(int(player_id_node.text), [tag_node.text, tag2_node.text, tag3_node.text], int(limit_node.text), int(offset_node.text))
+	GP.images.fetch_more(int(player_id_node.text), [tag_node.text, tag2_node.text, tag3_node.text], int(limit_node.text), int(offset_node.text))
 
 
 func _on_resize_pressed():
-	GP.Logger.info(GP.Images.resize(url_node.text, int(width_node.text), int(height_node.text), crop_node.button_pressed))
+	GP.logger.info(GP.images.resize(url_node.text, int(width_node.text), int(height_node.text), crop_node.button_pressed))

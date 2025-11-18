@@ -7,4 +7,4 @@ func _on_main_menu_button_pressed():
 
 
 func _on_time_pressed():
-	GP.Logger.info(GP.Server.time())
+	GP.logger.info(GP.server.time())

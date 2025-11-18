@@ -4,8 +4,8 @@ extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	GP.Segments.entered.connect(func(arg): GP.Logger.info("Segments entered:", arg))
-	GP.Segments.left.connect(func(arg): GP.Logger.info("Segments left:", arg))
+	GP.segments.entered.connect(func(arg): GP.logger.info("segments entered:", arg))
+	GP.segments.left.connect(func(arg): GP.logger.info("segments left:", arg))
 
 
 func _on_main_menu_button_pressed():
@@ -13,14 +13,14 @@ func _on_main_menu_button_pressed():
 
 
 func _on_has_pressed():
-	GP.Logger.info(GP.Segments.has(tag_node.text))
+	GP.logger.info(GP.segments.has(tag_node.text))
 
 
 func _on_list_pressed():
-	_log_par("List Segments:")
-	for f in GP.Segments.list():
+	_log_par("List segments:")
+	for f in GP.segments.list():
 		_log_par(f)
 
 
 func _log_par(p):
-	GP.Logger.info(p)
+	GP.logger.info(p)
