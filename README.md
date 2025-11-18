@@ -24,38 +24,38 @@ https://docs.gamepush.com/ru/docs/get-start/
 ## Modules
 | Plugin modules                                |
 | --------------------------------------------- |
-| [Achievements](#achievements)                 |
-| [Ads](#ads)                                   |
-| [Analytics](#analytics)                       |
-| [App](#app)                                   |
-| [Avatar Generator](#avatargenerator)          |
-| [Channels](#channels)                         |
-| [Device](#device)                             |
-| [Documents](#documents)                       |
-| [Events](#events)                             |
-| [Experiments](#experiments)                   |
-| [Files](#files)                               |
-| [Fullscreen](#fullscreen)                     |
-| [Game](#game)                                 |
-| [GamesCollections](#gamescollections)         |
-| [Images](#images)                             |
-| [Language](#language)                         |
-| [Leaderboard](#leaderboard)                   |
-| [Logger](#logger)                             |
-| [Payments](#payments)                         |
-| [Platform](#platform)                         |
-| [Player](#player-1)                           |
-| [Players](#players)                           |
-| [Rewards](#rewards)                           |
-| [Schedulers](#schedulers)                     |
-| [Segments](#segments)                         |
-| [Server](#server)                             |
-| [Socials](#socials)                           |
-| [System](#system)                             |
-| [Triggers](#triggers)                         |
-| [Variables](#variables)                       |
-| [Uniques](#uniques)                           |
-| [Storage](#storage)                           |
+| [achievements](#achievements)                 |
+| [ads](#ads)                                   |
+| [analytics](#analytics)                       |
+| [app](#app)                                   |
+| [avatar_generator](#avatargenerator)          |
+| [channels](#channels)                         |
+| [device](#device)                             |
+| [documents](#documents)                       |
+| [events](#events)                             |
+| [experiments](#experiments)                   |
+| [files](#files)                               |
+| [fullscreen](#fullscreen)                     |
+| [game](#game)                                 |
+| [games_collections](#gamescollections)         |
+| [images](#images)                             |
+| [language](#language)                         |
+| [leaderboard](#leaderboard)                   |
+| [logger](#logger)                             |
+| [payments](#payments)                         |
+| [platform](#platform)                         |
+| [player](#player-1)                           |
+| [players](#players)                           |
+| [rewards](#rewards)                           |
+| [schedulers](#schedulers)                     |
+| [segments](#segments)                         |
+| [server](#server)                             |
+| [socials](#socials)                           |
+| [system](#system)                             |
+| [triggers](#triggers)                         |
+| [variables](#variables)                       |
+| [uniques](#uniques)                           |
+| [storage](#storage)                           |
 
 
 
@@ -539,7 +539,7 @@ https://docs.gamepush.com/ru/docs/get-start/
 #### Signals
 
 | **Signal**                     | **Emitted Parameters**    |
-|----------------------------|-----------------------|
+|--------------------------------|-----------------------|
 | `uploaded`                   | `file: GPFile`             | 
 | `error_upload`               | `err:Dictionary`           | 
 | `loaded_content`             | None                  | 
@@ -668,7 +668,7 @@ https://docs.gamepush.com/ru/docs/get-start/
 | **Method**             | **Arguments**                    | **Return Type** |
 |--------------------|-------------------------------|-------------|
 | `upload`             | `tags: Array = []`              | `void`        |
-| `upload_url`        | `url: String`, `tags: Array = []` | `void`        |
+| `upload_url`         | `url: String`, `tags: Array = []` | `void`        |
 | `choose_file`        | `type_file: String = ""`        | `Array`       |
 | `fetch`              | `player_id = null`, `tags = null`, `limit = null`, `offset = null` | `Array`       |
 | `fetch_more`         | `player_id = null`, `tags = null`, `limit = null`, `offset = null` | `Array`       |
@@ -736,18 +736,18 @@ https://docs.gamepush.com/ru/docs/get-start/
 
 #### Signals
 
-| **Signal**         | **Emitted Parameters**                                           |
-|--------------------|------------------------------------------------------------------|
-| `subscribed`        | `result: Array`                                                 |
-| `error_subscribe`        | `error: String`                                            |
-| `unsubscribed`        | `result: Array`                                              |
-| `error_unsubscribe`        | `error: String`                                         |
-| `purchased`        | `result: Array`                                                 |
-| `error_purchase`   | `error: String`                                                 |
-| `consumed`         | `result: Array`                                                 |
-| `error_consume`    | `error: String`                                                 |
-| `fetched_products` | `result: Array`                                                 |
-| `error_fetch_products` | `error: String`                                             |
+| **Signal**             | **Emitted Parameters**                                           |
+|------------------------|------------------------------------------------------------------|
+| `subscribed`           | `result: Array`                                                  |
+| `error_subscribe`      | `error: String`                                                  |
+| `unsubscribed`         | `result: Array`                                                  |
+| `error_unsubscribe`    | `error: String`                                                  |
+| `purchased`            | `result: Array`                                                  |
+| `error_purchase`       | `error: String`                                                  |
+| `consumed`             | `result: Array`                                                  |
+| `error_consume`        | `error: String`                                                  |
+| `fetched_products`     | `result: Array`                                                  |
+| `error_fetch_products` | `error: String`                                                  |
 
 #### Methods
 
@@ -755,9 +755,9 @@ https://docs.gamepush.com/ru/docs/get-start/
 |---------------------------------|---------------------------------------|------------------|
 | `ready`                         | None                                  | `void`           |
 | `is_available`                  | None                                  | `bool`           |
-| `consume`                       | `id :int , tag :String`               | `void`          |
-| `purchase`                      | `id :int , tag :String`               | `void`          |
-| `has`                      | `id :int , tag :String`               | `bool`          |
+| `consume`                       | `id :int , tag :String`               | `void`           |
+| `purchase`                      | `id :int , tag :String`               | `void`           |
+| `has`                           | `id :int , tag :String`               | `bool`           |
 | `get_products`                  | None                                  | `Array`          |
 | `get_purchases`                 | None                                  | `Array`          |
 | `fetch_products`                | None                                  | `void`           |
