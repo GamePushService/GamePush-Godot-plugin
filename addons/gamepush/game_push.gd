@@ -1,5 +1,6 @@
 extends Node
 
+
 const VERSION = "1.0.5"
 
 @onready var Achievements := preload("res://addons/gamepush/modules/Achievements.gd").new()
@@ -35,13 +36,13 @@ const VERSION = "1.0.5"
 @onready var Uniques := preload("res://addons/gamepush/modules/Uniques.gd").new()
 @onready var Storage := preload("res://addons/gamepush/modules/Storage.gd").new()
 @onready var Sounds := preload("res://addons/gamepush/modules/Sounds.gd").new()
-@onready var Windows := preload("res://addons/gamepush/modules/Windows.gd").
-
+@onready var Windows := preload("res://addons/gamepush/modules/Windows.gd").new()
 
 var gp:JavaScriptObject
 
 signal inited(success:bool)
 var is_inited := false
+
 
 func _ready():
 	var is_init := false
