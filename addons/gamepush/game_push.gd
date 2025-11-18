@@ -1,7 +1,7 @@
 extends Node
 
 
-const VERSION = "1.0.5"
+const VERSION = "1.1.0"
 
 @onready var Achievements := preload("res://addons/gamepush/modules/Achievements.gd").new()
 @onready var Ads := preload("res://addons/gamepush/modules/Ads.gd").new()

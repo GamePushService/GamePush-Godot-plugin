@@ -2,67 +2,67 @@ extends Control
 
 
 func _ready():
-	GP.sounds.muted.connect(func():
-		GP.logger.info("muted", AudioServer.get_bus_name(0))
+	GP.Sounds.muted.connect(func():
+		GP.Logger.info("muted", AudioServer.get_bus_name(0))
 		AudioServer.set_bus_mute(0, true)
 	)
-	GP.sounds.unmuted.connect(func(): 
-		GP.logger.info("unmuted")
+	GP.Sounds.unmuted.connect(func(): 
+		GP.Logger.info("unmuted", AudioServer.get_bus_name(0))
 		AudioServer.set_bus_mute(0, false)
 	)
-	GP.sounds.muted_sfx.connect(func():
-		GP.logger.info("muted_sfx", AudioServer.get_bus_name(1))
+	GP.Sounds.muted_sfx.connect(func():
+		GP.Logger.info("muted_sfx", AudioServer.get_bus_name(1))
 		AudioServer.set_bus_mute(1, true)
 	)
-	GP.sounds.muted_music.connect(func():
-		GP.logger.info("muted_music", AudioServer.get_bus_name(2))
+	GP.Sounds.muted_music.connect(func():
+		GP.Logger.info("muted_music", AudioServer.get_bus_name(2))
 		AudioServer.set_bus_mute(2, true)
 	)
-	GP.sounds.unmuted_sfx.connect(func():
-		GP.logger.info("unmuted_sfx")
+	GP.Sounds.unmuted_sfx.connect(func():
+		GP.Logger.info("unmuted_sfx", AudioServer.get_bus_name(1))
 		AudioServer.set_bus_mute(1, false)
 	)
-	GP.sounds.unmuted_music.connect(func():
-		GP.logger.info("unmuted_music")
+	GP.Sounds.unmuted_music.connect(func():
+		GP.Logger.info("unmuted_music", AudioServer.get_bus_name(2))
 		AudioServer.set_bus_mute(2, false)
 	)
-	GP.sounds.unmute()
+	GP.Sounds.unmute()
 
 
 func _on_is_muted_pressed() -> void:
-	GP.logger.info(GP.sounds.is_muted())
+	GP.Logger.info(GP.Sounds.is_muted())
 
 
 func _on_is_sfx_muted_pressed() -> void:
-	GP.logger.info(GP.sounds.is_sfx_muted())
+	GP.Logger.info(GP.Sounds.is_sfx_muted())
 
 
 func _on_is_music_muted_pressed() -> void:
-	GP.logger.info(GP.sounds.is_music_muted())
+	GP.Logger.info(GP.Sounds.is_music_muted())
 
 
 func _on_mute_pressed() -> void:
-	GP.sounds.mute()
+	GP.Sounds.mute()
 
 
 func _on_unmute_pressed() -> void:
-	GP.sounds.unmute()
+	GP.Sounds.unmute()
 
 
 func _on_mute_sfx_pressed() -> void:
-	GP.sounds.mute_sfx()
+	GP.Sounds.mute_sfx()
 
 
 func _on_unmute_sfx_pressed() -> void:
-	GP.sounds.unmute_sfx()
+	GP.Sounds.unmute_sfx()
 
 
 func _on_mute_music_pressed() -> void:
-	GP.sounds.mute_music()
+	GP.Sounds.mute_music()
 
 
 func _on_unmute_music_pressed() -> void:
-	GP.sounds.unmute_music()
+	GP.Sounds.unmute_music()
 
 
 func _on_main_menu_button_pressed() -> void:

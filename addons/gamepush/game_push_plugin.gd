@@ -5,7 +5,6 @@ const AUTOLOAD_NAME = "GP"
 var export_plugin: HTMLExportPlugin
 
 
-
 func _enter_tree():
 	if !ProjectSettings.has_setting("game_push/config/project_id"):
 		ProjectSettings.set_setting("game_push/config/project_id", "0")
@@ -29,7 +28,7 @@ func _enter_tree():
 	add_autoload_singleton(AUTOLOAD_NAME, "res://addons/gamepush/game_push.gd")
 	export_plugin = load("res://addons/gamepush/export_plugin.gd").new()
 	add_export_plugin(export_plugin)
-
+	
 
 func _exit_tree():
 	remove_autoload_singleton(AUTOLOAD_NAME)

@@ -13,7 +13,7 @@ func _ready():
 			gp = GP.gp
 			await get_tree().create_timer(0.01).timeout
 	after_ready.emit()
-		
+
 			
 func info(arg1="", arg2="", arg3="", arg4="") -> void:
 	if OS.get_name() == "Web":
@@ -51,6 +51,7 @@ func info_array(args:Array) -> void:
 	else:
 		print("INFO:", res)
 
+
 func warn_array(args:Array) -> void:
 	var res:= ""
 	for a in args:
@@ -61,7 +62,8 @@ func warn_array(args:Array) -> void:
 		gp.logger.warn(res)
 	else:
 		push_warning(res)
-		
+
+
 func error_array(args:Array) -> void:
 	var res:= ""
 	for a in args:
