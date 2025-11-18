@@ -15,29 +15,28 @@ func _ready():
 	after_ready.emit()
 		
 			
-func info(arg1="", arg2="", arg3="", arg4="") -> void:
-	if OS.get_name() == "Web":
-		gp.logger.info(str(arg1), str(arg2), str(arg3), str(arg4))
-	else:
-		print("INFO:", arg1, arg2, arg3, arg4)
+func info(...args:Array) -> void:
+	info_array(args)
 
-func warn(arg1="", arg2="", arg3="", arg4="") -> void:
-	if OS.get_name() == "Web":
-		gp.logger.warn(str(arg1), str(arg2), str(arg3), str(arg4))
-	else:
-		push_warning(arg1, arg2, arg3, arg4)
-		
-func error(arg1="", arg2="", arg3="", arg4="") -> void:
-	if OS.get_name() == "Web":
-		gp.logger.error(str(arg1), str(arg2), str(arg3), str(arg4))
-	else:
-		push_error("INFO:", arg1, arg2, arg3, arg4)
 
-func log(arg1="", arg2="", arg3="", arg4="") -> void:
+func warn(...args:Array) -> void:
+	warn_array(args)
+
+
+func error(...args:Array) -> void:
+	error_array(args)
+
+
+func log(...args:Array) -> void:
+	var res:= ""
+	for a in args:
+		res += str(a)
+		res += " "
+	res.strip_edges()
 	if OS.get_name() == "Web":
-		gp.logger.log(str(arg1), str(arg2), str(arg3), str(arg4))
+		gp.logger.log(res)
 	else:
-		print(arg1, arg2, arg3, arg4)
+		print(res)
 		
 		
 func info_array(args:Array) -> void:
