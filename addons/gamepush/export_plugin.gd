@@ -5,7 +5,6 @@ class_name HTMLExportPlugin
 
 var plugin_path: String = get_script().resource_path.get_base_dir()
 var export_path: String
-
 var _features: Array
 
 

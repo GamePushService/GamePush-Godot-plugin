@@ -266,6 +266,12 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Variables"
 
+[node name="Windows" type="Button" parent="MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Windows"
+
 [connection signal="pressed" from="MarginContainer/VBoxContainer/GridContainer/Achievements" to="." method="_on_achievements_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/GridContainer/Ads" to="." method="_on_ads_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/GridContainer/Analytics" to="." method="_on_analytics_pressed"]
@@ -300,3 +306,4 @@ text = "Variables"
 [connection signal="pressed" from="MarginContainer/VBoxContainer/GridContainer/Triggers" to="." method="_on_triggers_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/GridContainer/Uniques" to="." method="_on_uniques_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/GridContainer/Variables" to="." method="_on_variables_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/GridContainer/Windows" to="." method="_on_windows_pressed"]

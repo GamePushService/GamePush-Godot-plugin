@@ -26,6 +26,7 @@ func _ready():
 		GP.logger.info("unmuted_music", AudioServer.get_bus_name(2))
 		AudioServer.set_bus_mute(2, false)
 	)
+	GP.sounds.unmute()
 
 
 func _on_is_muted_pressed() -> void:
