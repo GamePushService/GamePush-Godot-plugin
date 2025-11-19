@@ -37,7 +37,7 @@ https://docs.gamepush.com/ru/docs/get-start/
 | [files](#files)                               |
 | [fullscreen](#fullscreen)                     |
 | [game](#game)                                 |
-| [games_collections](#gamescollections)         |
+| [games_collections](#gamescollections)        |
 | [images](#images)                             |
 | [language](#language)                         |
 | [leaderboard](#leaderboard)                   |
@@ -51,12 +51,13 @@ https://docs.gamepush.com/ru/docs/get-start/
 | [segments](#segments)                         |
 | [server](#server)                             |
 | [socials](#socials)                           |
+| [sounds](#sounds)                             |
 | [system](#system)                             |
 | [triggers](#triggers)                         |
 | [variables](#variables)                       |
 | [uniques](#uniques)                           |
 | [storage](#storage)                           |
-
+| [windows](#windows)                           |
 
 
 ### Achievements
@@ -134,42 +135,42 @@ https://docs.gamepush.com/ru/docs/get-start/
 #### Signals
 
 | **Signal**               | **Emitted Parameters**    |
-|--------------------------|------------------|
-| `start`                  | None             |
-| `close`                  | `success: bool`  |
-| `fullscreen_start`       | None             |
-| `fullscreen_close`       | `success: bool`  |
-| `preloader_start`        | None             |
-| `preloader_close`        | `success: bool`  |
-| `rewarded_start`         | None             |
-| `rewarded_close`         | `success: bool`  |
-| `rewarded_reward`        | None             |
-| `sticky_start`           | None             |
-| `sticky_close`           | None             |
-| `sticky_render`          | None             |
-| `sticky_refresh`         | None             |
+|--------------------------|---------------------------|
+| `start`                  | None                      |
+| `close`                  | `success: bool`           |
+| `fullscreen_start`       | None                      |
+| `fullscreen_close`       | `success: bool`           |
+| `preloader_start`        | None                      |
+| `preloader_close`        | `success: bool`           |
+| `rewarded_start`         | None                      |
+| `rewarded_close`         | `success: bool`           |
+| `rewarded_reward`        | None                      |
+| `sticky_start`           | None                      |
+| `sticky_close`           | None                      |
+| `sticky_render`          | None                      |
+| `sticky_refresh`         | None                      |
 
 #### Methods
 
-| **Method**                                | **Arguments**                            | **Return Type** |
-|-------------------------------------------|------------------------------------------|-----------------|
-| `is_adblock_enabled`                      | None                                     | `bool`          |
-| `is_sticky_available`                     | None                                     | `bool`          |
-| `is_fullscreen_available`                 | None                                     | `bool`          |
-| `is_rewarded_available`                   | None                                     | `bool`          |
-| `is_sticky_playing`                       | None                                     | `bool`          |
-| `is_fullscreen_playing`                   | None                                     | `bool`          |
-| `is_rewarded_playing`                     | None                                     | `bool`          |
-| `is_preloader_playing`                    | None                                     | `bool`          |
-| `is_countdown_overlay_enabled`            | None                                     | `bool`          |
-| `is_rewarded_failed_overlay_enabled`      | None                                     | `bool`          |
-| `can_show_fullscreen_before_game_play`    | None                                     | `bool`          |
-| `show_fullscreen`                         | `show_countdown_overlay: bool = false`   | `void`          |
-| `show_preloader`                          | None                                     | `void`          |
+| **Method**                                | **Arguments**                                  | **Return Type** |
+|-------------------------------------------|------------------------------------------------|-----------------|
+| `is_adblock_enabled`                      | None                                           | `bool`          |
+| `is_sticky_available`                     | None                                           | `bool`          |
+| `is_fullscreen_available`                 | None                                           | `bool`          |
+| `is_rewarded_available`                   | None                                           | `bool`          |
+| `is_sticky_playing`                       | None                                           | `bool`          |
+| `is_fullscreen_playing`                   | None                                           | `bool`          |
+| `is_rewarded_playing`                     | None                                           | `bool`          |
+| `is_preloader_playing`                    | None                                           | `bool`          |
+| `is_countdown_overlay_enabled`            | None                                           | `bool`          |
+| `is_rewarded_failed_overlay_enabled`      | None                                           | `bool`          |
+| `can_show_fullscreen_before_game_play`    | None                                           | `bool`          |
+| `show_fullscreen`                         | `show_countdown_overlay: bool = false`         | `void`          |
+| `show_preloader`                          | None                                           | `void`          |
 | `show_rewarded_video`                     | `show_rewarded_failed_overlay: bool = false`   | `void`          |
-| `show_sticky`                             | None                                     | `void`          |
-| `refresh_sticky`                          | None                                     | `void`          |
-| `close_sticky`                            | None                                     | `void`          |
+| `show_sticky`                             | None                                           | `void`          |
+| `refresh_sticky`                          | None                                           | `void`          |
+| `close_sticky`                            | None                                           | `void`          |
 
 ### Analytics
 
@@ -184,15 +185,15 @@ https://docs.gamepush.com/ru/docs/get-start/
 
 #### Signals
 
-| **Signal**            | **Emitted Parameters**                        |
-|-----------------------|--------------------------------------|
-| `review_requested`     | `success: bool, rating: int, error: String` |
-| `shortcut_added`       | `success: bool`                     |
+| **Signal**            | **Emitted Parameters**                      |
+|-----------------------|---------------------------------------------|
+| `review_requested`    | `success: bool, rating: int, error: String` |
+| `shortcut_added`      | `success: bool`                             |
 
 #### Methods
 
-| **Method**                | **Arguments**                  | **Return Type** |
-|---------------------------|-------------------------------|-----------------|
+| **Method**              | **Arguments**               | **Return Type** |
+|-------------------------|-----------------------------|-----------------|
 | `title`                 | None                        | `String`        |
 | `description`           | None                        | `String`        |
 | `image`                 | None                        | `String`        |
@@ -208,9 +209,9 @@ https://docs.gamepush.com/ru/docs/get-start/
 
 #### Methods
 
-| **Method**                 | **Arguments**                  | **Return Type** |
-|----------------------------|-------------------------------|-----------------|
-| `current()`                | None                          | `String`        |
+| **Method**                  | **Arguments**                 | **Return Type** |
+|-----------------------------|-------------------------------|-----------------|
+| `current()`                 | None                          | `String`        |
 | `generate_avatar(has, size)`| `has: Variant, size: int`     | `String`        |
 
 ### Channels
@@ -219,16 +220,16 @@ https://docs.gamepush.com/ru/docs/get-start/
 
 | **Signal**                           | **Emitted Parameters**                       |
 |--------------------------------------|----------------------------------------------|
-| `event_message`                      | `message: GPMessage`                           |
-| `message_received`                   | `message: GPMessage`                           |
-| `message_sent`                       | `message: GPMessage`                           |
+| `event_message`                      | `message: GPMessage`                         |
+| `message_received`                   | `message: GPMessage`                         |
+| `message_sent`                       | `message: GPMessage`                         |
 | `message_error`                      | `error: String`                              |
-| `message_edited`                     | `message: GPMessage`                           |
+| `message_edited`                     | `message: GPMessage`                         |
 | `error_edit_message`                 | `error: String`                              |
-| `event_edit_message`                 | `message: GPMessage`                           |
+| `event_edit_message`                 | `message: GPMessage`                         |
 | `message_deleted`                    |  None                                        |
 | `error_delete_message`               | `error: String`                              |
-| `event_delete_message`               | `message: GPMessage`                           |
+| `event_delete_message`               | `message: GPMessage`                         |
 | `messages_fetched`                   | `result: Dictionary`                         |
 | `personal_messages_fetched`          | `result: Dictionary`                         |
 | `more_personal_messages_fetched`     | `result: Dictionary`                         |
@@ -237,15 +238,15 @@ https://docs.gamepush.com/ru/docs/get-start/
 | `error_fetch_messages`               | `error: String`                              |
 | `more_messages_fetched`              | `result: Dictionary`                         |
 | `error_fetch_more_messages`          | `error: String`                              |
-| `channel_created`                    | `channel: GPChannel`                           |
+| `channel_created`                    | `channel: GPChannel`                         |
 | `error_create_channel`               | `error: String`                              |
-| `channel_updated`                    | `channel: GPChannel`                           |
+| `channel_updated`                    | `channel: GPChannel`                         |
 | `error_update_channel`               | `error: String`                              |
-| `event_channel_updated`              | `channel: GPChannel`                           |
+| `event_channel_updated`              | `channel: GPChannel`                         |
 | `channel_deleted`                    | `success: bool`                              |
 | `error_delete_channel`               | `error: String`                              |
 | `event_channel_deleted`              | `channel_id: int`                            |
-| `channel_fetched`                    | `channel: GPChannel`                           |
+| `channel_fetched`                    | `channel: GPChannel`                         |
 | `fetch_channel_error`                | `error: String`                              |
 | `channels_fetched`                   | `channels: Array`, `can_load_more: bool`     |
 | `fetch_channels_error`               | `error: String`                              |
@@ -272,7 +273,7 @@ https://docs.gamepush.com/ru/docs/get-start/
 | `fetch_more_members_error`           | `error: String`                              |
 | `mute_success`                       |  None                                        |
 | `mute_error`                         | `error: String`                              |
-| `event_mute`                         | `mute: GPMute`                                 |
+| `event_mute`                         | `mute: GPMute`                               |
 | `unmute_success`                     |  None                                        |
 | `unmute_error`                       | `error: String`                              |
 | `event_unmute`                       | `unmute: Dictionary`                         |
@@ -938,51 +939,51 @@ https://docs.gamepush.com/ru/docs/get-start/
 #### Classes
 
 ##### GPReward
-| **Parameter**       | **Type**          |
-|------------------|---------------|
-| `id`               | `int`           |
-| `tag`              | `String`        |
-| `name`             | `String`        |
-| `description`      | `String`        |
-| `icon`             | `String`        |
-| `icon_small`       | `String`        |
-| `mutations`        | `Array`         |
-| `is_auto_accept`    | `bool`         |
+| **Parameter**       | **Type**        |
+|---------------------|-----------------|
+| `id`                | `int`           |
+| `tag`               | `String`        |
+| `name`              | `String`        |
+| `description`       | `String`        |
+| `icon`              | `String`        |
+| `icon_small`        | `String`        |
+| `mutations`         | `Array`         |
+| `is_auto_accept`    | `bool`          |
 
 ##### GPPlayerReward
 
 | **Parameter**       | **Type**          |
-|------------------|---------------|
-| `reward_id`       | `int`           |
-| `count_total`     | `int`           |
-| `count_accepted`   | `int`           |
+|---------------------|-------------------|
+| `reward_id`         | `int`             |
+| `count_total`       | `int`             |
+| `count_accepted`    | `int`             |
 
 ##### GPDataMutation
 
 | **Parameter**       | **Type**          |
-|------------------|---------------|
-| `type`            | `String`        |
-| `key`             | `String`        |
-| `action`          | `String`        |
-| `value`           | `Variant`       |
+|---------------------|-------------------|
+| `type`              | `String`          |
+| `key`               | `String`          |
+| `action`            | `String`          |
+| `value`             | `Variant`         |
 
 ### Schedulers
 #### Signals
 
-| **Signal**                             | **Emitted Parameters**                    |
-|------------------------------------|----------------------------------------|
-| `error_register`                     | `error_message: String`                  |
-| `signal_claim_day`                   | `scheduler_day_info: GPSchedulerDayInfo`   |
-| `error_claim_day`                    | `error_message: String`                  |
-| `signal_register`                     | `scheduler_info: GPSchedulerInfo`          |
-| `signal_claim_day_additional`        | `scheduler_day_info: GPSchedulerDayInfo`   |
-| `error_claim_day_additional`         | `error_message: String`                  |
-| `signal_claim_all_day`               | `scheduler_day_info: GPSchedulerDayInfo`   |
-| `error_claim_all_day`                | `error_message: String`                  |
-| `signal_claim_all_days`              | `scheduler_info: GPSchedulerInfo`          |
-| `error_claim_all_days`               | `error_message: String`                  |
+| **Signal**                           | **Emitted Parameters**                    |
+|--------------------------------------|-------------------------------------------|
+| `error_register`                     | `error_message: String`                   |
+| `signal_claim_day`                   | `scheduler_day_info: GPSchedulerDayInfo`  |
+| `error_claim_day`                    | `error_message: String`                   |
+| `signal_register`                    | `scheduler_info: GPSchedulerInfo`         |
+| `signal_claim_day_additional`        | `scheduler_day_info: GPSchedulerDayInfo`  |
+| `error_claim_day_additional`         | `error_message: String`                   |
+| `signal_claim_all_day`               | `scheduler_day_info: GPSchedulerDayInfo`  |
+| `error_claim_all_day`                | `error_message: String`                   |
+| `signal_claim_all_days`              | `scheduler_info: GPSchedulerInfo`         |
+| `error_claim_all_days`               | `error_message: String`                   |
 | `signal_join`                        | `scheduler: GPScheduler`, `player_scheduler: GPPlayerScheduler` |
-| `error_join`                         | `error_message: String`                  |
+| `error_join`                         | `error_message: String`                   |
 
 #### Methods
 
@@ -1109,6 +1110,32 @@ https://docs.gamepush.com/ru/docs/get-start/
 | `make_share_url`                 | `param: Dictionary`    | `String`      |
 | `get_share_param`                | `param: String `                    | `String`      |
 
+### Sounds
+#### Signals
+
+| **Signal**            | **Emitted Parameters** |
+|-----------------------|------------------------|
+| `muted`               | None                   |
+| `muted_sfx`           | None                   |
+| `muted_music`         | None                   |
+| `unmuted_sfx`         | None                   |
+| `unmuted_music`       | None                   |
+
+#### Methods
+
+| **Method**                     | **Arguments**                     | **Return Type** |
+|--------------------------------|-----------------------------------|-----------------|
+| `is_muted`                     | None                              | `bool`          |
+| `is_sfx_muted`                 | None                              | `bool`          |
+| `is_music_muted`               | None                              | `bool`          |
+| `mute`                         | None                              | `void`          |
+| `unmute`                       | None                              | `void`          |
+| `mute_sfx`                     | None                              | `void`          |
+| `unmute_sfx`                   | None                              | `void`          |
+| `mute_music`                   | None                              | `void`          |
+| `unmute_music`                 | None                              | `void`          |
+
+
 ### System
 #### Methods
 
@@ -1120,121 +1147,135 @@ https://docs.gamepush.com/ru/docs/get-start/
 ### Triggers
 #### Signals
 
-| **Signal**          | `Emitted Parameters` |
-|-----------------|--------------------|
-| `activated`       | `trigger: GPTrigger`    |
-| `claimed`         | `trigger: GPTrigger`    |
-| `error_claim`     | `err: String`         |
+| **Signal**        | `Emitted Parameters` |
+|-------------------|----------------------|
+| `activated`       | `trigger: GPTrigger` |
+| `claimed`         | `trigger: GPTrigger` |
+| `error_claim`     | `err: String`        |
 
 #### Methods
 
-| **Method**                | **Arguments**               | **Return Type**    |
-|-----------------------|-------------------------|----------------|
-| `claim`                 | `id_or_tag: Variant`  | `Dictionary`    |
-| `list`                  |       None                  | `Array`          |
-| `activated_list`         |        None                 | `Array`          |
-| `get_trigger`           | `trigger_id: String`       | `Dictionary`     |
-| `is_trigger_activated`  | `id_or_tag: Variant`        | `bool`           |
-| `is_claimed`            | `id_or_tag: Variant`        | `bool`           |
+| **Method**                | **Arguments**         | **Return Type**    |
+|---------------------------|-----------------------|--------------------|
+| `claim`                   | `id_or_tag: Variant`  | `Dictionary`       |
+| `list`                    | None                  | `Array`            |
+| `activated_list`          | None                  | `Array`            |
+| `get_trigger`             | `trigger_id: String`  | `Dictionary`       |
+| `is_trigger_activated`    | `id_or_tag: Variant`  | `bool`             |
+| `is_claimed`              | `id_or_tag: Variant`  | `bool`             |
 
 #### Classes
 
 ##### GPTrigger
 
 | **Property Name**  | **Type**           |
-|----------------|----------------|
-| `id`             | `String`         |
-| `tag`            | `String`         |
-| `description`    | `String`         |
-| `is_auto_claim`  | `bool`           |
-| `conditions`     | `Array`          |
-| `bonuses`        | `Array`          |
+|--------------------|--------------------|
+| `id`               | `String`           |
+| `tag`              | `String`           |
+| `description`      | `String`           |
+| `is_auto_claim`    | `bool`             |
+| `conditions`       | `Array`            |
+| `bonuses`          | `Array`            |
 
 ##### GPBonus
 
 | **Property Name**  | **Type**           |
-|----------------|----------------|
-| `type`           | `String`         |
-| `id`             | `int`            |
+|--------------------|--------------------|
+| `type`             | `String`           |
+| `id`               | `int`              |
 
 ##### GPCondition
 
 | **Property Name**  | **Type**           |
-|----------------|----------------|
-| `type`           | `String`         |
-| `key`            | `String`         |
-| `operator`       | `String`         |
-| `value`          | `Variant`        |
+|--------------------|--------------------|
+| `type`             | `String`           |
+| `key`              | `String`           |
+| `operator`         | `String`           |
+| `value`            | `Variant`          |
 
 ### Variables
 #### Signals
 
-| **Signal**                         | **Emitted Parameters**             |
-|---------------------------------|--------------------------------|
-| `fetched`                        | `Variables: Array`            |
-| `fetched_error`                  | `error: String`                  |
-| `platform_variables_fetched`      | `variables: Dictionary`          |
-| `platform_variables_error`        | `error: String`                  |
+| **Signal**                       | **Emitted Parameters**             |
+|----------------------------------|------------------------------------|
+| `fetched`                        | `Variables: Array`                 |
+| `fetched_error`                  | `error: String`                    |
+| `platform_variables_fetched`     | `variables: Dictionary`            |
+| `platform_variables_error`       | `error: String`                    |
 
 #### Methods
 
-| **Method**                         | **Arguments**                          | **Return Type** |
-|---------------------------------|------------------------------------|-------------|
-| `fetch`                          |  None                                  | `void`        |
-| `get_variable`                   | `variable_name: String`              | `Variant`     |
-| `has_variable`                   | `variable_name: String`              | `bool`        |
-| `type`                           | `variable_name: String`             | `String`      |
-| `is_platform_variables_available`|   None                                 | `bool`        |
-| `fetch_platform_variables`       | `client_params: Dictionary = {}`     | `Dictionary`  |
+| **Method**                       | **Arguments**                      | **Return Type** |
+|----------------------------------|------------------------------------|-----------------|
+| `fetch`                          |  None                              | `void`          |
+| `get_variable`                   | `variable_name: String`            | `Variant`       |
+| `has_variable`                   | `variable_name: String`            | `bool`          |
+| `type`                           | `variable_name: String`            | `String`        |
+| `is_platform_variables_available`|   None                             | `bool`          |
+| `fetch_platform_variables`       | `client_params: Dictionary = {}`   | `Dictionary`    |
 
 ### Uniques
 #### Signals
 
-| **Signal**         | **Emitted Parameters**    |
-|----------------|-----------------------|
+| **Signal**       | **Emitted Parameters**        |
+|------------------|-------------------------------|
 | `registered`     | `unique_value: GPUniqueValue` |
-| `register_error` | `error: String`          |
+| `register_error` | `error: String`               |
 | `checked`        | `unique_value: GPUniqueValue` |
-| `check_error`    | `error: String`          |
+| `check_error`    | `error: String`               |
 | `deleted`        | `unique_value: GPUniqueValue` |
-| `delete_error`   | `error: String`         |
+| `delete_error`   | `error: String`               |
 
 #### Methods
 
-| **Method**         | **Arguments**                          | **Return Type** |
-|----------------|------------------------------------|-------------|
-| `register`       | `tag: String`, `value: String`         | `bool`        |
-| `get_value`      | `tag: String`                        | `String`      |
-| `list`           | None                                   | `Array`       |
-| `check`          | `tag: String`, `value: String`         | `bool`        |
-| `delete_unique`  | `tag: String`                        | `void`        |
+| **Method**         | **Arguments**                      | **Return Type** |
+|--------------------|------------------------------------|-----------------|
+| `register`         | `tag: String`, `value: String`     | `bool`          |
+| `get_value`        | `tag: String`                      | `String`        |
+| `list`             | None                               | `Array`         |
+| `check`            | `tag: String`, `value: String`     | `bool`          |
+| `delete_unique`    | `tag: String`                      | `void`          |
 
 #### Classes
 ##### GPUniqueValue
 
 | **Property Name**  | **Type**   |
-|----------------|--------|
-| `tag`            | `String` |
-| `value`          | `String` |
+|--------------------|------------|
+| `tag`              | `String`   |
+| `value`            | `String`   |
 
 ### Storage
 
 #### Signals
 
 | **Signal**              | **Emitted Parameters**          |
-|----------------------|-----------------------------|
-| `set_success`          | `key: String`, `value: Variant` |
-| `get_success`          | `key: String`, `value: Variant`   |
-| `set_global_success`   | `key: String`, `value: Variant` |
-| `get_global_success`   | `key: String`, `value: Variant`    |
+|-------------------------|---------------------------------|
+| `set_success`           | `key: String`, `value: Variant` |
+| `get_success`           | `key: String`, `value: Variant` |
+| `set_global_success`    | `key: String`, `value: Variant` |
+| `get_global_success`    | `key: String`, `value: Variant` |
 
 #### Methods
 
-| **Method**              | **Arguments**                          | **Return Type** |
-|---------------------|------------------------------------|-------------|
-| `set_storage`         | `storage_type: String`               | `void`        |
-| `set_value`           | `key: String`, `value: Variant`        | `void`        |
-| `get_value`           | `key: String`                        | `String`      |
-| `set_global_value`    | `key: String`, `value: Variant`        | `void`        |
-| `get_global_value`    | `key: String`                        | `String`      |
+| **Method**            | **Arguments**                      | **Return Type** |
+|-----------------------|------------------------------------|-----------------|
+| `set_storage`         | `storage_type: String`             | `void`          |
+| `set_value`           | `key: String`, `value: Variant`    | `void`          |
+| `get_value`           | `key: String`                      | `String`        |
+| `set_global_value`    | `key: String`, `value: Variant`    | `void`          |
+| `get_global_value`    | `key: String`                      | `String`        |
 
+### Windows
+
+#### Signals
+
+| **Signal**              | **Emitted Parameters**          |
+|-------------------------|---------------------------------|
+| `confirm_closed`        | `is_confirmed: bool`            |
+
+
+#### Methods
+
+| **Method**            | **Arguments**                      | **Return Type** |
+|-----------------------|------------------------------------|-----------------|
+| `set_storage`         | `title: String`, `description: String`, `text_confirm: String`, `text_cancel: String`, `invert_button_colors:bool`, `hide_cancel_button:bool`      | `bool`          |
