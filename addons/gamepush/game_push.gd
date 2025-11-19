@@ -1,5 +1,7 @@
 extends Node
-#
+
+const VERSION = "1.0.5"
+
 @onready var Achievements := preload("res://addons/gamepush/modules/Achievements.gd").new()
 @onready var Ads := preload("res://addons/gamepush/modules/Ads.gd").new()
 @onready var Analytics := preload("res://addons/gamepush/modules/Analytics.gd").new()
@@ -32,6 +34,9 @@ extends Node
 @onready var Variables := preload("res://addons/gamepush/modules/Variables.gd").new()
 @onready var Uniques := preload("res://addons/gamepush/modules/Uniques.gd").new()
 @onready var Storage := preload("res://addons/gamepush/modules/Storage.gd").new()
+@onready var Sounds := preload("res://addons/gamepush/modules/Sounds.gd").new()
+@onready var Windows := preload("res://addons/gamepush/modules/Windows.gd").
+
 
 var gp:JavaScriptObject
 
