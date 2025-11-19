@@ -115,7 +115,6 @@ func _re_snake(data:Variant) -> Variant:
 	return new_data
 	
 	
-	
 class GPObject:
 	
 	func to_dict() -> Dictionary:

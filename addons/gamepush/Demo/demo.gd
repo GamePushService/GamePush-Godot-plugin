@@ -139,3 +139,11 @@ func _on_files_pressed():
 
 func _on_channel_management_pressed() -> void:
 	get_tree().change_scene_to_file("res://addons/gamepush/Demo/Modules/ChannelManagement.tscn")
+
+
+func _on_sounds_pressed() -> void:
+	get_tree().change_scene_to_file("res://addons/gamepush/Demo/Modules/Sounds.tscn")
+
+
+func _on_windows_pressed() -> void:
+	get_tree().change_scene_to_file("res://addons/gamepush/Demo/Modules/Windows.tscn")
