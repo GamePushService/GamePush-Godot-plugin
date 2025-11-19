@@ -35,6 +35,7 @@ const VERSION = "2.0.0"
 @onready var uniques := preload("res://addons/gamepush/modules/Uniques.gd").new()
 @onready var storage := preload("res://addons/gamepush/modules/Storage.gd").new()
 @onready var sounds := preload("res://addons/gamepush/modules/Sounds.gd").new()
+@onready var windows := preload("res://addons/gamepush/modules/Windows.gd").new()
 
 
 var gp:JavaScriptObject
