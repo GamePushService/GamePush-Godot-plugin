@@ -236,6 +236,15 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Sounds"
 
+[node name="New" type="Label" parent="MarginContainer/VBoxContainer/GridContainer/Sounds"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 45.0
+offset_bottom = 28.0
+theme_override_colors/font_color = Color(0.92454845, 0.7272602, 0.45662767, 1)
+text = "New!"
+
 [node name="Storage" type="Button" parent="MarginContainer/VBoxContainer/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
@@ -271,6 +280,15 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Windows"
+
+[node name="New" type="Label" parent="MarginContainer/VBoxContainer/GridContainer/Windows"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 45.0
+offset_bottom = 28.0
+theme_override_colors/font_color = Color(0.92454845, 0.7272602, 0.45662767, 1)
+text = "New!"
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/GridContainer/Achievements" to="." method="_on_achievements_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/GridContainer/Ads" to="." method="_on_ads_pressed"]
