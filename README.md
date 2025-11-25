@@ -4,21 +4,15 @@ Plugin for using [GamePush](https://gamepush.com/?r=NzQ4) in Godot games
 
 Development of GamePush Godot plugin - [Anatoly Kulagin](https://github.com/talkafk)
 
-## Get started
+## Get Started
 
-[English](https://github.com/GamePushService/GamePush-Godot-plugin/blob/main/docs/Getting%20Started.md)
-
-[Russian](https://github.com/GamePushService/GamePush-Godot-plugin/blob/main/docs/%D0%9D%D0%B0%D1%87%D0%B0%D0%BB%D0%BE%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D1%8B.md)
+- **English:** [Getting Started](https://github.com/GamePushService/GamePush-Godot-plugin/blob/main/docs/Getting%20Started.md)
+- **Русский:** [Начало работы](https://github.com/GamePushService/GamePush-Godot-plugin/blob/main/docs/%D0%9D%D0%B0%D1%87%D0%B0%D0%BB%D0%BE%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D1%8B.md)
 
 ## Documentation
 
-### English
-
-<https://docs.gamepush.com/docs/get-start/>
-
-### Russian
-
-<https://docs.gamepush.com/ru/docs/get-start/>
+- **English:** [https://docs.gamepush.com/docs/get-start/](https://docs.gamepush.com/docs/get-start/)
+- **Русский:** [https://docs.gamepush.com/ru/docs/get-start/](https://docs.gamepush.com/ru/docs/get-start/)
 
 ## Modules
 
@@ -508,7 +502,7 @@ Development of GamePush Godot plugin - [Anatoly Kulagin](https://github.com/talk
 | `is_auto_join`       | `bool`    |
 | `triggers`           | `Array`   |
 
-##### GPPlayerEvent 
+##### GPPlayerEvent
 
 | **Property Name**    | **Type**  |
 |----------------------|-----------|
@@ -516,7 +510,7 @@ Development of GamePush Godot plugin - [Anatoly Kulagin](https://github.com/talk
 | `stats`              | `GPPlayerStats` |
 
 
-##### GPPlayerStats 
+##### GPPlayerStats
 
 | **Property Name**        | **Type**  |
 |--------------------------|-----------|
@@ -532,21 +526,21 @@ Development of GamePush Godot plugin - [Anatoly Kulagin](https://github.com/talk
 | `map`      | None          | `Dictionary` |
 | `has`      | `tag: String`, `cohort: String` | `bool` |
 
-### Files 
+### Files
 
 #### Signals
 
 | **Signal**                     | **Emitted Parameters**    |
 |--------------------------------|-----------------------|
-| `uploaded`                   | `file: GPFile`             | 
-| `error_upload`               | `err:Dictionary`           | 
-| `loaded_content`             | None                  | 
-| `error_load_content`         | `err:Dictionary`           | 
-| `choosed`                    | `file:GPFile, temp_url:String`              | 
-| `error_choose`               | `err:Dictionary`           | 
-| `fetched`                    | `result: Array`         | 
+| `uploaded`                   | `file: GPFile`             |
+| `error_upload`               | `err:Dictionary`           |
+| `loaded_content`             | None                  |
+| `error_load_content`         | `err:Dictionary`           |
+| `choosed`                    | `file:GPFile, temp_url:String`              |
+| `error_choose`               | `err:Dictionary`           |
+| `fetched`                    | `result: Array`         |
 | `error_fetch`                | `err:Dictionary`           |
-| `fetched_more`               | `result: Array`         | 
+| `fetched_more`               | `result: Array`         |
 | `error_fetch_more`           | `err:Dictionary`           |
 
 #### Methods
@@ -606,7 +600,7 @@ Development of GamePush Godot plugin - [Anatoly Kulagin](https://github.com/talk
 
 | **Method**          | **Arguments**    | **Return Type** |
 |---------------------|------------------|-----------------|
-| `is_paused`       | None           | `bool`          | 
+| `is_paused`       | None           | `bool`          |
 | `pause`           | None           | `void`          |
 | `resume`          | None           | `void`          |
 | `game_start`      | None           | `void`          |
@@ -617,11 +611,11 @@ Development of GamePush Godot plugin - [Anatoly Kulagin](https://github.com/talk
 
 #### Signals
 
-| **Signal**               | **Emitted Parameters** | 
+| **Signal**               | **Emitted Parameters** |
 |----------------------|--------------------|
-| `opened`               | None               | 
-| `closed`               | None               | 
-| `fetched`              | `rsdult:Dictionary` | 
+| `opened`               | None               |
+| `closed`               | None               |
+| `fetched`              | `rsdult:Dictionary` |
 | `error_fetch`          | `error: String`      |
 
 #### Methods
@@ -637,21 +631,21 @@ Development of GamePush Godot plugin - [Anatoly Kulagin](https://github.com/talk
 
 | **Parameter**    | **Type**              |
 |--------------|-------------------|
-| `id`           | `int`               | 
+| `id`           | `int`               |
 | `tag`          | `String`            |
 | `name`         | `String`            |
-| `description`  | `String`            | 
-| `games`        | `Array`             | 
+| `description`  | `String`            |
+| `games`        | `Array`             |
 
 ##### GPGame
 
 | **Parameter**    | **Type**              |
 |--------------|-------------------|
 | `id`           | `int`               |
-| `name`         | `String`            | 
+| `name`         | `String`            |
 | `description`  | `String`            |
-| `icon`         | `String`            | 
-| `url`          | `String`            | 
+| `icon`         | `String`            |
+| `url`          | `String`            |
 
 
 ### Images
@@ -891,7 +885,7 @@ Development of GamePush Godot plugin - [Anatoly Kulagin](https://github.com/talk
 | `important`           | `bool`                   |
 | `public`              | `bool`                   |
 | `default_value`       | `Variant`                |  # String, int, bool
-| `variants`            | `Array[GPFieldVariant]`    | 
+| `variants`            | `Array[GPFieldVariant]`    |
 | `limits`              | `GPFieldLimits` or `null`  |
 | `interval_increment`   | `GPIntervalIncrement` or `null` |
 
@@ -1125,6 +1119,7 @@ Development of GamePush Godot plugin - [Anatoly Kulagin](https://github.com/talk
 | `get_share_param`                | `param: String `                    | `String`      |
 
 ### Sounds
+
 #### Signals
 
 | **Signal**            | **Emitted Parameters** |
@@ -1254,6 +1249,7 @@ Development of GamePush Godot plugin - [Anatoly Kulagin](https://github.com/talk
 | `delete_unique`    | `tag: String`                      | `void`          |
 
 #### Classes
+
 ##### GPUniqueValue
 
 | **Property Name**  | **Type**   |
