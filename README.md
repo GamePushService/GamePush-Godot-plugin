@@ -4,24 +4,24 @@ Plugin for using [GamePush](https://gamepush.com/?r=NzQ4) in Godot games
 
 Development of GamePush Godot plugin - [Anatoly Kulagin](https://github.com/talkafk)
 
+## Get started
 
-## Get started:
 [English](https://github.com/GamePushService/GamePush-Godot-plugin/blob/main/docs/Getting%20Started.md)
 
 [Russian](https://github.com/GamePushService/GamePush-Godot-plugin/blob/main/docs/%D0%9D%D0%B0%D1%87%D0%B0%D0%BB%D0%BE%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D1%8B.md)
 
-## Documentation:
+## Documentation
 
-### English:
+### English
 
-https://docs.gamepush.com/docs/get-start/
+<https://docs.gamepush.com/docs/get-start/>
 
-### Russian:
+### Russian
 
-https://docs.gamepush.com/ru/docs/get-start/
-
+<https://docs.gamepush.com/ru/docs/get-start/>
 
 ## Modules
+
 | Plugin modules                                |
 | --------------------------------------------- |
 | [achievements](#achievements)                 |
@@ -44,7 +44,7 @@ https://docs.gamepush.com/ru/docs/get-start/
 | [logger](#logger)                             |
 | [payments](#payments)                         |
 | [platform](#platform)                         |
-| [player](#player-1)                           |
+| [player](#player)                             |
 | [players](#players)                           |
 | [rewards](#rewards)                           |
 | [schedulers](#schedulers)                     |
@@ -58,7 +58,6 @@ https://docs.gamepush.com/ru/docs/get-start/
 | [uniques](#uniques)                           |
 | [storage](#storage)                           |
 | [windows](#windows)                           |
-
 
 ### Achievements
 
@@ -88,7 +87,6 @@ https://docs.gamepush.com/ru/docs/get-start/
 | `list`              | None                          | `Array[GPAchievement]` |
 | `player_achievements_list` | None                   | `Array[GPPlayerAchievement]` |
 | `groups_list`       | None                          | `Array[GPAchievementsGroup]` |
-
 
 #### Classes
 
@@ -130,7 +128,6 @@ https://docs.gamepush.com/ru/docs/get-start/
 | `unlocked`          | `bool`        |
 
 ### Ads
-
 
 #### Signals
 
@@ -203,7 +200,6 @@ https://docs.gamepush.com/ru/docs/get-start/
 | `is_already_reviewed`   | None                        | `bool`          |
 | `add_shortcut`          | None                        | `void`          |
 | `can_add_shortcut`      | None                        | `bool`          |
-
 
 ### AvatarGenerator
 
@@ -375,7 +371,6 @@ https://docs.gamepush.com/ru/docs/get-start/
 | `fetch_sent_join_requests`      | `limit: int = 0`, `offset: int = 0`                   | `void`          |
 | `fetch_more_sent_join_requests`               | `limit: int = 0`                        | `void`          |
 
-
 #### Classes
 
 ##### GPMessage
@@ -390,8 +385,8 @@ https://docs.gamepush.com/ru/docs/get-start/
 | `player`       | `GPPlayer` |
 | `created_at`   | `int`    |
 
-
 ##### GPPlayer
+
 | **Property** | **Type**   |
 |----------|--------|
 | `id`       | `String` |
@@ -399,6 +394,7 @@ https://docs.gamepush.com/ru/docs/get-start/
 | `avatar`   | `String` |
 
 ##### GPChannel
+
 | **Property**         | **Type**       |
 |------------------|------------|
 | `id`               | `int`        |
@@ -423,7 +419,8 @@ https://docs.gamepush.com/ru/docs/get-start/
 | `member_acl`       | `Dictionary` |
 | `guest_acl`        | `Dictionary` |
 
-##### GPMember 
+##### GPMember
+
 | **Property**  | **Type**   |
 |-----------|--------|
 | `id`        | `int`    |
@@ -432,6 +429,7 @@ https://docs.gamepush.com/ru/docs/get-start/
 | `mute`      | `GPMute`   |
 
 ##### GPMute
+
 | **Property**   | **Type**   |
 |------------|--------|
 | `is_muted`   | `bool`   |
@@ -441,7 +439,7 @@ https://docs.gamepush.com/ru/docs/get-start/
 
 #### Signals
 
-| **Signal Name**      |  **Emitted Parameters**     |    
+| **Signal Name**      |  **Emitted Parameters**     |
 |----------------------|-----------------------------|
 | `change_orientation` | `is_portrait: bool`         |
 
@@ -510,7 +508,6 @@ https://docs.gamepush.com/ru/docs/get-start/
 | `is_auto_join`       | `bool`    |
 | `triggers`           | `Array`   |
 
-
 ##### GPPlayerEvent 
 
 | **Property Name**    | **Type**  |
@@ -553,6 +550,7 @@ https://docs.gamepush.com/ru/docs/get-start/
 | `error_fetch_more`           | `err:Dictionary`           |
 
 #### Methods
+
 | **Method**                  | **Arguments**                                     | **Return Type** |
 |-------------------------|------------------------------------------------|--------------|
 | `upload`                  | `tags: Array`                                    | `void`         |
@@ -618,6 +616,7 @@ https://docs.gamepush.com/ru/docs/get-start/
 ### GamesCollections
 
 #### Signals
+
 | **Signal**               | **Emitted Parameters** | 
 |----------------------|--------------------|
 | `opened`               | None               | 
@@ -626,13 +625,16 @@ https://docs.gamepush.com/ru/docs/get-start/
 | `error_fetch`          | `error: String`      |
 
 #### Methods
+
 | **Method**          | **Arguments**                                      | **Return Type** |
 |-----------------|-------------------------------------------------|-------------|
 | `open`            | `tag: String=""`, `id: int=0`, `share_params: Dictionary={}` | `void`        |
 | `fetch`           | `tag: String=""`, `id: int=0`                       | `void`        |
 
 #### Classes
+
 ##### GPCollection
+
 | **Parameter**    | **Type**              |
 |--------------|-------------------|
 | `id`           | `int`               | 
@@ -655,6 +657,7 @@ https://docs.gamepush.com/ru/docs/get-start/
 ### Images
 
 #### Signals
+
 | **Signal**             | **Emitted Parameters**       |
 |--------------------|--------------------------|
 | `uploaded`            | `image:GPImage`                  |
@@ -665,7 +668,9 @@ https://docs.gamepush.com/ru/docs/get-start/
 | `error_fetch`         | `error:Dictionary`                   |
 | `fetched_more`        | `result:Array`                    |
 | `error_fetch_more`    | `error:Dictionary`                   |
+
 #### Methods
+
 | **Method**             | **Arguments**                    | **Return Type** |
 |--------------------|-------------------------------|-------------|
 | `upload`             | `tags: Array = []`              | `void`        |
@@ -674,8 +679,11 @@ https://docs.gamepush.com/ru/docs/get-start/
 | `fetch`              | `player_id = null`, `tags = null`, `limit = null`, `offset = null` | `Array`       |
 | `fetch_more`         | `player_id = null`, `tags = null`, `limit = null`, `offset = null` | `Array`       |
 | `resize`             | `url: String`, `width: int`, `height: int`, `crop: bool` | `String`      |
+
 #### Classes
+
 ##### GPImage
+
 | **Parameter**   | **Type**        |
 |-------------|-------------|
 | `id`          | `String`      |
@@ -685,6 +693,7 @@ https://docs.gamepush.com/ru/docs/get-start/
 | `width`       | `int`         |
 | `height`      | `int`         |
 | `tags`        | `Array`       |
+
 ### Language
 
 #### Methods
@@ -705,9 +714,10 @@ https://docs.gamepush.com/ru/docs/get-start/
 |`fetched`|	`result:Dictionary`|
 | `fetched_scoped` | `result:Dictionary` |
 |`fetched_player_rating` |	`result:Dictionary`|
-|`fetched_player_rating_scoped` |	`result:Dictionary`|
+|`fetched_player_rating_scoped` | `result:Dictionary`|
 
 #### Methods
+
 | **Method**                        | **Arguments**                                                                                                    | **Type Return**  |
 |------------------------------|--------------------------------------------------------------------------------------------------------------|-------------------|
 | `open`                        | `order_by: Array = []`, `order: String = ""`, `limit: int = 0`, `include_fields: Array = []`, `display_fields: Array = []`,` with_me: String = ''`, `show_nearest: int = 0` | `void`              |
@@ -811,10 +821,10 @@ https://docs.gamepush.com/ru/docs/get-start/
 | `get_SDK`                      | None                          | `JavaScriptObject`   |
 | `get_native_SDK`               | None                          | `JavaScriptObject`   |
 
-
 ### Player
 
 #### Signals
+
 | **Signal**                 | **Emitted Parameters**                                     |
 |------------------------|-------------------------------------------------------|
 | `synced`               | `success_status: bool`                                |
@@ -908,15 +918,17 @@ https://docs.gamepush.com/ru/docs/get-start/
 | `increment`           | `float`                  |
 
 ### Players
-#### Methods
 
+#### Methods
 
 |**Method**|	**Arguments**|	**Return Type**|
 |------|--------------|-----------|
 |`fetch`|	`ids: Array`|	`Dictionary`|
 
 ### Rewards
+
 #### Signals
+
 | **Signal**             | **Emitted Parameters**            |
 |--------------------|-------------------------------|
 | `reward_given`       | `reward: GPReward`, `player_reward: GPPlayerReward` |
@@ -925,6 +937,7 @@ https://docs.gamepush.com/ru/docs/get-start/
 | `reward_accept_error` | `err: String`                   |
 
 #### Methods
+
 | **Method**      | **Arguments**                         | **Return Type** |
 |-------------|------------------------------------|-------------|
 | `give`        | `id_or_tag: Variant` , `lazy: bool = false` | `Array`       |
@@ -939,6 +952,7 @@ https://docs.gamepush.com/ru/docs/get-start/
 #### Classes
 
 ##### GPReward
+
 | **Parameter**       | **Type**        |
 |---------------------|-----------------|
 | `id`                | `int`           |
@@ -968,6 +982,7 @@ https://docs.gamepush.com/ru/docs/get-start/
 | `value`             | `Variant`         |
 
 ### Schedulers
+
 #### Signals
 
 | **Signal**                           | **Emitted Parameters**                    |
@@ -1073,7 +1088,6 @@ https://docs.gamepush.com/ru/docs/get-start/
 | `list`          | None                     | `Array`         |
 | `has`           | `tag: String`            | `bool`          |
 
-
 ### Server
 
 #### Methods
@@ -1082,8 +1096,8 @@ https://docs.gamepush.com/ru/docs/get-start/
 |-----------------|---------------|-----------------|
 | `time`          | None          | `String`        |
 
-
 ### Socials
+
 #### Signals
 
 | **Signal**                | **Emitted Parameters** |
@@ -1135,8 +1149,8 @@ https://docs.gamepush.com/ru/docs/get-start/
 | `mute_music`                   | None                              | `void`          |
 | `unmute_music`                 | None                              | `void`          |
 
-
 ### System
+
 #### Methods
 
 | **Method**             | **Arguments** | **Return Type** |
@@ -1145,6 +1159,7 @@ https://docs.gamepush.com/ru/docs/get-start/
 | `is_allowed_origin`   | None           | `bool`        |
 
 ### Triggers
+
 #### Signals
 
 | **Signal**        | `Emitted Parameters` |
@@ -1194,6 +1209,7 @@ https://docs.gamepush.com/ru/docs/get-start/
 | `value`            | `Variant`          |
 
 ### Variables
+
 #### Signals
 
 | **Signal**                       | **Emitted Parameters**             |
@@ -1215,6 +1231,7 @@ https://docs.gamepush.com/ru/docs/get-start/
 | `fetch_platform_variables`       | `client_params: Dictionary = {}`   | `Dictionary`    |
 
 ### Uniques
+
 #### Signals
 
 | **Signal**       | **Emitted Parameters**        |
