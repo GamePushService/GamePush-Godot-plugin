@@ -1,6 +1,13 @@
 extends Control
 
 
+func _ready() -> void:
+	var plugin_v = GP.VERSION
+	var godot_v = Engine.get_version_info().string
+	var t := "Godot version: %s Plugin version: %s" % [godot_v, plugin_v]
+	$MarginContainer/VBoxContainer/Panel/Label2.text = t
+
+
 func _on_ads_pressed():
 	get_tree().change_scene_to_file("res://addons/gamepush/Demo/Modules/Ads.tscn")
 
