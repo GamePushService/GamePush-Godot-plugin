@@ -3,7 +3,7 @@ extends Control
 func _ready() -> void:
 	var plugin_v = GP.VERSION
 	var godot_v = Engine.get_version_info().string
-	var t := "Version Godot: %s Version Plugin: %s" % [godot_v, plugin_v]
+	var t := "Godot version: %s Plugin version: %s" % [godot_v, plugin_v]
 	$MarginContainer/VBoxContainer/Panel/Label2.text = t
 
 
