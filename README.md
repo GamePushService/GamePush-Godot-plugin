@@ -4,6 +4,10 @@ Plugin for using [GamePush](https://gamepush.com/?r=NzQ4) in Godot games
 
 Development of GamePush Godot plugin - [Anatoly Kulagin](https://github.com/talkafk)
 
+> [!WARNING]
+> GamePush Plugin 2.0.0 requires Godot 4.5+
+> If you are using Godot 4.0–4.4, install version 1.0.4.
+
 ## Get Started
 
 - **English:** [Getting Started](https://github.com/GamePushService/GamePush-Godot-plugin/blob/main/docs/Getting%20Started.md)
