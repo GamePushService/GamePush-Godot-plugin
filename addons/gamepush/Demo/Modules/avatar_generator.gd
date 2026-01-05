@@ -9,12 +9,12 @@ func _on_main_menu_button_pressed():
 	
 
 func _on_current_pressed():
-	GP.Logger.info(GP.AvatarGenerator.current())
+	GP.logger.info(GP.avatar_generator.current())
 
 
 func _on_generate_pressed():
-	var url_avatar = GP.AvatarGenerator.generate_avatar(hash_node.text, int(size_node.text))
-	GP.Logger.info(url_avatar)
+	var url_avatar = GP.avatar_generator.generate_avatar(hash_node.text, int(size_node.text))
+	GP.logger.info(url_avatar)
 	var request = HTTPRequest.new()
 	add_child(request)
 	request.request_completed.connect(_request_completed)

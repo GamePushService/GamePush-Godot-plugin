@@ -14,9 +14,9 @@ signal logged_out(success:bool)
 signal fields_fetched(success:bool)
 signal window_connected
 signal player_state_changed
-signal field_maximum_reached(field:Field)
-signal field_minimum_reached(field:Field)
-signal field_incremented(field:Field, old_value:Variant, new_value:Variant)
+signal field_maximum_reached(field:GPField)
+signal field_minimum_reached(field:GPField)
+signal field_incremented(field:GPField, old_value:Variant, new_value:Variant)
 
 var _callback_player_ready := JavaScriptBridge.create_callback(func(args): player_ready.emit())
 var _callback_field_incremented := JavaScriptBridge.create_callback(_on_field_incremented)
@@ -93,7 +93,7 @@ func get_fields():
 	if OS.get_name() == "Web":
 		var result := []
 		var _callback = JavaScriptBridge.create_callback(func(args):
-			result.append(Field.new()._from_js(args[0])))
+			result.append(GPField.new()._from_js(args[0])))
 		player.fields.forEach(_callback)
 		return result
 	push_warning("Not Web")
@@ -316,7 +316,7 @@ func get_playtime_all() -> int:
 func get_field(key: String) -> Variant:
 	if OS.get_name() == "Web":
 		var _result = player.getField(key)
-		return Field.new()._from_js(_result)
+		return GPField.new()._from_js(_result)
 	push_warning("Not Web")
 	return null
 
@@ -354,20 +354,20 @@ func _on_state_changed(args):
 	player_state_changed.emit()  # Emit signal indicating player state has changed
 # Callback function for when the maximum value is reached
 func _on_maximum_reached(args):
-	var field = Field.new()._from_js(args[0].field)
+	var field = GPField.new()._from_js(args[0].field)
 	field_maximum_reached.emit(field)  # Emit signal with the field that reached maximum
 # Callback function for when the minimum value is reached
 func _on_minimum_reached(args):
-	var field = Field.new()._from_js(args[0].field)
+	var field = GPField.new()._from_js(args[0].field)
 	field_minimum_reached.emit(field)  # Emit signal with the field that reached minimum	
 func _on_field_incremented(args):
-	var field = Field.new()._from_js(args[0].field)
+	var field = GPField.new()._from_js(args[0].field)
 	var old_value = args[0].oldValue # 
 	var new_value = args[0].newValue
 	field_incremented.emit(field, old_value, new_value)  # Emit signal with field and its old and new values
 
 
-class Field:
+class GPField:
 	extends GP.GPObject
 	
 	var name: String
@@ -376,9 +376,9 @@ class Field:
 	var important: bool
 	var public: bool
 	var default_value: Variant  # Может быть String, int, bool
-	var variants: Array[FieldVariant]  # Массив объектов FieldVariant
-	var limits: FieldLimits  # Может быть FieldLimits или null
-	var interval_increment: IntervalIncrement  # Может быть IntervalIncrement или null
+	var variants: Array[GPFieldVariant]  # Массив объектов FieldVariant
+	var limits: GPFieldLimits  # Может быть FieldLimits или null
+	var interval_increment: GPIntervalIncrement  # Может быть IntervalIncrement или null
 
 
 	# Преобразование в JavaScript объект
@@ -412,7 +412,7 @@ class Field:
 		return js_object
 
 	# Загрузка данных из JavaScript объекта
-	func _from_js(js_object:JavaScriptObject) -> Field:
+	func _from_js(js_object:JavaScriptObject) -> GPField:
 		name = js_object["name"]
 		key = js_object["key"]
 		type = js_object["type"]
@@ -424,26 +424,26 @@ class Field:
 		js_object["variants"].forEach(JavaScriptBridge.create_callback(_load_variant))
 		# Загрузка limits, если оно есть
 		if js_object["limits"]:
-			limits = FieldLimits.new()
+			limits = GPFieldLimits.new()
 			limits._from_js(js_object["limits"])
 		else:
-			limits = FieldLimits.new()
+			limits = GPFieldLimits.new()
 		# Загрузка intervalIncrement, если оно есть
 		if js_object["intervalIncrement"]:
-			interval_increment = IntervalIncrement.new()
+			interval_increment = GPIntervalIncrement.new()
 			interval_increment._from_js(js_object["intervalIncrement"])
 		else:
-			interval_increment = IntervalIncrement.new()
+			interval_increment = GPIntervalIncrement.new()
 		return self
 
 	func _load_variant(args):
 		var variant_js = args[0] 
-		var variant = FieldVariant.new()
+		var variant = GPFieldVariant.new()
 		variant._from_js(variant_js)
 		variants.append(variant)
 
 
-class FieldVariant:
+class GPFieldVariant:
 	extends GP.GPObject
 	
 	var name: String
@@ -457,17 +457,17 @@ class FieldVariant:
 		return js_object
 
 	# Загрузка данных из JavaScript объекта
-	func _from_js(js_object):
+	func _from_js(js_object) -> GPFieldVariant:
 		name = js_object["name"]
 		value = js_object["value"]
+		return self
 
-class FieldLimits:
+class GPFieldLimits:
 	extends GP.GPObject
 	
 	var min: float
 	var max: float
 	var could_go_over_limit: bool
-
 
 	# Преобразование в JavaScript объект
 	func _to_js():
@@ -478,13 +478,13 @@ class FieldLimits:
 		return js_object
 
 	# Загрузка данных из JavaScript объекта
-	func _from_js(js_object):
+	func _from_js(js_object) -> GPFieldLimits:
 		min = js_object["min"]
 		max = js_object["max"]
 		could_go_over_limit = js_object["couldGoOverLimit"]
 		return self
 
-class IntervalIncrement:
+class GPIntervalIncrement:
 	extends GP.GPObject
 	
 	var interval: float  

@@ -5,16 +5,16 @@ var gp:JavaScriptObject
 
 signal after_ready
 
-signal event_message(message: Message)
-signal message_received(message: Message)
-signal message_sent(message: Message)
+signal event_message(message: GPMessage)
+signal message_received(message: GPMessage)
+signal message_sent(message: GPMessage)
 signal message_error(error: String)
-signal message_edited(message: Message)
+signal message_edited(message: GPMessage)
 signal error_edit_message(error: String)
-signal event_edit_message(message: Message)
+signal event_edit_message(message: GPMessage)
 signal message_deleted()
 signal error_delete_message(error: String)
-signal event_delete_message(message: Message)
+signal event_delete_message(message: GPMessage)
 signal messages_fetched(result: Dictionary)
 signal personal_messages_fetched(result: Dictionary)
 signal more_personal_messages_fetched(result: Dictionary)
@@ -23,15 +23,15 @@ signal more_feed_messages_fetched(result: Dictionary)
 signal error_fetch_messages(error: String)
 signal more_messages_fetched(result: Dictionary)
 signal error_fetch_more_messages(error: String)
-signal channel_created(channel: Channel)
+signal channel_created(channel: GPChannel)
 signal error_create_channel(error: String)
-signal channel_updated(channel: Channel)
+signal channel_updated(channel: GPChannel)
 signal error_update_channel(error: String)
-signal event_channel_updated(channel: Channel)
+signal event_channel_updated(channel: GPChannel)
 signal channel_deleted(success: bool)
 signal error_delete_channel(error: String)
 signal event_channel_deleted(channel_id: int)
-signal channel_fetched(channel: Channel)
+signal channel_fetched(channel: GPChannel)
 signal fetch_channel_error(err: String)
 signal channels_fetched(channels: Array, can_load_more: bool)
 signal fetch_channels_error(error: String)
@@ -58,7 +58,7 @@ signal fetch_more_members_success(members: Array, can_load_more:bool)
 signal fetch_more_members_error(error: String)
 signal mute_success()
 signal mute_error(error: String)
-signal event_mute(mute: Mute)
+signal event_mute(mute: GPMute)
 signal unmute_success()
 signal unmute_error(error: String)
 signal event_unmute(unmute: Dictionary)
@@ -447,7 +447,7 @@ func fetch_messages(channel_id: int, tags: Array = [], limit: int = 100, offset:
 		var result = await __fetch_messages
 		var items := []
 		var callback2 := JavaScriptBridge.create_callback(func(args):
-			items.append(Message.new()._from_js(args[0])))
+			items.append(GPMessage.new()._from_js(args[0])))
 		result.items.forEach(callback2)
 		var canLoadMore:bool = result.canLoadMore
 		return {"items": items, 
@@ -481,7 +481,7 @@ func fetch_personal_messages(player_id: int, tags: Array = [], limit: int = 0, o
 		var result = await __fetch_personal_messages
 		var items := []
 		var callback2 := JavaScriptBridge.create_callback(func(args):
-			items.append(Message.new()._from_js(args[0])))
+			items.append(GPMessage.new()._from_js(args[0])))
 		result.items.forEach(callback2)
 		
 		var canLoadMore:bool = result.canLoadMore
@@ -518,7 +518,7 @@ func fetch_feed_messages(player_id: int, tags: Array = [], limit: int = 0, offse
 		var result = await __fetch_feed_messages
 		var items := []
 		var callback2 := JavaScriptBridge.create_callback(func(args):
-			items.append(Message.new()._from_js(args[0])))
+			items.append(GPMessage.new()._from_js(args[0])))
 		result.items.forEach(callback2)
 		
 		var canLoadMore:bool = result.canLoadMore
@@ -554,7 +554,7 @@ func fetch_more_messages(channel_id: int, tags: Array = [], limit: int = 0) -> D
 		var result = await __fetch_more_messages
 		var items := []
 		var callback2 := JavaScriptBridge.create_callback(func(args):
-			items.append(Message.new()._from_js(args[0])))
+			items.append(GPMessage.new()._from_js(args[0])))
 		result.items.forEach(callback2)
 		
 		var canLoadMore: bool = result.canLoadMore
@@ -582,7 +582,7 @@ func fetch_more_personal_messages(player_id: int, tags: Array = [], limit: int =
 		var result = await __fetch_more_personal_messages
 		var items := []
 		var callback2 := JavaScriptBridge.create_callback(func(args):
-			items.append(Message.new()._from_js(args[0])))
+			items.append(GPMessage.new()._from_js(args[0])))
 		result.items.forEach(callback2)
 		
 		var canLoadMore: bool = result.canLoadMore
@@ -615,7 +615,7 @@ func fetch_more_feed_messages(player_id: int, tags: Array = [], limit: int = 100
 		var result = await __fetch_more_feed_messages
 		var items := []
 		var callback2 := JavaScriptBridge.create_callback(func(args):
-			items.append(Message.new()._from_js(args[0])))
+			items.append(GPMessage.new()._from_js(args[0])))
 		result.items.forEach(callback2)
 		
 		var canLoadMore: bool = result.canLoadMore
@@ -678,7 +678,7 @@ func delete_channel(channel_id: int) -> void:
 
 signal __fetch_channel(a:JavaScriptObject)
 
-func fetch_channel(channel_id:int) -> Channel:
+func fetch_channel(channel_id:int) -> GPChannel:
 	if OS.get_name() == "Web":
 		var conf := JavaScriptBridge.create_object("Object")
 		conf["channelId"] = channel_id
@@ -686,10 +686,10 @@ func fetch_channel(channel_id:int) -> Channel:
 			__fetch_channel.emit(args[0]))
 		gp.channels.fetchChannel(conf).then(callback)
 		var response = await __fetch_channel
-		return Channel.new()._from_js(response)
+		return GPChannel.new()._from_js(response)
 	else:
 		push_warning("Not running on Web")
-		return Channel.new()
+		return GPChannel.new()
 
 signal __fetch_channels(a:JavaScriptObject)
 
@@ -716,7 +716,7 @@ func fetch_channels(ids: Array, tags: Array, search: String = "", only_joined: b
 		var result = await __fetch_channels
 		var items := []
 		var callback2 := JavaScriptBridge.create_callback(func(args):
-			items.append(Channel.new()._from_js(args[0])))
+			items.append(GPChannel.new()._from_js(args[0])))
 		result.items.forEach(callback2)
 		var canLoadMore:bool = result.canLoadMore
 		return {"items": items, 
@@ -748,7 +748,7 @@ func fetch_more_channels(channel_id: int, tags: Array, limit: int = 100) -> Dict
 		var result = await __fetch_channels
 		var items := []
 		var callback2 := JavaScriptBridge.create_callback(func(args):
-			items.append(Channel.new()._from_js(args[0])))
+			items.append(GPChannel.new()._from_js(args[0])))
 		result.items.forEach(callback2)
 		var canLoadMore:bool = result.canLoadMore
 		return {"items": items, 
@@ -1168,20 +1168,20 @@ func fetch_more_sent_join_requests(limit: int = 0) -> void:
 		
 				
 func _event_message(args):
-	var message = Message.new()
+	var message = GPMessage.new()
 	message._from_js(args[0])  
 	event_message.emit(message)
 	
 	
 func _message_send(args) -> void:
-	var message = Message.new()
+	var message = GPMessage.new()
 	message._from_js(args[0])  
 	message_received.emit(message) 
 
 
 func _message_sent(args) -> void:
 	var js_message = args[0]
-	var message = Message.new()
+	var message = GPMessage.new()
 	message._from_js(js_message)
 	message_sent.emit(message)
 
@@ -1191,7 +1191,7 @@ func _message_error(args) -> void:
 
 
 func _edit_message(args) -> void:
-	var message = Message.new()
+	var message = GPMessage.new()
 	message._from_js(args[0])
 	message_edited.emit(message)
 
@@ -1201,7 +1201,7 @@ func _edit_message_error(args) -> void:
 
 
 func _event_edit_message(args) -> void:
-	var message = Message.new()
+	var message = GPMessage.new()
 	message._from_js(args[0])
 	event_edit_message.emit(message)
 	
@@ -1215,7 +1215,7 @@ func _delete_message_error(args) -> void:
 
 
 func _event_delete_message(args) -> void:
-	var message = Message.new()
+	var message = GPMessage.new()
 	message._from_js(args[0])
 	event_delete_message.emit(message)
 
@@ -1224,7 +1224,7 @@ func _fetch_messages(args) -> void:
 	var result = args[0]
 	var items := []
 	var callback := JavaScriptBridge.create_callback(func(args):
-		items.append(Message.new()._from_js(args[0]))
+		items.append(GPMessage.new()._from_js(args[0]))
 		)
 	result.items.forEach(callback)
 	emit_signal("messages_fetched", {"items": items,
@@ -1240,7 +1240,7 @@ func _on_fetch_more_messages(args) -> void:
 	var result = args[0]
 	var items = []
 	var callback = JavaScriptBridge.create_callback(func(args): 
-		var message = Message.new()
+		var message = GPMessage.new()
 		message._from_js(args[0])
 		items.append(message)
 		)
@@ -1253,7 +1253,7 @@ func _on_fetch_more_messages_error(args) -> void:
 
 
 func _on_create_channel(args) -> void:
-	var channel = Channel.new()._from_js(args[0])
+	var channel = GPChannel.new()._from_js(args[0])
 	emit_signal("channel_created", channel)
 
 
@@ -1262,7 +1262,7 @@ func _on_create_channel_error(args) -> void:
 
 
 func _on_update_channel(args) -> void:
-	var channel = Channel.new()
+	var channel = GPChannel.new()
 	channel._from_js(args[0])
 	channel_updated.emit(channel)
 
@@ -1272,7 +1272,7 @@ func _on_update_channel_error(args) -> void:
 	
 	
 func _on_event_update_channel(args) -> void:
-	var channel = Channel.new()
+	var channel = GPChannel.new()
 	channel._from_js(args[0])
 	channel_updated.emit(channel)
 	
@@ -1289,7 +1289,7 @@ func _on_event_delete_channel(args) -> void:
 
 
 func _on_fetch_channel(args) -> void:
-	channel_fetched.emit(Channel.new()._from_js(args[0]))
+	channel_fetched.emit(GPChannel.new()._from_js(args[0]))
 	
 func _on_fetch_channel_error(args) -> void:
 	fetch_channel_error.emit(args[0])
@@ -1298,7 +1298,7 @@ func _on_fetch_channel_error(args) -> void:
 func _on_fetch_channels(args) -> void:
 	var channels := []
 	var callback := JavaScriptBridge.create_callback(func(arg):
-		channels.append(Channel.new()._from_js(arg[0])))
+		channels.append(GPChannel.new()._from_js(arg[0])))
 	args[0].items.forEach(callback)
 	emit_signal("channels_fetched", channels, args[0].canLoadMore)
 
@@ -1310,7 +1310,7 @@ func _on_fetch_channels_error(args) -> void:
 func _on_fetch_more_channels(args) -> void:
 	var channels := []
 	var callback := JavaScriptBridge.create_callback(func(arg):
-		channels.append(Channel.new()._from_js(arg[0])))
+		channels.append(GPChannel.new()._from_js(arg[0])))
 	args[0].items.forEach(callback)
 	var can_load_more: bool = args[0].canLoadMore
 	emit_signal("more_channels_fetched", channels, can_load_more)
@@ -1343,8 +1343,8 @@ func _on_event_join(args) -> void:
 	var result = {}
 	result["channel_id"] = member.channelId
 	result["id"] = member.id
-	result["state"] = Player.new()._from_js(member.state)
-	result["mute"] = Mute.new()._from_js(member.mute)
+	result["state"] = GPPlayer.new()._from_js(member.state)
+	result["mute"] = GPMute.new()._from_js(member.mute)
 	event_joined.emit(result)
 	
 func _on_event_join_request(args) -> void:
@@ -1403,7 +1403,7 @@ func _on_fetch_members(args) -> void:
 	var members_array: Array = []
 
 	var callback := JavaScriptBridge.create_callback(func(args):
-		members_array.append(Member.new()._from_js(args[0])))
+		members_array.append(GPMember.new()._from_js(args[0])))
 	result.items.forEach(callback)
 		
 	var can_load_more :bool = result.canLoadMore
@@ -1417,7 +1417,7 @@ func _on_fetch_more_members(args) -> void:
 	var members_array: Array = []
 
 	var callback := JavaScriptBridge.create_callback(func(args):
-		members_array.append(Member.new()._from_js(args[0])))
+		members_array.append(GPMember.new()._from_js(args[0])))
 	args[0].items.forEach(callback)
 	
 	emit_signal("fetch_more_members_success", members_array, args[0].canLoadMore)
@@ -1536,9 +1536,9 @@ func _on_fetch_more_sent_invites(args) -> void:
 func _on_error_fetch_more_sent_invites(args) -> void:
 	error_fetch_more_sent_invites.emit(args[0])
 	
-	
+
 # Message class to encapsulate message data
-class Message:
+class GPMessage:
 	extends GP.GPObject
 	
 	var id: String
@@ -1564,7 +1564,7 @@ class Message:
 		js_object["createdAt"] = created_at
 		return js_object
 
-	func _from_js(js_object: JavaScriptObject) -> Message:
+	func _from_js(js_object: JavaScriptObject) -> GPMessage:
 		id = js_object["id"]
 		channel_id = js_object["channelId"]
 		author_id = js_object["authorId"]
@@ -1574,13 +1574,13 @@ class Message:
 			tags.append(args[0]))
 		js_object["tags"].forEach(callback_tags)
 		if js_object["player"]:
-			player = Player.new()
+			player = GPPlayer.new()
 			player._from_js(js_object["player"])
 		created_at = js_object["createdAt"]
 		return self
 
 	
-class Player:
+class GPPlayer:
 	extends GP.GPObject
 	
 	var id: int
@@ -1598,14 +1598,14 @@ class Player:
 		return js_object
 
 	# Method to initialize the player from a JavaScript object
-	func _from_js(js_object: JavaScriptObject) -> Player:
+	func _from_js(js_object: JavaScriptObject) -> GPPlayer:
 		id = js_object["id"]
 		name = js_object["name"]
 		avatar = js_object["avatar"]
 		score = js_object["score"]
 		return self
 
-class Channel:
+class GPChannel:
 	extends GP.GPObject
 	
 	var id: int
@@ -1630,7 +1630,7 @@ class Channel:
 	var member_acl: Dictionary
 	var guest_acl: Dictionary
 
-	func _from_js(js_object: JavaScriptObject) -> Channel:
+	func _from_js(js_object: JavaScriptObject) -> GPChannel:
 		id = js_object["id"]
 		tags = []
 		var callback_tags := JavaScriptBridge.create_callback(func(args):
@@ -1748,20 +1748,20 @@ class Channel:
 		data["guestAcl"] = js_guest_acl
 		return data
 		
-class Member:
+class GPMember:
 	extends GP.GPObject
 	
 	var id: int
 	var is_online: bool
 	var state
-	var mute: Mute
+	var mute: GPMute
 
 	# Method to convert from JS object to Member instance
-	func _from_js(js_object: JavaScriptObject) -> Member:
+	func _from_js(js_object: JavaScriptObject) -> GPMember:
 		self.id = js_object.id
 		self.is_online = js_object.isOnline
-		self.state = Player.new()._from_js(js_object.state)
-		self.mute = Mute.new()._from_js(js_object.mute)
+		self.state = GPPlayer.new()._from_js(js_object.state)
+		self.mute = GPMute.new()._from_js(js_object.mute)
 		return self
 	
 	func _to_js() -> JavaScriptObject:
@@ -1772,14 +1772,14 @@ class Member:
 		js_object["mute"] = mute._to_js()
 		return js_object
 
-class Mute:
+class GPMute:
 	extends GP.GPObject
 	
 	var is_muted: bool
 	var unmute_at: String
 
 	# Method to populate Mute from a JavaScript object
-	func _from_js(js_object: JavaScriptObject) -> Mute:
+	func _from_js(js_object: JavaScriptObject) -> GPMute:
 		is_muted = js_object.isMuted
 		unmute_at = js_object.unmuteAt
 		return self

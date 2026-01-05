@@ -14,8 +14,8 @@ func _on_main_menu_button_pressed():
 
 
 func _on_current_pressed():
-	GP.Logger.info(GP.Language.current())
+	GP.logger.info(GP.language.current())
 
 
 func _on_change_pressed():
-	GP.Language.change(lang_node.text)
+	GP.language.change(lang_node.text)

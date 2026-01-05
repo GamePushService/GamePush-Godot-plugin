@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://8dhgiroyhmao"]
 
-[ext_resource type="Script" path="res://addons/gamepush/Demo/demo.gd" id="1_n8j0n"]
+[ext_resource type="Script" uid="uid://jofd3gg2cuvl" path="res://addons/gamepush/Demo/demo.gd" id="1_n8j0n"]
 [ext_resource type="StyleBox" uid="uid://b8gk1mmy8e4dt" path="res://addons/gamepush/Demo/GP_Green_box_flat.tres" id="2_dly2q"]
 
 [node name="Demo" type="Control"]
@@ -45,6 +45,21 @@ theme_override_font_sizes/font_size = 30
 text = "Main Menu"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/Panel"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 7.0
+offset_top = -24.0
+offset_right = 270.0
+offset_bottom = -4.0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 14
+text = "Version Godot: 4.5 Version Plugin: 2.0.0"
+vertical_alignment = 2
 
 [node name="GridContainer" type="GridContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -215,6 +230,21 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Socials"
 
+[node name="Sounds" type="Button" parent="MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Sounds"
+
+[node name="New" type="Label" parent="MarginContainer/VBoxContainer/GridContainer/Sounds"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 45.0
+offset_bottom = 28.0
+theme_override_colors/font_color = Color(0.92454845, 0.7272602, 0.45662767, 1)
+text = "New!"
+
 [node name="Storage" type="Button" parent="MarginContainer/VBoxContainer/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
@@ -245,6 +275,21 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Variables"
 
+[node name="Windows" type="Button" parent="MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Windows"
+
+[node name="New" type="Label" parent="MarginContainer/VBoxContainer/GridContainer/Windows"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 45.0
+offset_bottom = 28.0
+theme_override_colors/font_color = Color(0.92454845, 0.7272602, 0.45662767, 1)
+text = "New!"
+
 [connection signal="pressed" from="MarginContainer/VBoxContainer/GridContainer/Achievements" to="." method="_on_achievements_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/GridContainer/Ads" to="." method="_on_ads_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/GridContainer/Analytics" to="." method="_on_analytics_pressed"]
@@ -273,8 +318,10 @@ text = "Variables"
 [connection signal="pressed" from="MarginContainer/VBoxContainer/GridContainer/Segments" to="." method="_on_segments_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/GridContainer/Server" to="." method="_on_server_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/GridContainer/Socials" to="." method="_on_socials_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/GridContainer/Sounds" to="." method="_on_sounds_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/GridContainer/Storage" to="." method="_on_storage_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/GridContainer/System" to="." method="_on_system_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/GridContainer/Triggers" to="." method="_on_triggers_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/GridContainer/Uniques" to="." method="_on_uniques_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/GridContainer/Variables" to="." method="_on_variables_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/GridContainer/Windows" to="." method="_on_windows_pressed"]

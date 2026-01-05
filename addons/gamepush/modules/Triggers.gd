@@ -6,14 +6,14 @@ var gp:JavaScriptObject
 
 signal after_ready
 
-signal activated(trigger: Trigger)
-signal claimed(trigger: Trigger)
+signal activated(trigger: GPTrigger)
+signal claimed(trigger: GPTrigger)
 signal _inner_claimed(res:Dictionary)
 signal error_claim(err: String)
 
 var _callback_claimed := JavaScriptBridge.create_callback(func(args):
 	var response: Dictionary = {
-			"trigger": Trigger.new()._from_js(args[0].trigger),
+			"trigger": GPTrigger.new()._from_js(args[0].trigger),
 			"isActivated": args[0].isActivated,
 			"isClaimed": args[0].isClaimed
 		}
@@ -54,7 +54,7 @@ func list() -> Array:
 	if OS.get_name() == "Web":
 		var triggers = gp.triggers.list
 		var callback = JavaScriptBridge.create_callback(func(args):
-			var trigger = Trigger.new()._from_js(args[0])
+			var trigger = GPTrigger.new()._from_js(args[0])
 			trigger_list.append(trigger)
 		)
 		triggers.forEach(callback)
@@ -80,7 +80,7 @@ func get_trigger(trigger_id: String) -> Dictionary:
 	if OS.get_name() == "Web":
 		var result = gp.triggers.getTrigger(trigger_id)
 		if result:
-			trigger_info["trigger"] = Trigger.new()._from_js(result.trigger)
+			trigger_info["trigger"] = GPTrigger.new()._from_js(result.trigger)
 			trigger_info["isActivated"] = result.isActivated
 			trigger_info["isClaimed"] = result.isClaimed
 		else:
@@ -102,11 +102,11 @@ func is_claimed(id_or_tag: Variant) -> bool:
 	return false
 
 func _activated(args) -> void:
-	var trigger = Trigger.new()._from_js(args[0].trigger)
+	var trigger = GPTrigger.new()._from_js(args[0].trigger)
 	activated.emit(trigger)  # Emit the signal with the trigger information
 
 func _claimed(args) -> void:
-	var trigger = Trigger.new()._from_js(args[0].trigger)
+	var trigger = GPTrigger.new()._from_js(args[0].trigger)
 	claimed.emit(trigger)  # Emit the signal with the trigger information
 
 func _error_claim(args) -> void:
@@ -123,7 +123,7 @@ func _is_valid_id(id:Variant):
 			return true
 	return false
 	
-class Trigger:
+class GPTrigger:
 	extends GP.GPObject
 	
 	var id: String
@@ -131,7 +131,7 @@ class Trigger:
 	var description: String
 	var is_auto_claim: bool
 	var conditions: Array # Array of arrays of Condition objects
-	var bonuses: Array # Array of Bonus objects
+	var bonuses: Array # Array of GPBonus objects
 
 	# Method to convert the trigger to a JSON object
 	func _to_js() -> JavaScriptObject:
@@ -159,7 +159,7 @@ class Trigger:
 		return js_object
 
 	# Method to initialize the trigger from a JSON object
-	func _from_js(js_object: JavaScriptObject) -> Trigger:
+	func _from_js(js_object: JavaScriptObject) -> GPTrigger:
 		id = js_object["id"]
 		tag = js_object["tag"]
 		description = js_object["description"]
@@ -170,7 +170,7 @@ class Trigger:
 		var callback_conditions := JavaScriptBridge.create_callback(func(args):
 			var condition_list := Array()
 			var callback_condition_list := JavaScriptBridge.create_callback(func(args):
-				condition_list.append(Condition.new()._from_js(args[0])))
+				condition_list.append(GPCondition.new()._from_js(args[0])))
 			args[0].forEach(callback_condition_list)
 			conditions.append(condition_list))
 		js_object["conditions"].forEach(callback_conditions)
@@ -178,11 +178,11 @@ class Trigger:
 		# Initialize bonuses from JavaScript
 		bonuses = Array()
 		var callback_bonuses := JavaScriptBridge.create_callback(func(args):
-			bonuses.append(Bonus.new()._from_js(args[0])))
+			bonuses.append(GPBonus.new()._from_js(args[0])))
 		js_object["bonuses"].forEach(callback_bonuses)
 		return self
 
-class Bonus:
+class GPBonus:
 	extends GP.GPObject
 	
 	var type: String
@@ -195,12 +195,12 @@ class Bonus:
 		return js_object
 
 	# Method to initialize the bonus from a JSON object
-	func _from_js(js_object: JavaScriptObject) -> Bonus:
+	func _from_js(js_object: JavaScriptObject) -> GPBonus:
 		type = js_object["type"]
 		id = js_object["id"]
 		return self
 
-class Condition:
+class GPCondition:
 	extends GP.GPObject
 	
 	var type: String
@@ -218,7 +218,7 @@ class Condition:
 		return js_object
 
 	# Method to initialize the condition from a JSON object
-	func _from_js(js_object: JavaScriptObject) -> Condition:
+	func _from_js(js_object: JavaScriptObject) -> GPCondition:
 		type = js_object["type"]
 		key = js_object["key"]
 		operator = js_object["operator"]

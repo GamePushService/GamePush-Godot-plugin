@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dl6ysbefsv5lv"]
 
-[ext_resource type="Script" path="res://addons/gamepush/Demo/Modules/system.gd" id="1_sy5rk"]
+[ext_resource type="Script" uid="uid://dgh3o5x2l8xjn" path="res://addons/gamepush/Demo/Modules/system.gd" id="1_sy5rk"]
 [ext_resource type="StyleBox" uid="uid://b8gk1mmy8e4dt" path="res://addons/gamepush/Demo/GP_Green_box_flat.tres" id="2_2764h"]
 
 [node name="Storage" type="Control"]

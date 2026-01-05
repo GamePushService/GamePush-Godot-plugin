@@ -6,11 +6,11 @@ var rewards:JavaScriptObject
 
 signal after_ready
 
-signal reward_given(reward:Reward, player_reward:PlayerReward)
+signal reward_given(reward:GPReward, player_reward:GPPlayerReward)
 signal _reward_given(arg:JavaScriptObject)
 signal reward_error(err:String)
 signal reward_accept_error(err:String)
-signal reward_accepted(reward:Reward, player_reward:PlayerReward)
+signal reward_accepted(reward:GPReward, player_reward:GPPlayerReward)
 signal _reward_accepted(arg:JavaScriptObject)
 
 
@@ -48,10 +48,10 @@ func give(id_or_tag:Variant, lazy:bool = false) -> Array:
 		rewards.give(conf).then(callback)
 		var _result = await _reward_given
 		var result:Array
-		var reward = Reward.new()
+		var reward = GPReward.new()
 		reward._from_js(_result.reward)
 		result.append(reward)
-		var player_reward = PlayerReward.new()
+		var player_reward = GPPlayerReward.new()
 		player_reward._from_js(_result.playerReward)
 		result.append(player_reward)
 		return result
@@ -70,10 +70,10 @@ func accept(id_or_tag:Variant) -> Array:
 		rewards.accept(conf).then(callback)
 		var _result = await _reward_accepted
 		var result:Array
-		var reward = Reward.new()
+		var reward = GPReward.new()
 		reward._from_js(_result.reward)
 		result.append(reward)
-		var player_reward = PlayerReward.new()
+		var player_reward = GPPlayerReward.new()
 		player_reward._from_js(_result.playerReward)
 		result.append(player_reward)
 		return result
@@ -85,7 +85,7 @@ func list() -> Array:
 	if OS.get_name() == "Web":
 		var result:Array
 		var _result = rewards.list
-		_result.forEach(JavaScriptBridge.create_callback(func (args): result.append(Reward.new()._from_js(args[0]))))
+		_result.forEach(JavaScriptBridge.create_callback(func (args): result.append(GPReward.new()._from_js(args[0]))))
 		return result
 	push_warning("Not Web")
 	return []
@@ -95,7 +95,7 @@ func given_list() -> Array:
 	if OS.get_name() == "Web":
 		var result:Array
 		var _result = rewards.givenList
-		_result.forEach(JavaScriptBridge.create_callback(func (args): result.append(PlayerReward.new()._from_js(args[0]))))
+		_result.forEach(JavaScriptBridge.create_callback(func (args): result.append(GPPlayerReward.new()._from_js(args[0]))))
 		return result
 	push_warning("Not Web")
 	return []
@@ -105,8 +105,8 @@ func get_reward(id_or_tag:Variant) -> Array:
 	if OS.get_name() == "Web":
 		var _result = rewards.getReward(id_or_tag)
 		var result:Array
-		result.append(Reward.new()._from_js(_result.reward))
-		result.append(PlayerReward.new()._from_js(_result.playerReward))
+		result.append(GPReward.new()._from_js(_result.reward))
+		result.append(GPPlayerReward.new()._from_js(_result.playerReward))
 		return result
 	push_warning("Not Web")
 	return []
@@ -135,8 +135,8 @@ func has_unaccepted(id_or_tag: Variant) -> bool:
 
 # Method to handle the reward given event
 func _on_reward_given(args) -> void:
-	var reward = Reward.new()._from_js(args[0].reward)
-	var player_reward = PlayerReward.new()._from_js(args[0].playerReward)
+	var reward = GPReward.new()._from_js(args[0].reward)
+	var player_reward = GPPlayerReward.new()._from_js(args[0].playerReward)
 	reward_given.emit(reward, player_reward)
 	
 func _on_reward_error(args) -> void:
@@ -146,8 +146,8 @@ func _on_reward_accept_error(args) -> void:
 	reward_accept_error.emit(args[0])
 	
 func _on_reward_accepted(args) -> void:
-	var reward = Reward.new()._from_js(args[0].reward)
-	var player_reward = PlayerReward.new()._from_js(args[0].playerReward)
+	var reward = GPReward.new()._from_js(args[0].reward)
+	var player_reward = GPPlayerReward.new()._from_js(args[0].playerReward)
 	reward_accepted.emit(reward, player_reward)
 	
 func _is_valid_id(id:Variant):
@@ -160,7 +160,7 @@ func _is_valid_id(id:Variant):
 			return true
 	return false
 	
-class Reward:
+class GPReward:
 	extends GP.GPObject
 	
 	var id: int
@@ -169,11 +169,11 @@ class Reward:
 	var description: String
 	var icon: String
 	var icon_small: String
-	var mutations: Array # This will hold DataMutation objects
+	var mutations: Array # This will hold GPDataMutation objects
 	var is_auto_accept: bool
 
 	# Function to convert from JS object to GDScript object
-	func _from_js(js_object: JavaScriptObject) -> Reward:
+	func _from_js(js_object: JavaScriptObject) -> GPReward:
 		id = js_object["id"]
 		tag = js_object["tag"]
 		name = js_object["name"]
@@ -184,7 +184,7 @@ class Reward:
 		mutations = []
 		var _mutations = js_object["mutations"]
 		_mutations.forEach(JavaScriptBridge.create_callback(func (m): 
-			mutations.append(DataMutation.new()._from_js(m[0]))))
+			mutations.append(GPDataMutation.new()._from_js(m[0]))))
 		return self
 		
 	
@@ -205,7 +205,7 @@ class Reward:
 		return js_object
 
 
-class PlayerReward:
+class GPPlayerReward:
 	extends GP.GPObject
 	
 	var reward_id: int
@@ -213,7 +213,7 @@ class PlayerReward:
 	var count_accepted: int
 
 	# Function to convert from JS object to GDScript object
-	func _from_js(js_object: JavaScriptObject) -> PlayerReward:
+	func _from_js(js_object: JavaScriptObject) -> GPPlayerReward:
 		reward_id = js_object["rewardId"]
 		count_total = js_object["countTotal"]
 		count_accepted = js_object["countAccepted"]
@@ -229,7 +229,7 @@ class PlayerReward:
 
 
 
-class DataMutation:
+class GPDataMutation:
 	extends GP.GPObject
 	
 	var type: String 
@@ -238,7 +238,7 @@ class DataMutation:
 	var value: Variant # Supports number, string, or boolean
 
 	# Function to convert from JS object to GDScript object
-	func _from_js(js_object: JavaScriptObject) -> DataMutation:
+	func _from_js(js_object: JavaScriptObject) -> GPDataMutation:
 		type = js_object["type"]
 		key = js_object["key"]
 		action = js_object["action"]

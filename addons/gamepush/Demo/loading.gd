@@ -6,8 +6,8 @@ func _ready():
 		go_to_main()
 		return
 	GP.inited.connect(go_to_main)
-	GP.Player.player_ready.connect(func(): GP.Logger.info("player_ready"))
-	
+	GP.player.player_ready.connect(func(): GP.logger.info("player_ready"))
+
 
 func go_to_main(_is_succuss:bool = false):
 	# Put here your scene file

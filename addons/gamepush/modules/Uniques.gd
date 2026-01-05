@@ -5,11 +5,11 @@ var gp: JavaScriptObject
 
 signal after_ready
 
-signal registered(unique_value: UniqueValue)
+signal registered(unique_value: GPUniqueValue)
 signal register_error(error: String)
-signal checked(unique_value: UniqueValue)
+signal checked(unique_value: GPUniqueValue)
 signal check_error(error: String)
-signal deleted(unique_value: UniqueValue)
+signal deleted(unique_value: GPUniqueValue)
 signal delete_error(error: String)
 
 var _callback_registered := JavaScriptBridge.create_callback(_registered)
@@ -90,7 +90,7 @@ func delete_unique(tag: String) -> void:
 
 
 func _registered(args) -> void:
-	var unique_value = UniqueValue.new()._from_js(args[0])
+	var unique_value = GPUniqueValue.new()._from_js(args[0])
 	registered.emit(unique_value)
 
 
@@ -99,7 +99,7 @@ func _registration_error(args) -> void:
 	
 
 func _checked(args) -> void:
-	var unique_value = UniqueValue.new()
+	var unique_value = GPUniqueValue.new()
 	unique_value._from_js(args[0])
 	checked.emit(unique_value)
 
@@ -109,7 +109,7 @@ func _check_error(args) -> void:
 
 
 func _deleted(args) -> void:
-	var unique_value = UniqueValue.new()
+	var unique_value = GPUniqueValue.new()
 	unique_value._from_js(args[0])
 	deleted.emit(unique_value)
 
@@ -119,13 +119,13 @@ func _delete_error(args) -> void:
 	
 	
 
-class UniqueValue:
+class GPUniqueValue:
 	extends GP.GPObject
 	
 	var tag: String
 	var value: Variant
 
-	func _from_js(js_obj: JavaScriptObject) -> UniqueValue:
+	func _from_js(js_obj: JavaScriptObject) -> GPUniqueValue:
 		tag = js_obj.tag
 		value = js_obj.value
 		return self

@@ -6,7 +6,7 @@ var events:JavaScriptObject
 
 signal after_ready
 
-signal joined(event:Event, player_event:PlayerEvent)
+signal joined(event:GPEvent, player_event:GPPlayerEvent)
 signal error_join(error:String)
 
 var _callback_joined := JavaScriptBridge.create_callback(_join)
@@ -44,7 +44,7 @@ func list() -> Array:
 	var result := []
 	if OS.get_name() == "Web":
 		var callback := JavaScriptBridge.create_callback(func(args):
-			result.append(Event.new()._from_js(args[0])))
+			result.append(GPEvent.new()._from_js(args[0])))
 		events.list.forEach(callback)
 	else:
 		push_warning("Not running on Web")
@@ -54,14 +54,14 @@ func active_list() -> Array:
 	var result := []
 	if OS.get_name() == "Web":
 		var callback := JavaScriptBridge.create_callback(func(args):
-			result.append(PlayerEvent.new()._from_js(args[0])))
+			result.append(GPPlayerEvent.new()._from_js(args[0])))
 		events.activeList.forEach(callback)
 	else:
 		push_warning("Not running on Web")
 	return result
 	
-func get_event(id_or_tag:Variant) -> Event:
-	var result := Event.new()
+func get_event(id_or_tag:Variant) -> GPEvent:
+	var result := GPEvent.new()
 	if OS.get_name() == "Web":
 		if id_or_tag is String and id_or_tag.is_valid_int():
 			id_or_tag = int(id_or_tag)
@@ -91,8 +91,8 @@ func is_joined(id_or_tag:Variant) -> bool:
 
 func _join(args):
 	var js_object = args[0]
-	var event = Event.new()._from_js(js_object.event)
-	var player_event = PlayerEvent.new()._from_js(js_object.playerEvent)
+	var event = GPEvent.new()._from_js(js_object.event)
+	var player_event = GPPlayerEvent.new()._from_js(js_object.playerEvent)
 	joined.emit(event, player_event)
 
 
@@ -110,7 +110,7 @@ func _is_valid_id(id:Variant):
 			return true
 	return false
 
-class Event:
+class GPEvent:
 	extends GP.GPObject
 	
 	var id: int
@@ -126,7 +126,7 @@ class Event:
 	var is_auto_join: bool
 	var triggers: Array
 
-	func _from_js(js_object: JavaScriptObject) -> Event:
+	func _from_js(js_object: JavaScriptObject) -> GPEvent:
 		id = js_object["id"]
 		tag = js_object["tag"]
 		name = js_object["name"]
@@ -163,15 +163,15 @@ class Event:
 		js_object["triggers"] = triggers
 		return js_object
 		
-class PlayerEvent:
+class GPPlayerEvent:
 	extends GP.GPObject
 	
 	var event_id: int
-	var stats: PlayerStats
+	var stats: GPPlayerStats
 
-	func _from_js(js_object: JavaScriptObject) -> PlayerEvent:
+	func _from_js(js_object: JavaScriptObject) -> GPPlayerEvent:
 		event_id = js_object["eventId"]
-		stats = PlayerStats.new()._from_js(js_object["stats"])
+		stats = GPPlayerStats.new()._from_js(js_object["stats"])
 		return self
 
 	func _to_js() -> JavaScriptObject:
@@ -181,13 +181,13 @@ class PlayerEvent:
 		return js_object
 
 		
-class PlayerStats:
+class GPPlayerStats:
 	extends GP.GPObject
 	
 	var active_days: int
 	var active_days_consecutive: int
 
-	func _from_js(js_object: JavaScriptObject) -> PlayerStats:
+	func _from_js(js_object: JavaScriptObject) -> GPPlayerStats:
 		active_days = js_object["activeDays"]
 		active_days_consecutive = js_object["activeDaysConsecutive"]
 		return self

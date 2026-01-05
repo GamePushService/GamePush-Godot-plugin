@@ -17,4 +17,4 @@ func _on_fetch_pressed():
 		conf.append(id2_node.text)
 	if id3_node.text:
 		conf.append(id3_node.text)
-	GP.Logger.info(await GP.Players.fetch(conf))
+	GP.logger.info(await GP.players.fetch(conf))

@@ -11,8 +11,8 @@ func _on_main_menu_button_pressed():
 
 
 func _on_map_pressed():
-	GP.Logger.info(GP.Experiments.map())
+	GP.logger.info(GP.experiments.map())
 
 
 func _on_has_pressed():
-	GP.Logger.info(GP.Experiments.has(tag_node.text, cohort_node.text))
+	GP.logger.info(GP.experiments.has(tag_node.text, cohort_node.text))

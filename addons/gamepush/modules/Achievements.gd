@@ -6,13 +6,13 @@ var achievements:JavaScriptObject
 
 signal after_ready
 
-signal unlocked(achievement:Achievement)
+signal unlocked(achievement:GPAchievement)
 signal error_unlock(error:String)
-signal progress(achievement:Achievement)
+signal progress(achievement:GPAchievement)
 signal error_progress(error:String)
 signal opened
 signal closed
-signal fetched(achievement:Array[Achievement], achievements_groups:Array[AchievementsGroup], player_achievements:Array[PlayerAchievement])
+signal fetched(achievement:Array[GPAchievement], achievements_groups:Array[GPAchievementsGroup], player_achievements:Array[GPPlayerAchievement])
 signal error_fetch(error:String)
 
 var _callback_unlock = JavaScriptBridge.create_callback(_unlock)
@@ -103,42 +103,42 @@ func fetch() -> void:
 		push_warning("Not Web")
 	
 	
-func list() -> Array[Achievement]:
-	var result : Array[Achievement] = []
+func list() -> Array[GPAchievement]:
+	var result : Array[GPAchievement] = []
 	if OS.get_name() == "Web":
 		var callback := JavaScriptBridge.create_callback(func(args):
-			result.append(Achievement.new()._from_js(args[0])))
+			result.append(GPAchievement.new()._from_js(args[0])))
 		achievements.list.forEach(callback)
 	else:
 		push_warning("Not Web")
 	return result
 	
 
-func player_achievements_list() -> Array[PlayerAchievement]:
-	var result : Array[PlayerAchievement] = []
+func player_achievements_list() -> Array[GPPlayerAchievement]:
+	var result : Array[GPPlayerAchievement] = []
 	if OS.get_name() == "Web":
 		var callback := JavaScriptBridge.create_callback(func(args):
-			result.append(PlayerAchievement.new()._from_js(args[0])))
+			result.append(GPPlayerAchievement.new()._from_js(args[0])))
 		achievements.playerAchievementsList.forEach(callback)
 	else:
 		push_warning("Not Web")
 	return result
 	
 	
-func groups_list() -> Array[AchievementsGroup]:
-	var result : Array[AchievementsGroup] = []
+func groups_list() -> Array[GPAchievementsGroup]:
+	var result : Array[GPAchievementsGroup] = []
 	if OS.get_name() == "Web":
 		var callback := JavaScriptBridge.create_callback(func(args):
-			result.append(AchievementsGroup.new()._from_js(args[0])))
+			result.append(GPAchievementsGroup.new()._from_js(args[0])))
 		achievements.groupsList.forEach(callback)
 	else:
 		push_warning("Not Web")
 	return result
 
 
-func _unlock(args): unlocked.emit(Achievement.new()._from_js(args[0]))
+func _unlock(args): unlocked.emit(GPAchievement.new()._from_js(args[0]))
 func _error_unlock(args): error_unlock.emit(args[0])
-func _progress(args): progress.emit(Achievement.new()._from_js(args[0]))
+func _progress(args): progress.emit(GPAchievement.new()._from_js(args[0]))
 func _error_progress(args): error_progress.emit(args[0])
 func _opened(args): opened.emit()
 func _closed(args): closed.emit()
@@ -148,13 +148,13 @@ func _fetched(args):
 	var achievements_groups := []
 	var player_achievements := []
 	var _callback_achievements := JavaScriptBridge.create_callback(func(args):
-		achievements.append(Achievement.new()._from_js(args[0])))
+		achievements.append(GPAchievement.new()._from_js(args[0])))
 	achive.achievements.forEach(_callback_achievements)
 	var _callback_achievements_groups:= JavaScriptBridge.create_callback(func(args):
-		achievements_groups.append(AchievementsGroup.new()._from_js(args[0])))
+		achievements_groups.append(GPAchievementsGroup.new()._from_js(args[0])))
 	achive.achievementsGroups.forEach(_callback_achievements_groups)
 	var _callback_player_achievements:= JavaScriptBridge.create_callback(func(args):
-		player_achievements.append(PlayerAchievement.new()._from_js(args[0])))
+		player_achievements.append(GPPlayerAchievement.new()._from_js(args[0])))
 	achive.playerAchievements.forEach(_callback_player_achievements)
 	fetched.emit(achievements, player_achievements, achievements_groups)
 	
@@ -171,7 +171,7 @@ func _is_valid_id(id:Variant):
 			return true
 	return false
 
-class Achievement:
+class GPAchievement:
 	extends GP.GPObject
 	
 	var id: int
@@ -188,7 +188,7 @@ class Achievement:
 	var is_locked_visible: bool
 	var is_locked_description_visible: bool
 
-	func _from_js(js_object: JavaScriptObject) -> Achievement:
+	func _from_js(js_object: JavaScriptObject) -> GPAchievement:
 		id = js_object["id"]
 		tag = js_object["tag"]
 		name = js_object["name"]
@@ -230,7 +230,7 @@ class Achievement:
 			result[property_name] = self.get(property_name)
 		return result
 
-class AchievementsGroup:
+class GPAchievementsGroup:
 	extends GP.GPObject
 	
 	var id: int
@@ -239,7 +239,7 @@ class AchievementsGroup:
 	var description: String
 	var achievements: Array # Array of achievement IDs
 
-	func _from_js(js_object: JavaScriptObject) -> AchievementsGroup:
+	func _from_js(js_object: JavaScriptObject) -> GPAchievementsGroup:
 		id = js_object["id"]
 		tag = js_object["tag"]
 		name = js_object["name"]
@@ -262,7 +262,7 @@ class AchievementsGroup:
 		js_object["achievements"] = _achievements
 		return js_object
 
-class PlayerAchievement:
+class GPPlayerAchievement:
 	extends GP.GPObject
 	
 	var achievement_id: int
@@ -270,7 +270,7 @@ class PlayerAchievement:
 	var progress: int
 	var unlocked: bool
 
-	func _from_js(js_object: JavaScriptObject) -> PlayerAchievement:
+	func _from_js(js_object: JavaScriptObject) -> GPPlayerAchievement:
 		achievement_id = js_object["achievementId"]
 		created_at = js_object["createdAt"]
 		progress = js_object["progress"]

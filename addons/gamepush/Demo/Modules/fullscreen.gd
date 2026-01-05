@@ -3,9 +3,9 @@ extends Control
 
 
 func _ready():
-	GP.Fullscreen.opened.connect(func(): GP.Logger.info("open"))
-	GP.Fullscreen.closed.connect(func(): GP.Logger.info("close"))
-	GP.Fullscreen.changed.connect(func(): GP.Logger.info("change"))
+	GP.fullscreen.opened.connect(func(): GP.logger.info("open"))
+	GP.fullscreen.closed.connect(func(): GP.logger.info("close"))
+	GP.fullscreen.changed.connect(func(): GP.logger.info("change"))
 	
 	
 func _on_main_menu_button_pressed():
@@ -13,16 +13,16 @@ func _on_main_menu_button_pressed():
 
 
 func _on_open_pressed():
-	GP.Fullscreen.open()
+	GP.fullscreen.open()
 
 
 func _on_close_pressed():
-	GP.Fullscreen.close()
+	GP.fullscreen.close()
 
 
 func _on_toggle_pressed():
-	GP.Fullscreen.toggle()
+	GP.fullscreen.toggle()
 
 
 func _on_is_enabled_pressed():
-	GP.Logger.info(GP.Fullscreen.is_enabled())
+	GP.logger.info(GP.fullscreen.is_enabled())

@@ -1,6 +1,6 @@
 @tool
 extends EditorExportPlugin
-class_name  HTMLExportPlugin
+class_name HTMLExportPlugin
 
 
 var plugin_path: String = get_script().resource_path.get_base_dir()
@@ -12,7 +12,8 @@ func _get_name() -> String:
 	return "Game Push"
 
 
-func _export_begin(features: PackedStringArray , is_debug: bool, path: String, flags: int) -> void:
+func _export_begin(features: PackedStringArray ,
+		 _is_debug: bool, path: String, _flags: int) -> void:
 	export_path = path
 	_features = features
 	
@@ -22,7 +23,9 @@ func _export_end() -> void:
 		var project_id := str(ProjectSettings.get_setting("game_push/config/project_id"))
 		var public_token := ProjectSettings.get_setting("game_push/config/token")
 		var is_archive := ProjectSettings.get_setting("game_push/config/is_archive", false)
-		var archive_name := ProjectSettings.get_setting("game_push/config/archive_name", "export_archive.zip")
+		var archive_name := ProjectSettings.get_setting(
+				"game_push/config/archive_name", "export_archive.zip"
+				)
 		var file := FileAccess.open(export_path, FileAccess.READ)
 		var html := file.get_as_text()
 		file.close()
