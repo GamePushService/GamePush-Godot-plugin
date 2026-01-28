@@ -186,7 +186,7 @@ func _error_fetch_more(args): error_fetch_more.emit(GP._js_to_dict(args[0]))
 
 
 class GPImage:
-	extends GP.GPObject
+	extends GPObject
 	
 	var id:String
 	var player_id:int

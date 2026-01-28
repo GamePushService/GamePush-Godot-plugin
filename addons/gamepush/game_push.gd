@@ -1,6 +1,6 @@
 extends Node
 
-const VERSION = "2.0.0"
+const VERSION = "2.0.1"
 
 @onready var achievements := preload("res://addons/gamepush/modules/Achievements.gd").new()
 @onready var ads := preload("res://addons/gamepush/modules/Ads.gd").new()
@@ -113,13 +113,3 @@ func _re_snake(data:Variant) -> Variant:
 		if data == int(data):
 			new_data = int(data)
 	return new_data
-	
-	
-class GPObject:
-	
-	func to_dict() -> Dictionary:
-		var result = {}
-		for property_info in get_property_list():
-			var property_name = property_info.name
-			result[property_name] = self.get(property_name)
-		return result

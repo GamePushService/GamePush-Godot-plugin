@@ -65,7 +65,7 @@ func _error_fetch(args): error_fetch.emit(args[0])
 
 
 class GPCollection:
-	extends GP.GPObject
+	extends GPObject
 	
 	var id:int
 	var tag:String
@@ -102,7 +102,7 @@ class GPCollection:
 		
 
 class GPGame:
-	extends GP.GPObject
+	extends GPObject
 	
 	var id:int
 	var name:String

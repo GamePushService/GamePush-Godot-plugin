@@ -281,7 +281,7 @@ func _on_error_join(args) -> void:
 
 
 class Scheduler:
-	extends GP.GPObject
+	extends GPObject
 	
 	var id: int
 	var tag: String
@@ -325,7 +325,7 @@ class Scheduler:
 		return self
 
 class PlayerScheduler:
-	extends GP.GPObject
+	extends GPObject
 	
 	var scheduler_id: int
 	var days_claimed: Array[int]
@@ -355,7 +355,7 @@ class PlayerScheduler:
 
 
 class PlayerStats:
-	extends GP.GPObject
+	extends GPObject
 	
 	var active_days: int
 	var active_days_consecutive: int
@@ -374,7 +374,7 @@ class PlayerStats:
 		return self
 
 class SchedulerInfo:
-	extends GP.GPObject
+	extends GPObject
 	
 	#var scheduler: Scheduler
 	var stats: PlayerStats
@@ -409,7 +409,7 @@ class SchedulerInfo:
 		days_claimed.append(args[0])
 
 class GPSchedulerDayInfo:
-	extends GP.GPObject
+	extends GPObject
 	
 	var scheduler: Scheduler
 	var day: int

@@ -161,7 +161,7 @@ func _is_valid_id(id:Variant):
 	return false
 	
 class GPReward:
-	extends GP.GPObject
+	extends GPObject
 	
 	var id: int
 	var tag: String
@@ -206,7 +206,7 @@ class GPReward:
 
 
 class GPPlayerReward:
-	extends GP.GPObject
+	extends GPObject
 	
 	var reward_id: int
 	var count_total: int
@@ -230,7 +230,7 @@ class GPPlayerReward:
 
 
 class GPDataMutation:
-	extends GP.GPObject
+	extends GPObject
 	
 	var type: String 
 	var key: String

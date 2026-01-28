@@ -1,11 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://855epvfb68ox"]
+[gd_scene format=3 uid="uid://855epvfb68ox"]
 
 [ext_resource type="Script" uid="uid://ccjhd4wxslrua" path="res://addons/gamepush/Demo/Modules/sounds.gd" id="1_l0l6d"]
 [ext_resource type="StyleBox" uid="uid://b8gk1mmy8e4dt" path="res://addons/gamepush/Demo/GP_Green_box_flat.tres" id="1_pdw2o"]
-[ext_resource type="AudioStream" uid="uid://ctk3vm35m38cs" path="res://addons/gamepush/Demo/Sounds/Moavii - Foreign.mp3" id="3_t0xf8"]
-[ext_resource type="AudioStream" uid="uid://srk3lcg2c52i" path="res://addons/gamepush/Demo/Sounds/833427__darceyprodanovic__bird-sounds.wav" id="4_vmoy1"]
+[ext_resource type="AudioStream" uid="uid://drod72lw2axre" path="res://addons/gamepush/Demo/Sounds/Moavii - Foreign.mp3" id="3_t0xf8"]
+[ext_resource type="AudioStream" uid="uid://o1gmw5p2kj55" path="res://addons/gamepush/Demo/Sounds/833427__darceyprodanovic__bird-sounds.wav" id="4_vmoy1"]
 
-[node name="Sounds" type="Control"]
+[node name="Sounds" type="Control" unique_id=2096377935]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -14,7 +14,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_l0l6d")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1126561047]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -26,20 +26,20 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=1812055345]
 layout_mode = 2
 
-[node name="MainMenuButton" type="Button" parent="MarginContainer/HBoxContainer"]
+[node name="MainMenuButton" type="Button" parent="MarginContainer/HBoxContainer" unique_id=316610901]
 layout_mode = 2
 size_flags_horizontal = 4
 text = "Main Menu"
 
-[node name="Panel" type="Panel" parent="MarginContainer/HBoxContainer"]
+[node name="Panel" type="Panel" parent="MarginContainer/HBoxContainer" unique_id=921951302]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/Panel"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/Panel" unique_id=1983676392]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -47,13 +47,13 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Head" type="Panel" parent="MarginContainer/HBoxContainer/Panel/VBoxContainer"]
+[node name="Head" type="Panel" parent="MarginContainer/HBoxContainer/Panel/VBoxContainer" unique_id=431848115]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.3
 theme_override_styles/panel = ExtResource("1_pdw2o")
 
-[node name="Header" type="Label" parent="MarginContainer/HBoxContainer/Panel/VBoxContainer/Head"]
+[node name="Header" type="Label" parent="MarginContainer/HBoxContainer/Panel/VBoxContainer/Head" unique_id=1988143007]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -70,72 +70,72 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 32
 text = "Sounds"
 
-[node name="ButtonGrid" type="GridContainer" parent="MarginContainer/HBoxContainer/Panel/VBoxContainer"]
+[node name="ButtonGrid" type="GridContainer" parent="MarginContainer/HBoxContainer/Panel/VBoxContainer" unique_id=90846923]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 2.71
 columns = 3
 
-[node name="is_muted" type="Button" parent="MarginContainer/HBoxContainer/Panel/VBoxContainer/ButtonGrid"]
+[node name="is_muted" type="Button" parent="MarginContainer/HBoxContainer/Panel/VBoxContainer/ButtonGrid" unique_id=462580556]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "is_muted"
 
-[node name="is_sfx_muted" type="Button" parent="MarginContainer/HBoxContainer/Panel/VBoxContainer/ButtonGrid"]
+[node name="is_sfx_muted" type="Button" parent="MarginContainer/HBoxContainer/Panel/VBoxContainer/ButtonGrid" unique_id=1858685453]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "is_sfx_muted"
 
-[node name="is_music_muted" type="Button" parent="MarginContainer/HBoxContainer/Panel/VBoxContainer/ButtonGrid"]
+[node name="is_music_muted" type="Button" parent="MarginContainer/HBoxContainer/Panel/VBoxContainer/ButtonGrid" unique_id=1873928861]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "is_music_muted"
 
-[node name="mute" type="Button" parent="MarginContainer/HBoxContainer/Panel/VBoxContainer/ButtonGrid"]
+[node name="mute" type="Button" parent="MarginContainer/HBoxContainer/Panel/VBoxContainer/ButtonGrid" unique_id=841252088]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "mute"
 
-[node name="unmute" type="Button" parent="MarginContainer/HBoxContainer/Panel/VBoxContainer/ButtonGrid"]
+[node name="unmute" type="Button" parent="MarginContainer/HBoxContainer/Panel/VBoxContainer/ButtonGrid" unique_id=1185284134]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "unmute"
 
-[node name="mute_sfx" type="Button" parent="MarginContainer/HBoxContainer/Panel/VBoxContainer/ButtonGrid"]
+[node name="mute_sfx" type="Button" parent="MarginContainer/HBoxContainer/Panel/VBoxContainer/ButtonGrid" unique_id=1096684945]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "mute_sfx"
 
-[node name="unmute_sfx" type="Button" parent="MarginContainer/HBoxContainer/Panel/VBoxContainer/ButtonGrid"]
+[node name="unmute_sfx" type="Button" parent="MarginContainer/HBoxContainer/Panel/VBoxContainer/ButtonGrid" unique_id=869192531]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "unmute_sfx"
 
-[node name="mute_music" type="Button" parent="MarginContainer/HBoxContainer/Panel/VBoxContainer/ButtonGrid"]
+[node name="mute_music" type="Button" parent="MarginContainer/HBoxContainer/Panel/VBoxContainer/ButtonGrid" unique_id=1382079576]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "mute_music"
 
-[node name="unmute_music" type="Button" parent="MarginContainer/HBoxContainer/Panel/VBoxContainer/ButtonGrid"]
+[node name="unmute_music" type="Button" parent="MarginContainer/HBoxContainer/Panel/VBoxContainer/ButtonGrid" unique_id=949283383]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "unmute_music"
 
-[node name="AudioStreamPlayerMusic" type="AudioStreamPlayer" parent="."]
+[node name="AudioStreamPlayerMusic" type="AudioStreamPlayer" parent="." unique_id=574197333]
 stream = ExtResource("3_t0xf8")
 autoplay = true
 bus = &"Music"
 
-[node name="AudioStreamPlayerSfx" type="AudioStreamPlayer" parent="."]
+[node name="AudioStreamPlayerSfx" type="AudioStreamPlayer" parent="." unique_id=756517205]
 stream = ExtResource("4_vmoy1")
 autoplay = true
 bus = &"Sfx"

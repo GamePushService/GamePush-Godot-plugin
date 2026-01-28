@@ -1539,7 +1539,7 @@ func _on_error_fetch_more_sent_invites(args) -> void:
 
 # Message class to encapsulate message data
 class GPMessage:
-	extends GP.GPObject
+	extends GPObject
 	
 	var id: String
 	var channel_id: int
@@ -1581,7 +1581,7 @@ class GPMessage:
 
 	
 class GPPlayer:
-	extends GP.GPObject
+	extends GPObject
 	
 	var id: int
 	var name: String
@@ -1606,7 +1606,7 @@ class GPPlayer:
 		return self
 
 class GPChannel:
-	extends GP.GPObject
+	extends GPObject
 	
 	var id: int
 	var tags: Array
@@ -1749,7 +1749,7 @@ class GPChannel:
 		return data
 		
 class GPMember:
-	extends GP.GPObject
+	extends GPObject
 	
 	var id: int
 	var is_online: bool
@@ -1773,7 +1773,7 @@ class GPMember:
 		return js_object
 
 class GPMute:
-	extends GP.GPObject
+	extends GPObject
 	
 	var is_muted: bool
 	var unmute_at: String

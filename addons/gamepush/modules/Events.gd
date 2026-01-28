@@ -111,7 +111,7 @@ func _is_valid_id(id:Variant):
 	return false
 
 class GPEvent:
-	extends GP.GPObject
+	extends GPObject
 	
 	var id: int
 	var tag: String
@@ -164,7 +164,7 @@ class GPEvent:
 		return js_object
 		
 class GPPlayerEvent:
-	extends GP.GPObject
+	extends GPObject
 	
 	var event_id: int
 	var stats: GPPlayerStats
@@ -182,7 +182,7 @@ class GPPlayerEvent:
 
 		
 class GPPlayerStats:
-	extends GP.GPObject
+	extends GPObject
 	
 	var active_days: int
 	var active_days_consecutive: int
