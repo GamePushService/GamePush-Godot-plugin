@@ -111,7 +111,7 @@ func _is_valid_id(id:Variant):
 	return false
 
 class GPEvent:
-	extends Object
+	extends GPObject
 	
 	var id: int
 	var tag: String
