@@ -216,7 +216,7 @@ func _fetch_more(args):
 func _error_fetch_more(args): error_fetch_more.emit(GP._js_to_dict(args[0])) 
 
 class GPFile:
-	extends GP.GPObject
+	extends GPObject
 	
 	var id:String
 	var player_id:int

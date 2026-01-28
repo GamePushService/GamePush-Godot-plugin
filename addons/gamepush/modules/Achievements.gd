@@ -172,7 +172,7 @@ func _is_valid_id(id:Variant):
 	return false
 
 class GPAchievement:
-	extends GP.GPObject
+	extends GPObject
 	
 	var id: int
 	var tag: String
@@ -231,7 +231,7 @@ class GPAchievement:
 		return result
 
 class GPAchievementsGroup:
-	extends GP.GPObject
+	extends GPObject
 	
 	var id: int
 	var tag: String
@@ -263,7 +263,7 @@ class GPAchievementsGroup:
 		return js_object
 
 class GPPlayerAchievement:
-	extends GP.GPObject
+	extends GPObject
 	
 	var achievement_id: int
 	var created_at: String

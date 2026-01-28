@@ -185,7 +185,7 @@ func _error_unsubscribe(args): error_unsubscribe.emit(args[0])
 
 
 class GPPurchase:
-	extends GP.GPObject
+	extends GPObject
 	
 	var id:int
 	var tag:String
@@ -232,7 +232,7 @@ class GPPurchase:
 		return self
 
 class GPPlayerPurchase:
-	extends GP.GPObject
+	extends GPObject
 	
 	var product_id: int
 	var payload: Dictionary

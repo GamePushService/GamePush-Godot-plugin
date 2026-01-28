@@ -1,9 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://8dhgiroyhmao"]
+[gd_scene format=3 uid="uid://8dhgiroyhmao"]
 
 [ext_resource type="Script" uid="uid://jofd3gg2cuvl" path="res://addons/gamepush/Demo/demo.gd" id="1_n8j0n"]
 [ext_resource type="StyleBox" uid="uid://b8gk1mmy8e4dt" path="res://addons/gamepush/Demo/GP_Green_box_flat.tres" id="2_dly2q"]
 
-[node name="Demo" type="Control"]
+[node name="Demo" type="Control" unique_id=85869277]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -12,7 +12,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_n8j0n")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=816309077]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -24,16 +24,16 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=469582862]
 layout_mode = 2
 
-[node name="Panel" type="Panel" parent="MarginContainer/VBoxContainer"]
+[node name="Panel" type="Panel" parent="MarginContainer/VBoxContainer" unique_id=294471968]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.1
 theme_override_styles/panel = ExtResource("2_dly2q")
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Panel"]
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Panel" unique_id=1489529950]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -46,7 +46,7 @@ text = "Main Menu"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/Panel"]
+[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/Panel" unique_id=1841427880]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -61,182 +61,183 @@ theme_override_font_sizes/font_size = 14
 text = "Version Godot: 4.5 Version Plugin: 2.0.0"
 vertical_alignment = 2
 
-[node name="GridContainer" type="GridContainer" parent="MarginContainer/VBoxContainer"]
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/VBoxContainer" unique_id=2008641059]
 layout_mode = 2
 size_flags_vertical = 3
 columns = 9
 
-[node name="Achievements" type="Button" parent="MarginContainer/VBoxContainer/GridContainer"]
+[node name="Achievements" type="Button" parent="MarginContainer/VBoxContainer/GridContainer" unique_id=938789494]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Achievements"
 
-[node name="Ads" type="Button" parent="MarginContainer/VBoxContainer/GridContainer"]
+[node name="Ads" type="Button" parent="MarginContainer/VBoxContainer/GridContainer" unique_id=260556699]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Ads"
 
-[node name="Analytics" type="Button" parent="MarginContainer/VBoxContainer/GridContainer"]
+[node name="Analytics" type="Button" parent="MarginContainer/VBoxContainer/GridContainer" unique_id=1152805831]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Analytics"
 
-[node name="App" type="Button" parent="MarginContainer/VBoxContainer/GridContainer"]
+[node name="App" type="Button" parent="MarginContainer/VBoxContainer/GridContainer" unique_id=487926338]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "App"
 
-[node name="AvatarGenerator" type="Button" parent="MarginContainer/VBoxContainer/GridContainer"]
+[node name="AvatarGenerator" type="Button" parent="MarginContainer/VBoxContainer/GridContainer" unique_id=1053227180]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Avatar Generator"
 
-[node name="Channels" type="Button" parent="MarginContainer/VBoxContainer/GridContainer"]
+[node name="Channels" type="Button" parent="MarginContainer/VBoxContainer/GridContainer" unique_id=915135028]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Channels"
 
-[node name="ChannelManagement" type="Button" parent="MarginContainer/VBoxContainer/GridContainer"]
+[node name="ChannelManagement" type="Button" parent="MarginContainer/VBoxContainer/GridContainer" unique_id=602230749]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Channel Management"
 
-[node name="Device" type="Button" parent="MarginContainer/VBoxContainer/GridContainer"]
+[node name="Device" type="Button" parent="MarginContainer/VBoxContainer/GridContainer" unique_id=1042213687]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Device"
 
-[node name="Documents" type="Button" parent="MarginContainer/VBoxContainer/GridContainer"]
+[node name="Documents" type="Button" parent="MarginContainer/VBoxContainer/GridContainer" unique_id=1408305973]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Documents"
 
-[node name="Events" type="Button" parent="MarginContainer/VBoxContainer/GridContainer"]
+[node name="Events" type="Button" parent="MarginContainer/VBoxContainer/GridContainer" unique_id=1409842008]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Events"
 
-[node name="Experiments" type="Button" parent="MarginContainer/VBoxContainer/GridContainer"]
+[node name="Experiments" type="Button" parent="MarginContainer/VBoxContainer/GridContainer" unique_id=515695354]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Experiments"
 
-[node name="Files" type="Button" parent="MarginContainer/VBoxContainer/GridContainer"]
+[node name="Files" type="Button" parent="MarginContainer/VBoxContainer/GridContainer" unique_id=1168158121]
 layout_mode = 2
 text = "Files"
 
-[node name="Fullscreen" type="Button" parent="MarginContainer/VBoxContainer/GridContainer"]
+[node name="Fullscreen" type="Button" parent="MarginContainer/VBoxContainer/GridContainer" unique_id=570631558]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Fullscreen"
 
-[node name="Game" type="Button" parent="MarginContainer/VBoxContainer/GridContainer"]
+[node name="Game" type="Button" parent="MarginContainer/VBoxContainer/GridContainer" unique_id=1095464128]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Game"
 
-[node name="GamesCollections" type="Button" parent="MarginContainer/VBoxContainer/GridContainer"]
+[node name="GamesCollections" type="Button" parent="MarginContainer/VBoxContainer/GridContainer" unique_id=1904210891]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Games Collections"
 
-[node name="Images" type="Button" parent="MarginContainer/VBoxContainer/GridContainer"]
+[node name="Images" type="Button" parent="MarginContainer/VBoxContainer/GridContainer" unique_id=1218278608]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Images"
 
-[node name="Language" type="Button" parent="MarginContainer/VBoxContainer/GridContainer"]
+[node name="Language" type="Button" parent="MarginContainer/VBoxContainer/GridContainer" unique_id=684009383]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Language"
 
-[node name="Leaderboard" type="Button" parent="MarginContainer/VBoxContainer/GridContainer"]
+[node name="Leaderboard" type="Button" parent="MarginContainer/VBoxContainer/GridContainer" unique_id=822035610]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Leaderboard"
 
-[node name="Logger" type="Button" parent="MarginContainer/VBoxContainer/GridContainer"]
+[node name="Logger" type="Button" parent="MarginContainer/VBoxContainer/GridContainer" unique_id=61937959]
 layout_mode = 2
 text = "Logger"
 
-[node name="Payments" type="Button" parent="MarginContainer/VBoxContainer/GridContainer"]
+[node name="Payments" type="Button" parent="MarginContainer/VBoxContainer/GridContainer" unique_id=838640751]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Payments"
 
-[node name="Platform" type="Button" parent="MarginContainer/VBoxContainer/GridContainer"]
+[node name="Platform" type="Button" parent="MarginContainer/VBoxContainer/GridContainer" unique_id=1699739144]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Platform"
 
-[node name="Player" type="Button" parent="MarginContainer/VBoxContainer/GridContainer"]
+[node name="Player" type="Button" parent="MarginContainer/VBoxContainer/GridContainer" unique_id=421427216]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Player"
 
-[node name="Players" type="Button" parent="MarginContainer/VBoxContainer/GridContainer"]
+[node name="Players" type="Button" parent="MarginContainer/VBoxContainer/GridContainer" unique_id=1930828328]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Players"
 
-[node name="Rewards" type="Button" parent="MarginContainer/VBoxContainer/GridContainer"]
+[node name="Rewards" type="Button" parent="MarginContainer/VBoxContainer/GridContainer" unique_id=1463199290]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Rewards"
 
-[node name="Schedulers" type="Button" parent="MarginContainer/VBoxContainer/GridContainer"]
+[node name="Schedulers" type="Button" parent="MarginContainer/VBoxContainer/GridContainer" unique_id=1152094383]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Schedulers"
 
-[node name="Segments" type="Button" parent="MarginContainer/VBoxContainer/GridContainer"]
+[node name="Segments" type="Button" parent="MarginContainer/VBoxContainer/GridContainer" unique_id=1344199060]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Segments"
 
-[node name="Server" type="Button" parent="MarginContainer/VBoxContainer/GridContainer"]
+[node name="Server" type="Button" parent="MarginContainer/VBoxContainer/GridContainer" unique_id=137622659]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Server"
 
-[node name="Socials" type="Button" parent="MarginContainer/VBoxContainer/GridContainer"]
+[node name="Socials" type="Button" parent="MarginContainer/VBoxContainer/GridContainer" unique_id=669442826]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Socials"
 
-[node name="Sounds" type="Button" parent="MarginContainer/VBoxContainer/GridContainer"]
+[node name="Sounds" type="Button" parent="MarginContainer/VBoxContainer/GridContainer" unique_id=1311848834]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Sounds"
 
-[node name="New" type="Label" parent="MarginContainer/VBoxContainer/GridContainer/Sounds"]
+[node name="New" type="Label" parent="MarginContainer/VBoxContainer/GridContainer/Sounds" unique_id=1617620103]
+visible = false
 layout_mode = 0
 offset_left = 5.0
 offset_top = 5.0
@@ -245,43 +246,44 @@ offset_bottom = 28.0
 theme_override_colors/font_color = Color(0.92454845, 0.7272602, 0.45662767, 1)
 text = "New!"
 
-[node name="Storage" type="Button" parent="MarginContainer/VBoxContainer/GridContainer"]
+[node name="Storage" type="Button" parent="MarginContainer/VBoxContainer/GridContainer" unique_id=387310696]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Storage"
 
-[node name="System" type="Button" parent="MarginContainer/VBoxContainer/GridContainer"]
+[node name="System" type="Button" parent="MarginContainer/VBoxContainer/GridContainer" unique_id=641392700]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "System"
 
-[node name="Triggers" type="Button" parent="MarginContainer/VBoxContainer/GridContainer"]
+[node name="Triggers" type="Button" parent="MarginContainer/VBoxContainer/GridContainer" unique_id=172068198]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Triggers"
 
-[node name="Uniques" type="Button" parent="MarginContainer/VBoxContainer/GridContainer"]
+[node name="Uniques" type="Button" parent="MarginContainer/VBoxContainer/GridContainer" unique_id=1152743960]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Uniques"
 
-[node name="Variables" type="Button" parent="MarginContainer/VBoxContainer/GridContainer"]
+[node name="Variables" type="Button" parent="MarginContainer/VBoxContainer/GridContainer" unique_id=1163804633]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Variables"
 
-[node name="Windows" type="Button" parent="MarginContainer/VBoxContainer/GridContainer"]
+[node name="Windows" type="Button" parent="MarginContainer/VBoxContainer/GridContainer" unique_id=1265527723]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Windows"
 
-[node name="New" type="Label" parent="MarginContainer/VBoxContainer/GridContainer/Windows"]
+[node name="New" type="Label" parent="MarginContainer/VBoxContainer/GridContainer/Windows" unique_id=1545020273]
+visible = false
 layout_mode = 0
 offset_left = 5.0
 offset_top = 5.0

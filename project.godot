@@ -8,6 +8,10 @@
 
 config_version=5
 
+[animation]
+
+compatibility/default_parent_skeleton_in_mesh_instance_3d=true
+
 [application]
 
 config/name="GamePush-GODOT-Plugin"
@@ -18,7 +22,11 @@ config/icon="res://icon.png"
 
 [autoload]
 
-GP="*res://addons/gamepush/game_push.gd"
+GP="*uid://cqpytoui8kb6d"
+
+[display]
+
+window/stretch/mode="canvas_items"
 
 [editor_plugins]
 

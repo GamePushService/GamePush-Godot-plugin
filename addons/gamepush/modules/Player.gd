@@ -368,7 +368,7 @@ func _on_field_incremented(args):
 
 
 class GPField:
-	extends GP.GPObject
+	extends GPObject
 	
 	var name: String
 	var key: String
@@ -444,7 +444,7 @@ class GPField:
 
 
 class GPFieldVariant:
-	extends GP.GPObject
+	extends GPObject
 	
 	var name: String
 	var value: Variant  # Может быть String, int или bool
@@ -463,7 +463,7 @@ class GPFieldVariant:
 		return self
 
 class GPFieldLimits:
-	extends GP.GPObject
+	extends GPObject
 	
 	var min: float
 	var max: float
@@ -485,7 +485,7 @@ class GPFieldLimits:
 		return self
 
 class GPIntervalIncrement:
-	extends GP.GPObject
+	extends GPObject
 	
 	var interval: float  
 	var increment: float  

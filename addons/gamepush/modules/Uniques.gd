@@ -120,7 +120,7 @@ func _delete_error(args) -> void:
 	
 
 class GPUniqueValue:
-	extends GP.GPObject
+	extends GPObject
 	
 	var tag: String
 	var value: Variant

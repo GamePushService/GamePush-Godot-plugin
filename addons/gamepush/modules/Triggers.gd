@@ -124,7 +124,7 @@ func _is_valid_id(id:Variant):
 	return false
 	
 class GPTrigger:
-	extends GP.GPObject
+	extends GPObject
 	
 	var id: String
 	var tag: String
@@ -183,7 +183,7 @@ class GPTrigger:
 		return self
 
 class GPBonus:
-	extends GP.GPObject
+	extends GPObject
 	
 	var type: String
 	var id: int
@@ -201,7 +201,7 @@ class GPBonus:
 		return self
 
 class GPCondition:
-	extends GP.GPObject
+	extends GPObject
 	
 	var type: String
 	var key: String
