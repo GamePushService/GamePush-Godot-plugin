@@ -54,7 +54,7 @@ func _ready():
 		ads.on('rewarded:close', _callback_rewarded_close)
 		ads.on('rewarded:reward', _callback_rewarded_reward)
 		ads.on('sticky:start', _callback_sticky_start)
-		ads.on('sticky:close', _callback_close)
+		ads.on('sticky:close', _callback_sticky_close)
 		ads.on('sticky:render', _callback_sticky_render)
 		ads.on('sticky:refresh', _callback_sticky_refresh)
 	after_ready.emit()
