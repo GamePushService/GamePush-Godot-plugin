@@ -55,7 +55,7 @@ func _ready():
 	var public_token := ProjectSettings.get_setting("game_push/config/token")
 	var clbk := JavaScriptBridge.create_callback(func(args):
 		gp = args[0]
-		is_init = true)
+		)
 	var win := JavaScriptBridge.get_interface("window")
 	win.setGpInitCallback(clbk)
 	var lib_url := "https://gs.eponesh.com/sdk/gamepush.js?projectId=%s&publicToken=%s&callback=onGPInit" % [project_id, public_token]
@@ -63,12 +63,13 @@ func _ready():
 	JavaScriptBridge.eval(js_code, true)
 	while not gp:
 		await get_tree().create_timer(0.1).timeout
+	is_init = true
 	
 	for prop in get_property_list():
 		var module_node = get(prop.name)
 		if module_node is Node:
 			add_child(module_node)
-	await get_tree().create_timer(0.1).timeout
+	await get_tree().process_frame
 	
 	var timer := Timer.new()
 	var is_preloader_show := ProjectSettings.get_setting("game_push/config/is_preloader_show", false)

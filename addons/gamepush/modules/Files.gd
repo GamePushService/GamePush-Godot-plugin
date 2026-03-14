@@ -87,13 +87,13 @@ func upload_content(file_name:String, content:String="", tags:Array=[]) -> void:
 	else:
 		push_warning("Not Web")
 	
-signal __load_сontent(a:Variant)
+signal __load_content(a:Variant)
 
-func load_сontent(url:String) -> String:
+func load_content(url:String) -> String:
 	if OS.get_name() == "Web":
-		var callback := JavaScriptBridge.create_callback(func(args): __load_сontent.emit(args[0]))
+		var callback := JavaScriptBridge.create_callback(func(args): __load_content.emit(args[0]))
 		files.loadContent(url).then(callback)
-		var result = await __load_сontent
+		var result = await __load_content
 		return result
 	else:
 		push_warning("Not Web")
@@ -104,7 +104,7 @@ signal __choose_file(a)
 
 func choose_file(type_file:String="") -> Array:
 	if OS.get_name() == "Web":
-		var result:Array
+		var result:Array = []
 		var callback := JavaScriptBridge.create_callback(func(args): __choose_file.emit(args[0]))
 		if type_file:
 			files.chooseFile(type_file).then(callback)
@@ -142,7 +142,7 @@ func fetch(player_id=null, tags=null, limit=null, offset=null) -> Array:
 		var callback := JavaScriptBridge.create_callback(func(args): __fetch.emit(args[0]))
 		files.fetch(conf).then(callback)
 		var _result = await __fetch
-		var arr_file:Array =[]
+		var arr_file:Array = []
 		callback = JavaScriptBridge.create_callback(func(args):
 			arr_file.append(GPFile.new()._from_js(args[0])))
 		_result.items.forEach(callback)
@@ -166,12 +166,12 @@ func fetch_more(player_id=null, tags=null, limit=null, offset=null) -> Array:
 		conf["playerId"] = player_id
 		conf["limit"] = limit
 		conf["offset"] = offset
-		var result:Array
+		var result:Array = []
 		var callback := JavaScriptBridge.create_callback(func(args):
 			__fetch_more.emit(args[0]))
 		files.fetchMore(conf).then(callback)
 		var _result = await __fetch_more
-		var arr_file:Array =[]
+		var arr_file:Array = []
 		callback = JavaScriptBridge.create_callback(func(args):
 			arr_file.append(GPFile.new()._from_js(args[0])))
 		_result.items.forEach(callback)
@@ -189,7 +189,7 @@ func _error_upload(args): error_upload.emit(GP._js_to_dict(args[0]))
 func _load_content(args): loaded_content.emit(args[0])
 func _error_load_content(args): error_load_content.emit(GP._js_to_dict(args[0]))
 func _choose(args):
-	var file : = GPFile.new()
+	var file := GPFile.new()
 	if args[0].file.id:
 		file._from_js(args[0].file)
 	choosed.emit(file, args[0].tempUrl)
@@ -206,7 +206,7 @@ func _fetch(args):
 func _error_fetch(args): error_fetch.emit(GP._js_to_dict(args[0])) 
 func _fetch_more(args):
 	var result := []
-	var arr_file:Array =[]
+	var arr_file:Array = []
 	var callback = JavaScriptBridge.create_callback(func(args):
 		arr_file.append(GPFile.new()._from_js(args[0])))
 	args[0].items.forEach(callback)

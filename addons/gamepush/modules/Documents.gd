@@ -16,7 +16,7 @@ var _callback_close = JavaScriptBridge.create_callback(_close)
 var _callback_fetch = JavaScriptBridge.create_callback(_fetch)
 var _callback_error_fetch = JavaScriptBridge.create_callback(_error_fetch)
 
-# Called when the node enters the scene tree for the first time.
+
 func _ready():
 	if OS.get_name() == "Web":
 		window = JavaScriptBridge.get_interface("window")

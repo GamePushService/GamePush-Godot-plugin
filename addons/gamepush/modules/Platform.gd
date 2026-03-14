@@ -6,7 +6,7 @@ var platform: JavaScriptObject
 
 signal after_ready
 
-# Called when the node enters the scene tree for the first time.
+
 func _ready():
 	if OS.get_name() == "Web":
 		window = JavaScriptBridge.get_interface("window")

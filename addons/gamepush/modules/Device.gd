@@ -8,7 +8,8 @@ signal after_ready
 signal change_orientation(is_portrait:bool)
 
 var _callback_change_orientation := JavaScriptBridge.create_callback(_change_orientation)
-# Called when the node enters the scene tree for the first time.
+
+
 func _ready():
 	if OS.get_name() == "Web":
 		window = JavaScriptBridge.get_interface("window")
