@@ -87,13 +87,13 @@ func upload_content(file_name:String, content:String="", tags:Array=[]) -> void:
 	else:
 		push_warning("Not Web")
 	
-signal __load_сontent(a:Variant)
+signal __load_content(a:Variant)
 
-func load_сontent(url:String) -> String:
+func load_content(url:String) -> String:
 	if OS.get_name() == "Web":
-		var callback := JavaScriptBridge.create_callback(func(args): __load_сontent.emit(args[0]))
+		var callback := JavaScriptBridge.create_callback(func(args): __load_content.emit(args[0]))
 		files.loadContent(url).then(callback)
-		var result = await __load_сontent
+		var result = await __load_content
 		return result
 	else:
 		push_warning("Not Web")
