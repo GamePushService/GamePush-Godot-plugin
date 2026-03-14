@@ -12,7 +12,7 @@ signal error_join(error:String)
 var _callback_joined := JavaScriptBridge.create_callback(_join)
 var _callback_error_join := JavaScriptBridge.create_callback(_error_join)
 
-# Called when the node enters the scene tree for the first time.
+
 func _ready():
 	if OS.get_name() == "Web":
 		gp = GP.gp
@@ -145,7 +145,7 @@ class GPEvent:
 		return self
 
 	func _to_js() -> JavaScriptObject:
-		var js_object: = JavaScriptBridge.create_object("Object")
+		var js_object := JavaScriptBridge.create_object("Object")
 		js_object["id"] = id
 		js_object["tag"] = tag
 		js_object["name"] = name
@@ -160,7 +160,7 @@ class GPEvent:
 		var js_triggers := JavaScriptBridge.create_object("Array")
 		for t in triggers:
 			js_triggers.push(t._to_js())
-		js_object["triggers"] = triggers
+		js_object["triggers"] = js_triggers
 		return js_object
 		
 class GPPlayerEvent:
@@ -175,7 +175,7 @@ class GPPlayerEvent:
 		return self
 
 	func _to_js() -> JavaScriptObject:
-		var js_object: = JavaScriptBridge.create_object("Object")
+		var js_object := JavaScriptBridge.create_object("Object")
 		js_object["eventId"] = event_id
 		js_object["stats"] = stats._to_js()
 		return js_object
@@ -193,7 +193,7 @@ class GPPlayerStats:
 		return self
 
 	func _to_js() -> JavaScriptObject:
-		var js_object: = JavaScriptBridge.create_object("Object")
+		var js_object := JavaScriptBridge.create_object("Object")
 		js_object["activeDays"] = active_days
 		js_object["activeDaysConsecutive"] = active_days_consecutive
 		return js_object
